@@ -1,6 +1,7 @@
 require('dotenv').config();
 require('dotenv').load();
 require('./server/model/user_model.js');
+require('./server/model/task_model.js');
 
 var express = require('express');
 var cookieParser = require('cookie-parser');
@@ -70,11 +71,19 @@ db.on('error', console.error.bind(console, 'Connection Error:'));
 var router = express.Router();
 
 var users = require('./server/controllers/users.js');
+var tasks = require('./server/controllers/tasks.js');
 
 router.route('/user/register').post(users.register);
 
 router.route('/logout').get(users.logout);
 router.route('/login').post(users.login);
+
+
+/**
+ * User activities
+ */
+router.route('/userdata/addTask').post(tasks.addtask);
+
 
 /**
  * Account Security Authentication API
@@ -173,3 +182,4 @@ app.all('/2fa/*', requireLogin, function (req, res, next) {
  */
 app.use('/api', router);
 app.use('/', express.static(__dirname + '/public'));
+app.use('/app', express.static(__dirname + '/app'));
