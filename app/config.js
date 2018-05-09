@@ -113,13 +113,13 @@ var components = [
             {
                 name:'onDetailsSubmit',
                 execute: function(e,o,l){
-                    $http.post('http://localhost:1337/api/verification/start',o.mobileNumber).success(function(data, status, headers, config){
-                        console.log("Phone Verification Success success: ", data);
-                    }).error(function (data, status, headers, config){
-                        console.log("Verification error: ", data);
-                    });
+                    // $http.post('http://localhost:1337/api/verification/start',o.mobileNumber).success(function(data, status, headers, config){
+                    //     console.log("Phone Verification Success success: ", data);
+                    // }).error(function (data, status, headers, config){
+                    //     console.log("Verification error: ", data);
+                    // });
                     
-                    //console.log(o);
+                    console.log(o);
                 }
             }
         ]

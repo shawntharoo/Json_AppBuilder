@@ -11,7 +11,7 @@ angular.module('app').controller('signUpController', ['$scope', '$rootScope','$h
         $scope.components = $rootScope.registerUserComponents($scope.component.data);
     };
     $scope.onSubmit = function(){
-        $rootScope.$broadcast($scope.component.emits.onDetailsSubmit,angular.copy($scope.component.data), $location);
+        $rootScope.$broadcast($scope.component.emits.onDetailsSubmit,angular.copy($scope.component), $location);
     };
 
     init();
