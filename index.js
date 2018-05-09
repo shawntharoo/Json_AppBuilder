@@ -23,7 +23,7 @@ if(!config.API_KEY){
 /**
  * Setup MongoDB connection.
  */
-mongoose.connect('mongodb://localhost:27017/todo');
+mongoose.connect(process.env.MONGODB);
 var db = mongoose.connection;
 
 app.use(cookieParser());

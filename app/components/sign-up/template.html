@@ -1,0 +1,23 @@
+<div class="grid-container" ng-controller="signUpController">
+    <div gridster="gridOptions">
+        <div class="appTitle" ng-style="component.styles.appTitleStyle" ng-class="{moveup : contentHide}">
+            <span ng-style="component.styles.appTitleLogo1">{{component.data.appTitle}}</span>
+            <span ng-style="component.styles.appTitleLogo">{{component.data.appTitleLogo}}</span>
+            <br>
+            <span ng-style="component.styles.appTagLine" ng-class="{hide : contentHide}">{{component.data.appTagLine}}</span>
+            <button class="signup-button" ng-style="component.styles.appTitleButton" ng-click="contentHide=true" ng-class="{hide : contentHide}">
+                <span class="icon-dialpad"></span>{{component.data.appButtonTitle}}</button>
+            <span ng-style="component.styles.appTagLine2" ng-class="{show : contentHide}">{{component.data.appTagLine2}}</span>
+            <div style="width:335px;margin:45px auto 0 auto">
+                <input type="text" id="fname" name="firstname" ng-class="{show : contentHide}" ng-model="component.data.firstName" ng-style="{{component.styles.inputField}}"
+                    placeholder="First Name" required>
+                <input type="text" id="lname" name="firstname" ng-class="{show : contentHide}" ng-model="component.data.lastName" ng-style="{{component.styles.inputField}}"
+                    placeholder="Last Name" required>
+                <input type="tel" id="fname" name="firstname" ng-class="{show : contentHide}" ng-model="component.data.mobileNumber" ng-style="{{component.styles.inputField}}"
+                    placeholder="Mobile number" required>
+                   <button class="signup-button" ng-style="component.styles.appTitleButton2" ng-class="{show : contentHide}">{{component.data.appButton2Title}}</button>
+            </div>
+
+        </div>
+    </div>
+</div>

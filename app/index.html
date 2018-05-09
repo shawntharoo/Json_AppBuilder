@@ -1,0 +1,88 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../node_modules/angular-gridster/dist/angular-gridster.min.css" />
+
+    <script src="../node_modules/angular/angular.js"></script>
+    <script src="../node_modules/angular-gridster/dist/angular-gridster.min.js"></script>
+    <script src="../node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <link rel="stylesheet" href="fonts/icomoon.css" />
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="fonts/open-sans.css" />
+    <!-- <script src="components/item-filter/controller.js"></script>
+    <script src="components/list/controller.js"></script> -->
+    <script src="config.js"></script>
+    <script src="components/sign-up/controller.js"></script>
+
+    <style>
+        * {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .gridster,
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #202632;
+        }
+
+        .gridster {
+            height: 100%;
+        }
+
+        .main-view {
+            top: 0px;
+            position: absolute;
+            left: 0px;
+            width: 100%;
+            height: 100% !important;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .gridster-mobile,
+        .gridster-item {
+            height: 100% !important;
+        }
+
+        .signup-button {
+            color: #23B584;
+            background: rgba(0, 0, 0, 0);
+            transition: all cubic-bezier(0.0, 0.0, 0.2, 1) 0.3s;;
+        }
+
+        .signup-button:hover {
+            color: #fff;
+            background: #23B584;
+            transition: all cubic-bezier(0.0, 0.0, 0.2, 1) 0.3s;;
+
+        }
+        .signup-button span{
+            margin-right:10px;
+        }
+        .hide{
+            display:none !important;
+            transition:all cubic-bezier(0.0, 0.0, 0.2, 1) 0.7s;
+        }
+        .moveup{
+            top:35% !important;
+            transition: all cubic-bezier(0.0, 0.0, 0.2, 1) 0.7s
+        }
+        .show{
+            display:block !important;
+            transition:all cubic-bezier(0.0, 0.0, 0.2, 1) 0.7s;
+        }
+    </style>
+</head>
+
+<body ng-app="app">
+    <div class="main-view" ng-controller="mainController" s>
+        <ul gridster="gridOptions">
+            <li gridster-item="component" ng-repeat="component in components" ng-include="component.templateUrl" ng-style="{{component.styles.outerLayout}}">
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
