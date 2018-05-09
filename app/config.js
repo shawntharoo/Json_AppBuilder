@@ -148,8 +148,8 @@ var components = [
                 name:'onDetailsSubmit',
                 execute: function(e,o,l){
                     var data = {
-                        countryCode : o.data.countryCode,
-                        mobileNumber : o.data.mobileNumber
+                        country_code : o.data.countryCode,
+                        phone_number : o.data.mobileNumber
                     }
                     o.ajax.post('/api/verification/start',data).success(function(data, status, headers, config){
                         console.log("Phone Verification Success success: ", data);
