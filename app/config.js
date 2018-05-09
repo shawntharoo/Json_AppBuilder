@@ -103,6 +103,40 @@ var components = [
                     outline: 'none',
                     display:'none'
                 }
+            },
+            inputFieldCC: function(ctx,comp){
+                return{
+                    display: 'none',
+                    'background-color': '#C8C8C8',
+                    height: '45px',
+                    width: '60px',
+                    'font-size': '16px',
+                    'font-weight': '300',
+                    padding: '10px',
+                    border: 'none',
+                    'margin-top':'10px',
+                    'outline-color':'#23B584'
+                }
+            },
+            inputFieldMN: function(ctx,comp){
+                return{
+                    display: 'none',
+                    'background-color': '#C8C8C8',
+                    height: '45px',
+                    width: '265px',
+                    'font-size': '16px',
+                    'font-weight': '300',
+                    padding: '10px',
+                    border: 'none',
+                    'margin-top':'10px',
+                    'outline-color':'#23B584'
+                }
+            },
+            wrapperMobile: function(ctx,comp){
+               return {
+                display: 'flex',
+                'justify-content': 'space-between'
+               }
             }
 
         },
@@ -113,13 +147,17 @@ var components = [
             {
                 name:'onDetailsSubmit',
                 execute: function(e,o,l){
-                    $http.post('http://localhost:1337/api/verification/start',o.mobileNumber).success(function(data, status, headers, config){
+                    var data = {
+                        countryCode : o.data.countryCode,
+                        mobileNumber : o.data.mobileNumber
+                    }
+                    o.ajax.post('/api/verification/start',data).success(function(data, status, headers, config){
                         console.log("Phone Verification Success success: ", data);
                     }).error(function (data, status, headers, config){
                         console.log("Verification error: ", data);
                     });
                     
-                    //console.log(o);
+                    console.log(o.data);
                 }
             }
         ]

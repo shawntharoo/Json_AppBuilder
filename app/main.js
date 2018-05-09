@@ -36,7 +36,7 @@ app.factory('componentFactory', [function () {
     var signUp = new Component("SignUp");
     signUp.templateUrl = 'components/sign-up/template.html';
     signUp.inputs = ['appTitle', 'appTitleLogo', 'appTagLine', 'appButtonTitle', 'appTagLine2', 'appButton2Title'];
-    signUp.styleNames = ['appTitleStyle', 'appTitleLogo1', 'appTitleLogo', 'appTagLine', 'appTitleButton', 'inputField', 'appTagLine2', 'appTitleButton2'];
+    signUp.styleNames = ['appTitleStyle', 'appTitleLogo1', 'appTitleLogo', 'appTagLine', 'appTitleButton', 'inputField', 'appTagLine2', 'appTitleButton2','inputFieldCC','inputFieldMN','wrapperMobile'];
     signUp.emits=['onDetailsSubmit']
     registerComponent(signUp);
     return {

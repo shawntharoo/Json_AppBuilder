@@ -11,11 +11,17 @@
             <div style="width:335px;margin:45px auto 0 auto">
                 <form>
                     <input type="text" id="fname" name="firstname" ng-class="{show : contentHide}" ng-model="component.data.firstName" ng-style="{{component.styles.inputField}}"
-                        placeholder="First Name" required>
-                    <input type="text" id="lname" name="firstname" ng-class="{show : contentHide}" ng-model="component.data.lastName" ng-style="{{component.styles.inputField}}"
-                        placeholder="Last Name" required>
-                    <input type="tel" id="fname" name="firstname" ng-class="{show : contentHide}" ng-model="component.data.mobileNumber" ng-style="{{component.styles.inputField}}"
-                        placeholder="Mobile number" required>
+                        placeholder="First Name" ng-required="required">
+                    <input type="text" id="lname" name="lastName" ng-class="{show : contentHide}" ng-model="component.data.lastName" ng-style="{{component.styles.inputField}}"
+                        placeholder="Last Name" ng-required="required">
+
+                    <div ng-style="component.styles.wrapperMobile">
+                        <input type="tel" id="countryCode" name="countryCode" ng-class="{show : contentHide}" ng-model="component.data.countryCode"
+                            ng-style="{{component.styles.inputFieldCC}}" placeholder="+94" ng-required="required">
+                        <input type="tel" id="mobileNumber" name="mobileNumber" ng-class="{show : contentHide}" ng-model="component.data.mobileNumber"
+                            ng-style="{{component.styles.inputFieldMN}}" placeholder="Mobile number" ng-required="required">
+
+                    </div>
                     <button class="signup-button" ng-style="component.styles.appTitleButton2" ng-class="{show : contentHide}" ng-click="onSubmit()">{{component.data.appButton2Title}}</button>
                 </form>
 
