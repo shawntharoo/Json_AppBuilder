@@ -7,7 +7,7 @@
     "server": "node .",
     "http-server": "http-server -a localhost -p 8100 -c-l ./app",
     "test": "npm-run-all -p -r server http-server",
-    "start": "npm-run-all -p -r http-server && server"
+    "start": "npm-run-all -p -r server http-server"
   },
   "repository": {
     "type": "git",
