@@ -1,29 +1,27 @@
 {
-  "name": "account-security-quickstart-node",
+  "name": "todos",
   "version": "1.0.0",
-  "description": "Simple demo showing how Twilio Account Security works.",
+  "description": "Not just another Todo app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "node .",
+    "http-server": "http-server -a localhost -p 8100 -c-l ./app",
+    "test": "npm-run-all -p -r server && http-server",
+    "start": "npm-run-all -p -r http-server && server"
   },
   "repository": {
     "type": "git",
-    "url": "git@code.hq.twilio.com:jstaples/authy-demo.git"
+    "url": ""
   },
-  "keywords": [
-    "Authy",
-    "Twilio",
-    "2FA",
-    "NodeJS",
-    "Push",
-    "SMS",
-    "Voice",
-    "TOTP",
-    "Soft Token"
-  ],
+  "keywords": [],
   "author": "Josh Staples",
   "license": "MIT",
   "dependencies": {
+    "angular": "^1.6.9",
+    "angular-animate": "^1.6.10",
+    "angular-gridster": "^0.13.14",
+    "angular-ui-router": "^1.0.3",
+    "http-server": "^0.11.1",
     "angular-cookies": "^1.6.10",
     "authy-client": "^1.0.10",
     "body-parser": "^1.15.2",
@@ -39,5 +37,8 @@
     "nodemon": "^1.11.0",
     "qs": "^6.3.0",
     "request": "^2.76.0"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.3"
   }
 }
