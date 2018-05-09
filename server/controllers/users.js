@@ -366,8 +366,8 @@ exports.checkonetouchstatus = function (req, res) {
  * @param res
  */
 exports.requestPhoneVerification = function (req, res) {
-    var phone_number = req.body.data.phone_number;
-    var country_code = req.body.data.country_code;
+    var phone_number = req.body.phone_number;
+    var country_code = req.body.country_code;
     var via = 'sms';
 
     console.log("body: ", req.body);
