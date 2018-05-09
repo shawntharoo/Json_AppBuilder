@@ -366,9 +366,9 @@ exports.checkonetouchstatus = function (req, res) {
  * @param res
  */
 exports.requestPhoneVerification = function (req, res) {
-    var phone_number = req.body.phone_number;
-    var country_code = req.body.country_code;
-    var via = req.body.via;
+    var phone_number = req.body.data.phone_number;
+    var country_code = req.body.data.country_code;
+    var via = 'sms';
 
     console.log("body: ", req.body);
 
@@ -399,6 +399,8 @@ exports.verifyPhoneToken = function (req, res) {
     var country_code = req.body.country_code;
     var phone_number = req.body.phone_number;
     var token = req.body.token;
+    var firstname = req.body.firstname;
+    var lastname = req.body.lastname;
     
     if (phone_number && country_code && token) {
         phoneReg.verifyPhoneToken(phone_number, country_code, token, function (err, response) {
@@ -408,6 +410,20 @@ exports.verifyPhoneToken = function (req, res) {
             } else {
                 console.log('Confirm phone success confirming code: ', response);
                 if (response.success) {
+
+
+                    user = new User({phone: phone_number, country_code: country_code, firstname: firstname, lastname: lastname});
+                    user.save(function (err) {
+                        if (err) {
+                            console.log('Error Creating User', err);
+                            res.status(500).json(err);
+                        } else {
+
+                        }
+                    });
+
+
+
                     req.session.ph_verified = true;
                 }
                 res.status(200).json(err);
