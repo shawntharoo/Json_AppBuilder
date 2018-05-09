@@ -34,8 +34,9 @@ app.factory('componentFactory', [function () {
 
     var signUp = new Component("SignUp");
     signUp.templateUrl = 'components/sign-up/template.html';
-    signUp.inputs=['appTitle','appTitleLogo','appTagLine','appButtonTitle','appTagLine2','appButton2Title'];
-    signUp.styleNames=['appTitleStyle','appTitleLogo1','appTitleLogo','appTagLine','appTitleButton','inputField','appTagLine2','appTitleButton2'];
+    signUp.inputs = ['appTitle', 'appTitleLogo', 'appTagLine', 'appButtonTitle', 'appTagLine2', 'appButton2Title'];
+    signUp.styleNames = ['appTitleStyle', 'appTitleLogo1', 'appTitleLogo', 'appTagLine', 'appTitleButton', 'inputField', 'appTagLine2', 'appTitleButton2'];
+    signUp.emits=['onDetailsSubmit']
     registerComponent(signUp);
     return {
         registerComponent: registerComponent,
@@ -80,7 +81,6 @@ app.controller('mainController', ['$scope', 'componentFactory', '$rootScope', fu
 
             // set inputs
             for (var j = 0; j < comp.inputs.length; j++) {
-                console.log(comps.length);
                 var dataF = comps[i].data[comp.inputs[j]];
                 if (typeof dataF === 'function') {
                     comp.data[comp.inputs[j]] = dataF($scope, comp);
