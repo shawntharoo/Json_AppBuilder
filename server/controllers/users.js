@@ -8,7 +8,7 @@ var phoneReg = require('../lib/phone_verification')(config.API_KEY);
 
 // https://github.com/seegno/authy-client
 const Client = require('authy-client').Client;
-const authy = new Client({key: config.API_KEY});
+const authy = new Client({ key: config.API_KEY });
 
 
 function hashPW(pwd) {
@@ -21,7 +21,7 @@ function hashPW(pwd) {
  * @param res
  */
 exports.login = function (req, res) {
-    User.findOne({username: req.body.username})
+    User.findOne({ username: req.body.username })
         .exec(function (err, user) {
             if (!user) {
                 err = 'Username Not Found';
@@ -62,9 +62,9 @@ exports.logout = function (req, res) {
  */
 exports.loggedIn = function (req, res) {
     if (req.session.loggedIn && req.session.authy) {
-        res.status(200).json({url: "/protected"});
+        res.status(200).json({ url: "/protected" });
     } else if (req.session.loggedIn && !req.session.authy) {
-        res.status(200).json({url: "/2fa"});
+        res.status(200).json({ url: "/2fa" });
     } else {
         res.status(409).send();
     }
@@ -79,18 +79,18 @@ exports.loggedIn = function (req, res) {
 exports.register = function (req, res) {
 
     var username = req.body.username;
-    User.findOne({username: username}).exec(function (err, user) {
+    User.findOne({ username: username }).exec(function (err, user) {
         if (err) {
             console.log('Rregistration Error', err);
             res.status(500).json(err);
             return;
         }
         if (user) {
-            res.status(409).json({err: "Username Already Registered"});
+            res.status(409).json({ err: "Username Already Registered" });
             return;
         }
 
-        user = new User({username: req.body.username});
+        user = new User({ username: req.body.username });
 
         user.set('hashed_password', hashPW(req.body.password));
         user.set('email', req.body.email);
@@ -140,11 +140,11 @@ exports.register = function (req, res) {
 exports.loggedIn = function (req, res) {
 
     if (req.session.loggedIn && req.session.authy) {
-        res.status(200).json({url: "/protected"});
+        res.status(200).json({ url: "/protected" });
     } else if (req.session.loggedIn && !req.session.authy) {
-        res.status(200).json({url: "/2fa"});
+        res.status(200).json({ url: "/2fa" });
     } else {
-        res.status(200).json({url: "/login"});
+        res.status(200).json({ url: "/login" });
     }
 };
 
@@ -156,7 +156,7 @@ exports.loggedIn = function (req, res) {
  */
 exports.sms = function (req, res) {
     var username = req.session.username;
-    User.findOne({username: username}).exec(function (err, user) {
+    User.findOne({ username: username }).exec(function (err, user) {
         console.log("Send SMS");
         if (err) {
             console.log('SendSMS', err);
@@ -170,7 +170,7 @@ exports.sms = function (req, res) {
          *
          * Passing force: true forces an SMS send.
          */
-        authy.requestSms({authyId: user.authyId}, {force: true}, function (err, smsRes) {
+        authy.requestSms({ authyId: user.authyId }, { force: true }, function (err, smsRes) {
             if (err) {
                 console.log('ERROR requestSms', err);
                 res.status(500).json(err);
@@ -191,7 +191,7 @@ exports.sms = function (req, res) {
  */
 exports.voice = function (req, res) {
     var username = req.session.username;
-    User.findOne({username: username}).exec(function (err, user) {
+    User.findOne({ username: username }).exec(function (err, user) {
         console.log("Send Voice");
         if (err) {
             console.log('ERROR SendVoice', err);
@@ -205,7 +205,7 @@ exports.voice = function (req, res) {
          *
          * Passing force: true forces an voice call to be made
          */
-        authy.requestCall({authyId: user.authyId}, {force: true}, function (err, callRes) {
+        authy.requestCall({ authyId: user.authyId }, { force: true }, function (err, callRes) {
             if (err) {
                 console.error('ERROR requestcall', err);
                 res.status(500).json(err);
@@ -225,13 +225,13 @@ exports.voice = function (req, res) {
  */
 exports.verify = function (req, res) {
     var username = req.session.username;
-    User.findOne({username: username}).exec(function (err, user) {
+    User.findOne({ username: username }).exec(function (err, user) {
         console.log("Verify Token");
         if (err) {
             console.error('Verify Token User Error: ', err);
             res.status(500).json(err);
         }
-        authy.verifyToken({authyId: user.authyId, token: req.body.token}, function (err, tokenRes) {
+        authy.verifyToken({ authyId: user.authyId, token: req.body.token }, function (err, tokenRes) {
             if (err) {
                 console.log("Verify Token Error: ", err);
                 res.status(500).json(err);
@@ -258,7 +258,7 @@ exports.createonetouch = function (req, res) {
 
     var username = req.session.username;
     console.log("username: ", username);
-    User.findOne({username: username}).exec(function (err, user) {
+    User.findOne({ username: username }).exec(function (err, user) {
         if (err) {
             console.error("Create Push User Error: ", err);
             res.status(500).json(err);
@@ -280,7 +280,7 @@ exports.createonetouch = function (req, res) {
             message: 'Login requested for Account Security account.'
         };
 
-        authy.createApprovalRequest(request, {ttl: 120}, function (oneTouchErr, oneTouchRes) {
+        authy.createApprovalRequest(request, { ttl: 120 }, function (oneTouchErr, oneTouchRes) {
             if (oneTouchErr) {
                 console.error("Create Push Error: ", oneTouchErr);
                 res.status(500).json(oneTouchErr);
@@ -384,7 +384,7 @@ exports.requestPhoneVerification = function (req, res) {
         });
     } else {
         console.log('Failed in Register Phone API Call', req.body);
-        res.status(500).json({error: "Missing fields"});
+        res.status(500).json({ error: "Missing fields" });
     }
 
 };
@@ -401,7 +401,7 @@ exports.verifyPhoneToken = function (req, res) {
     var token = req.body.token;
     var firstname = req.body.firstname;
     var lastname = req.body.lastname;
-    
+
     if (phone_number && country_code && token) {
         phoneReg.verifyPhoneToken(phone_number, country_code, token, function (err, response) {
             if (err) {
@@ -412,27 +412,52 @@ exports.verifyPhoneToken = function (req, res) {
                 if (response.success) {
 
 
-                    user = new User({phone: phone_number, country_code: country_code, firstname: firstname, lastname: lastname});
-                    user.save(function (err) {
-                        if (err) {
-                            console.log('Error Creating User', err);
-                            res.status(500).json(err);
-                        } else {
-
-                        }
-                    });
 
 
 
-                    req.session.ph_verified = true;
+
+
+                        User.findOne({ phone_number: phone_number }).exec(function (err, user) {
+                            if (err) {
+                                console.log('Rregistration Error', err);
+                                res.status(500).json(err);
+                                return;
+                            }
+                            if (user) {
+                                User.update({ phone_number: phone_number }, { $set: { firstname: firstname, lastname: lastname } }, function(err, doc){
+                                    if (err) {
+                                        console.log('Error Updating User', err);
+                                        res.status(500).json(err);
+                                    } else {
+                                        res.status(200).json(doc);
+                                    }
+                                });
+                            } else if (!user) {
+                                user = new User({ phone: phone_number, country_code: country_code, firstname: firstname, lastname: lastname });
+                                user.save(function (err, doc) {
+                                    if (err) {
+                                        console.log('Error Creating User', err);
+                                        res.status(500).json(err);
+                                    } else {
+                                        res.status(200).json(doc);
+                                    }
+                                });
+                            }
+                        });
+                        
+
+
+
+
+                        req.session.ph_verified = true;
                 }
-                res.status(200).json(err);
+                res.status(200).json(response);
             }
 
         });
     } else {
         console.log('Failed in Confirm Phone request body: ', req.body);
-        res.status(500).json({error: "Missing fields"});
+        res.status(500).json({ error: "Missing fields" });
     }
 };
 
