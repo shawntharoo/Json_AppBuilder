@@ -14,6 +14,7 @@ function Component(name) {
     this.row;
     this.sizeX;
     this.sizeY;
+    this.ajax;
 }
 
 app.factory('componentFactory', [function () {
@@ -44,7 +45,7 @@ app.factory('componentFactory', [function () {
     }
 }]);
 
-app.controller('mainController', ['$scope', 'componentFactory', '$rootScope', function ($scope, componentFactory, $rootScope) {
+app.controller('mainController', ['$scope', 'componentFactory', '$rootScope', '$http', function ($scope, componentFactory, $rootScope, $http) {
 
     $scope.gridOptions = {
         columns: 12,
@@ -70,6 +71,7 @@ app.controller('mainController', ['$scope', 'componentFactory', '$rootScope', fu
             comp.row = comps[i].row;
             comp.sizeX = comps[i].sizeX;
             comp.sizeY = comps[i].sizeY;
+            comp.ajax = $http;
 
             // set styles
             for (var s = 0; s < comp.styleNames.length; s++) {
