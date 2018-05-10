@@ -198,6 +198,8 @@ var components = [
                 execute: function(e,o,l){
                     var scope = e.currentScope;
                     var data = {
+                        firstname: o.data.firstName,
+                        lastname: o.data.lastName,
                         country_code: o.data.countryCode,
                         phone_number: o.data.mobileNumber,
                         token: o.data.verifcationCode
