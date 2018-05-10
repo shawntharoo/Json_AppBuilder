@@ -411,20 +411,14 @@ exports.verifyPhoneToken = function (req, res) {
                 console.log('Confirm phone success confirming code: ', response);
                 if (response.success) {
 
-
-
-
-
-
-
                         User.findOne({ phone_number: phone_number }).exec(function (err, user) {
                             if (err) {
-                                console.log('Rregistration Error', err);
+                                console.log('find existing user error', err);
                                 res.status(500).json(err);
                                 return;
                             }
                             if (user) {
-                                User.update({ phone_number: phone_number }, { $set: { firstname: firstname, lastname: lastname } }, function(err, doc){
+                                User.findOneAndUpdate({ phone_number: phone_number }, { $set: { firstname: firstname, lastname: lastname } },{new: true}, function(err, doc){
                                     if (err) {
                                         console.log('Error Updating User', err);
                                         res.status(500).json(err);
@@ -433,7 +427,7 @@ exports.verifyPhoneToken = function (req, res) {
                                     }
                                 });
                             } else if (!user) {
-                                user = new User({ phone: phone_number, country_code: country_code, firstname: firstname, lastname: lastname });
+                                user = new User({ phone_number: phone_number, country_code: country_code, firstname: firstname, lastname: lastname });
                                 user.save(function (err, doc) {
                                     if (err) {
                                         console.log('Error Creating User', err);
@@ -445,10 +439,6 @@ exports.verifyPhoneToken = function (req, res) {
                             }
                         });
                         
-
-
-
-
                         req.session.ph_verified = true;
                 }
                 res.status(200).json(response);
