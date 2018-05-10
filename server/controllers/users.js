@@ -426,8 +426,11 @@ exports.verifyPhoneToken = function (req, res) {
                                         res.status(200).json(doc);
                                     }
                                 });
-                            } else if (!user) {
-                                user = new User({ phone_number: phone_number, country_code: country_code, firstname: firstname, lastname: lastname });
+                            } else {
+                                user = new User({ phone_number: phone_number });
+                                user.set('country_code', country_code);
+                                user.set('firstname', firstname);
+                                user.set('lastname', lastname);
                                 user.save(function (err, doc) {
                                     if (err) {
                                         console.log('Error Creating User', err);
