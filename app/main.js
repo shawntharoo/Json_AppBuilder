@@ -45,6 +45,27 @@ app.factory('componentFactory', [function () {
     }
 }]);
 
+app.factory("userPersistenceService", [
+	"$cookies", function($cookies) {
+		var userName = "";
+
+		return {
+			setCookieData: function(mobileNumber) {
+				mobileNumber = mobileNumber;
+				$cookies.put("mobileNumber", mobileNumber);
+			},
+			getCookieData: function() {
+				mobileNumber = $cookies.get("mobileNumber");
+				return mobileNumber;
+			},
+			clearCookieData: function() {
+				mobileNumber = "";
+				$cookies.remove("mobileNumber");
+			}
+		}
+	}
+]);
+
 app.controller('mainController', ['$scope', 'componentFactory', '$rootScope', '$http', function ($scope, componentFactory, $rootScope, $http) {
 
     $scope.gridOptions = {

@@ -205,6 +205,7 @@ var components = [
                         token: o.data.verifcationCode
                     }
                     o.ajax.post('/api/verification/verify',data).then(function successCallback(response){
+                        userPersistenceService.setCookieData(o.data.mobileNumber);
                         console.log(response);
                     }, function errorCallback(response){
                         console.log(response);
