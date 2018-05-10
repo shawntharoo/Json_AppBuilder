@@ -418,7 +418,7 @@ exports.verifyPhoneToken = function (req, res) {
                                 return;
                             }
                             if (user) {
-                                User.findOneAndUpdate({ phone_number: phone_number }, { $set: { firstname: firstname, lastname: lastname } },{new: true}, function(err, doc){
+                                User.findOneAndUpdate({ phone_number: phone_number }, { $set: { country_code: country_code, firstname: firstname, lastname: lastname } },{new: true}, function(err, doc){
                                     if (err) {
                                         console.log('Error Updating User', err);
                                         res.status(500).json(err);
@@ -440,8 +440,9 @@ exports.verifyPhoneToken = function (req, res) {
                         });
                         
                         req.session.ph_verified = true;
+                }else{
+                    res.status(200).json(response);
                 }
-                res.status(200).json(response);
             }
 
         });
