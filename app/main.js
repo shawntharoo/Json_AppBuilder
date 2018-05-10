@@ -1,4 +1,4 @@
-var app = angular.module('app', ['gridster', 'ui.router']);
+var app = angular.module('app', ['gridster', 'ui.router','ngCookies']);
 
 function Component(name) {
     this.name = name;
