@@ -25,7 +25,7 @@ exports.tasksofuser = function (req, res) {
             return;
         }
         if (tasks) {
-            res.status(200).json(tasks)
+            res.status(200).json(tasks);
         }
     });
 }
