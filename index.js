@@ -82,8 +82,10 @@ router.route('/login').post(users.login);
 /**
  * User activities
  */
-router.route('/userdata/addTask').post(tasks.addtask);
-
+router.route('/task/addTask').post(tasks.addtask);
+router.route('/task/allTasks').post(tasks.alltasks);
+router.route('/task/tasksOfUser').post(tasks.tasksofuser);
+router.route('/task/upcommingTasks').post(tasks.upcommingtasks);
 
 /**
  * Account Security Authentication API
