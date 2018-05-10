@@ -10,9 +10,15 @@ angular.module('app').controller('signUpController', ['$scope', '$rootScope','$h
         $rootScope.registerEventListeners($scope, $scope.component);
         $scope.components = $rootScope.registerUserComponents($scope.component.data);
     };
+    $scope.onAppEnter = function(){
+        $rootScope.$broadcast($scope.component.emits.onAppEnter,angular.copy($scope.component), $location);
+    }
     $scope.onSubmit = function(){
         $rootScope.$broadcast($scope.component.emits.onDetailsSubmit,angular.copy($scope.component), $location);
     };
+    $scope.onVerification = function(){
+        $rootScope.$broadcast($scope.component.emits.onVerification,angular.copy($scope.component), $location);
+    }
 
     init();
 }]);

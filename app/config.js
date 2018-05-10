@@ -21,8 +21,20 @@ var components = [
             appTagLine2: function (ctx, comp) {
                 return "Let's get started"
             },
-            appButton2Title: function(ctx,comp){
+            appButton2Title: function (ctx, comp) {
                 return "Sign Up"
+            },
+            appEntry: function(ctx,comp){
+                return true
+            },
+            showRegForm: function (ctx, comp) {
+                return false
+            },
+            showVeriForm: function (ctx, comp) {
+                return false
+            },
+            verificationBtnTitle: function(ctx,comp){
+                return "Verify"
             }
         },
         styles: {
@@ -64,7 +76,6 @@ var components = [
                     color: "#C8C8C8",
                     'font-size': "16px",
                     'font-weight': '300',
-                    display: 'none',
                     'margin-top': '10%'
                 }
             },
@@ -81,7 +92,6 @@ var components = [
             },
             inputField: function (ctx, comp) {
                 return {
-                    display: 'none',
                     'background-color': '#C8C8C8',
                     height: '45px',
                     width: '335px',
@@ -89,11 +99,11 @@ var components = [
                     'font-weight': '300',
                     padding: '10px',
                     border: 'none',
-                    'margin-top':'10px',
-                    'outline-color':'#23B584'
+                    'margin-top': '10px',
+                    'outline-color': '#23B584'
                 }
             },
-            appTitleButton2: function(ctx,comp){
+            appTitleButton2: function (ctx, comp) {
                 return {
                     width: '100%',
                     'font-size': '16px',
@@ -101,12 +111,10 @@ var components = [
                     padding: '12px 0px',
                     'margin-top': '8%',
                     outline: 'none',
-                    display:'none'
                 }
             },
-            inputFieldCC: function(ctx,comp){
-                return{
-                    display: 'none',
+            inputFieldCC: function (ctx, comp) {
+                return {
                     'background-color': '#C8C8C8',
                     height: '45px',
                     width: '60px',
@@ -114,13 +122,12 @@ var components = [
                     'font-weight': '300',
                     padding: '10px',
                     border: 'none',
-                    'margin-top':'10px',
-                    'outline-color':'#23B584'
+                    'margin-top': '10px',
+                    'outline-color': '#23B584'
                 }
             },
-            inputFieldMN: function(ctx,comp){
-                return{
-                    display: 'none',
+            inputFieldMN: function (ctx, comp) {
+                return {
                     'background-color': '#C8C8C8',
                     height: '45px',
                     width: '265px',
@@ -128,36 +135,78 @@ var components = [
                     'font-weight': '300',
                     padding: '10px',
                     border: 'none',
-                    'margin-top':'10px',
-                    'outline-color':'#23B584'
+                    'margin-top': '10px',
+                    'outline-color': '#23B584'
                 }
             },
-            wrapperMobile: function(ctx,comp){
-               return {
-                display: 'flex',
-                'justify-content': 'space-between'
-               }
+            wrapperMobile: function (ctx, comp) {
+                return {
+                    display: 'flex',
+                    'justify-content': 'space-between'
+                }
+            },
+            errorMsg: function (ctx, comp) {
+                return {
+                    color: "#FB4372",
+                    'font-size': "16px",
+                    'font-weight': '300',
+                    display: 'block',
+                    'margin-top': '10%'
+                }
             }
 
         },
         emits: {
-            onDetailsSubmit: 'onDetailsSubmit'
+            onAppEnter: 'onAppEnter',
+            onDetailsSubmit: 'onDetailsSubmit',
+            onVerification: 'onVerification'
         },
         listens: [
             {
-                name:'onDetailsSubmit',
+                name: 'onAppEnter',
                 execute: function(e,o,l){
+                    var scope= e.currentScope;
+                    scope.component.data.appTagLine = 'Let\'s get started'
+                    scope.component.data.appEntry = false
+                    scope.component.data.showRegForm = true
+                }
+            },
+            {
+                name: 'onDetailsSubmit',
+                execute: function (e, o, l) {
+                    var scope = e.currentScope;
                     var data = {
-                        country_code : o.data.countryCode,
-                        phone_number : o.data.mobileNumber
+                        country_code: o.data.countryCode,
+                        phone_number: o.data.mobileNumber
                     }
-                    o.ajax.post('/api/verification/start',data).success(function(data, status, headers, config){
-                        console.log("Phone Verification Success success: ", data);
-                    }).error(function (data, status, headers, config){
-                        console.log("Verification error: ", data);
+
+                    o.ajax.post('/api/verification/start', data).then(function successCallback(response) {
+                        console.log(response);
+                        scope.component.data.showRegForm = false;
+                        scope.component.data.showVeriForm = true;
+                        scope.component.data.appTagLine = 'Enter the verification code'
+                        scope.component.data.errorMsg = ''
+                    }, function errorCallback(response) {
+                        scope.component.data.errorMsg = response.data.message;
+                        console.log(response);
+
                     });
-                    
-                    console.log(o.data);
+                }
+            },
+            {
+                name: 'onVerification',
+                execute: function(e,o,l){
+                    var scope = e.currentScope;
+                    var data = {
+                        country_code: o.data.countryCode,
+                        phone_number: o.data.mobileNumber,
+                        token: o.data.verifcationCode
+                    }
+                    o.ajax.post('/api/verification/verify',data).then(function successCallback(response){
+                        console.log(response);
+                    }, function errorCallback(response){
+                        console.log(response);
+                    });
                 }
             }
         ]

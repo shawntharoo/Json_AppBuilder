@@ -384,7 +384,7 @@ exports.requestPhoneVerification = function (req, res) {
         });
     } else {
         console.log('Failed in Register Phone API Call', req.body);
-        res.status(500).json({error: "Missing fields"});
+        res.status(500).json({message: "Fields are missing"});
     }
 
 };
@@ -432,7 +432,7 @@ exports.verifyPhoneToken = function (req, res) {
         });
     } else {
         console.log('Failed in Confirm Phone request body: ', req.body);
-        res.status(500).json({error: "Missing fields"});
+        res.status(500).json({message: "Missing fields"});
     }
 };
 
