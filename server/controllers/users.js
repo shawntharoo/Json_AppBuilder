@@ -384,11 +384,7 @@ exports.requestPhoneVerification = function (req, res) {
         });
     } else {
         console.log('Failed in Register Phone API Call', req.body);
-<<<<<<< HEAD
         res.status(500).json({message: "Fields are missing"});
-=======
-        res.status(500).json({ error: "Missing fields" });
->>>>>>> a3f00995701b79da5f5712a979cb60af4554fe00
     }
 
 };
