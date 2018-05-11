@@ -15,6 +15,7 @@ function Component(name) {
     this.sizeX;
     this.sizeY;
     this.ajax;
+    this.state;
 }
 
 app.factory('componentFactory', [function () {
@@ -27,11 +28,13 @@ app.factory('componentFactory', [function () {
     var getComponent = function (name) {
         return angular.copy(components[name]);
     };
-    // var nav = new Component("Nav");
-    // nav.templateUrl = 'components/nav/template.html';
-    // nav.inputs = ['views'];
-    // nav.styleNames = ['outerLayout', 'navUl', 'navLi', 'navWrapper'];
-    // registerComponent(nav);
+    var nav = new Component("Nav");
+    nav.templateUrl = 'components/nav/template.html';
+    nav.inputs = ['views'];
+    nav.styleNames = [];
+    registerComponent(nav);
+
+    
 
     var signUp = new Component("SignUp");
     signUp.templateUrl = 'components/sign-up/template.html';
@@ -39,6 +42,12 @@ app.factory('componentFactory', [function () {
     signUp.styleNames = ['appTitleStyle', 'appTitleLogo1', 'appTitleLogo', 'appTagLine', 'appTitleButton', 'inputField', 'appTagLine2', 'appTitleButton2','inputFieldCC','inputFieldMN','wrapperMobile','errorMsg'];
     signUp.emits=['onAppEnter','onDetailsSubmit']
     registerComponent(signUp);
+
+    var mainView = new Component("mainView");
+    mainView.templateUrl = 'components/main-view/template.html';
+    mainView.inputs = [''];
+    mainView.styleNames = [];
+    registerComponent(mainView);    
     return {
         registerComponent: registerComponent,
         getComponent: getComponent
@@ -47,26 +56,25 @@ app.factory('componentFactory', [function () {
 
 app.factory("userPersistenceService", [
 	"$cookies", function($cookies) {
-		var userName = "";
+		var mobileNumber = undefined;
 
 		return {
-			setCookieData: function(mobileNumber) {
-				mobileNumber = mobileNumber;
-				$cookies.put("mobileNumber", mobileNumber);
+			setCookieData: function(mobile) {
+				$cookies.put("mobileNumber", mobile);
 			},
 			getCookieData: function() {
-				mobileNumber = $cookies.get("mobileNumber");
-				return mobileNumber;
+				mobile = $cookies.get("mobileNumber");
+				return mobile;
 			},
 			clearCookieData: function() {
-				mobileNumber = "";
+				mobileNumber = undefined;
 				$cookies.remove("mobileNumber");
 			}
 		}
 	}
 ]);
 
-app.controller('mainController', ['$scope', 'componentFactory', '$rootScope', '$http', function ($scope, componentFactory, $rootScope, $http) {
+app.controller('mainController', ['$scope', 'componentFactory', '$rootScope', '$http','$state', function ($scope, componentFactory, $rootScope, $http,$state) {
 
     $scope.gridOptions = {
         columns: 12,
@@ -93,6 +101,7 @@ app.controller('mainController', ['$scope', 'componentFactory', '$rootScope', '$
             comp.sizeX = comps[i].sizeX;
             comp.sizeY = comps[i].sizeY;
             comp.ajax = $http;
+            comp.state = $state;
 
             // set styles
             for (var s = 0; s < comp.styleNames.length; s++) {

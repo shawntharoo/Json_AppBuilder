@@ -1,0 +1,19 @@
+<!-- <div #navBar  ng-controller="navHolderController">
+    <div ng-style="component.styles.navWrapper">
+        <ul ng-style="component.styles.navUl">
+            <li ng-style="component.styles.navLi" ng-repeat="view in component.data.views">
+                <a ui-sref-active="active" ui-sref="{{view.name}}">
+                    {{view.title}}
+                </a>
+
+            </li>
+        </ul>
+    </div> -->
+
+    <div class="ui-view-container">
+        <div ui-view class="view-animate">
+            
+        </div>
+    </div>
+    <!-- <ui-view class="fade"></ui-view> -->
+</div>
