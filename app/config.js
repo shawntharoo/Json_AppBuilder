@@ -198,7 +198,7 @@ var components = [
                                                 phone_number: o.data.mobileNumber
                                             }
 
-                                            o.ajax.post('/api/verification/start', data).then(function successCallback(response) {
+                                            o.ajax.post('/api/accountsecurity/start', data).then(function successCallback(response) {
                                                 console.log(response);
                                                 scope.component.data.showRegForm = false;
                                                 scope.component.data.showVeriForm = true;
@@ -222,7 +222,8 @@ var components = [
                                                 phone_number: o.data.mobileNumber,
                                                 token: o.data.verifcationCode
                                             }
-                                            o.ajax.post('/api/verification/verify', data).then(function successCallback(response) {
+                                            o.ajax.post('/api/accountsecurity/verify', data).then(function successCallback(response) {
+                                                console.log(response);
                                                 o.cookies.setCookieData(o.data.mobileNumber);
                                                 o.state.go('mainView');
                                             }, function errorCallback(response) {
