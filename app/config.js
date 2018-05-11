@@ -222,7 +222,7 @@ var components = [
                                                 phone_number: o.data.mobileNumber,
                                                 token: o.data.verifcationCode
                                             }
-                                            o.ajax.post('/api/accountsecurity/verify', data).then(function successCallback(response) {
+                                            o.ajax.post('/api/accountsecurity/verifyPhoneToken', data).then(function successCallback(response) {
                                                 console.log(response);
                                                 o.cookies.setCookieData(o.data.mobileNumber);
                                                 o.state.go('mainView');

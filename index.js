@@ -105,7 +105,7 @@ router.route('/accountsecurity/onetouch').post(auth.createonetouch);
  * User Activities
  */
 router.route('/accountsecurity/start').post(users.requestPhoneVerification);
-router.route('/accountsecurity/verify').post(users.verifyPhoneToken);
+router.route('/accountsecurity/verifyPhoneToken').post(users.verifyPhoneToken);
 
 
 /**
@@ -186,5 +186,5 @@ app.all('/2fa/*', requireLogin, function (req, res, next) {
  * Prefix all router calls with 'api'
  */
 app.use('/api', router);
-app.use('/', express.static(__dirname + '/public'));
+// app.use('/', express.static(__dirname + '/public'));
 app.use('/app', express.static(__dirname + '/app'));
