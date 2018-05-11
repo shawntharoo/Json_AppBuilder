@@ -1,5 +1,6 @@
 require('dotenv').config();
 require('dotenv').load();
+require('./server/model/auth_model.js');
 require('./server/model/user_model.js');
 require('./server/model/task_model.js');
 
@@ -70,17 +71,21 @@ db.on('error', console.error.bind(console, 'Connection Error:'));
 
 var router = express.Router();
 
+var auth = require('./server/controllers/auth.js');
 var users = require('./server/controllers/users.js');
 var tasks = require('./server/controllers/tasks.js');
 
-router.route('/user/register').post(users.register);
-
-router.route('/logout').get(users.logout);
-router.route('/login').post(users.login);
+/**
+ * Authentication activities
+ */
+router.route('/auth/register').post(auth.register);
+router.route('/auth/login').post(auth.login);
+router.route('/auth/loggedIn').post(auth.loggedIn);
+router.route('/auth/logout').get(auth.logout);
 
 
 /**
- * User activities
+ * Task activities
  */
 router.route('/task/addTask').post(tasks.addtask);
 router.route('/task/allTasks').post(tasks.alltasks);
@@ -90,19 +95,17 @@ router.route('/task/upcommingTasks').post(tasks.upcommingtasks);
 /**
  * Account Security Authentication API
  */
-router.route('/accountsecurity/sms').post(users.sms);
-router.route('/accountsecurity/voice').post(users.voice);
-router.route('/accountsecurity/verify').post(users.verify);
-router.route('/accountsecurity/onetouchstatus').post(users.checkonetouchstatus);
-router.route('/accountsecurity/onetouch').post(users.createonetouch);
-
-router.route('/loggedIn').post(users.loggedIn);
+router.route('/accountsecurity/sms').post(auth.sms);
+router.route('/accountsecurity/voice').post(auth.voice);
+router.route('/accountsecurity/verify').post(auth.verify);
+router.route('/accountsecurity/onetouchstatus').post(auth.checkonetouchstatus);
+router.route('/accountsecurity/onetouch').post(auth.createonetouch);
 
 /**
- * Account Security Phone Verification API
+ * User Activities
  */
-router.route('/verification/start').post(users.requestPhoneVerification);
-router.route('/verification/verify').post(users.verifyPhoneToken);
+router.route('/accountsecurity/start').post(users.requestPhoneVerification);
+router.route('/accountsecurity/verify').post(users.verifyPhoneToken);
 
 
 /**
