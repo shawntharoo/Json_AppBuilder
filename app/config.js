@@ -189,8 +189,12 @@ var components = [
                                         name: 'onDetailsSubmit',
                                         execute: function (e, o, l) {
                                             var scope = e.currentScope;
+                                            var countryCode = o.data.countryCode;
+                                            if(countryCode.includes('+')){
+                                                countryCode = countryCode.split('+')[1];
+                                            }
                                             var data = {
-                                                country_code: o.data.countryCode,
+                                                country_code: countryCode,
                                                 phone_number: o.data.mobileNumber
                                             }
 
