@@ -7,7 +7,6 @@ var TaskSchema = new Schema({
     description: String,
     status: String,
     assigned_user: String,
-    created_user: String,
     creted_date: Date,
     due_date: Date,
     project: String

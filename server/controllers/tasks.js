@@ -14,17 +14,15 @@ exports.addtask = function (req, res) {
     var description = req.body.description;
     var status = req.body.status;
     var assigned_user = req.body.assigned_user;
-    var created_user = req.body.created_user;
     var creted_date = req.body.creted_date;
     var due_date = req.body.due_date;
     var project = req.body.project;
 
-    var task = new Task({ phone_number: req.body.phone_number });
+    var task = new Task({ phone_number: phone_number });
     task.set('title',title);
     task.set('description',description);
     task.set('status',status);
     task.set('assigned_user',assigned_user);
-    task.set('created_user',created_user);
     task.set('creted_date',creted_date);
     task.set('due_date',due_date);
     task.set('project',project);
@@ -80,7 +78,7 @@ exports.alltasks = function (req, res) {
  */
 exports.upcommingtasks = function (req, res) {
     var n = new Date().toLocaleDateString();
-    var today = new Date(n)
+    var today = new Date(n);
     var tomarrow = new Date(n);
     tomarrow.setDate(tomarrow.getDate() + 1);
     Task.find({ "created_on": { "$gte": today, "$lt": tomarrow } }).exec(function (err, tasks) {
