@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Task = mongoose.model('Task');
 var qs = require('qs');
 var request = require('request');
+var ObjectId = require('mongoose').Types.ObjectId;
 
 /**
  * @param req
@@ -43,7 +44,7 @@ exports.addtask = function (req, res) {
  */
 exports.tasksofuser = function (req, res) {
     var phone_no = req.body.phone_number;
-    Task.find({ phone_number: phone_no }).exec(function (err, tasks) {
+    Task.find({ assigned_user: phone_no }).exec(function (err, tasks) {
         if (err) {
             console.log('Tasks retrieve error', err);
             res.status(500).json(err);
@@ -77,11 +78,12 @@ exports.alltasks = function (req, res) {
  * @param res
  */
 exports.upcommingtasks = function (req, res) {
+    var phone_no = req.body.phone_number;
     var n = new Date().toLocaleDateString();
     var today = new Date(n);
     var tomarrow = new Date(n);
     tomarrow.setDate(tomarrow.getDate() + 1);
-    Task.find({ "created_on": { "$gte": today, "$lt": tomarrow } }).exec(function (err, tasks) {
+    Task.find({ "created_on": { "$gte": today, "$lt": tomarrow }, "assigned_user": phone_no }).exec(function (err, tasks) {
         if (err) {
             console.log('Tasks retrieve error', err);
             res.status(500).json(err);
