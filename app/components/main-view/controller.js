@@ -16,10 +16,12 @@ angular.module('app').controller('mainViewController', ['$scope', '$rootScope', 
         $rootScope.registerEventListeners($scope, $scope.component);
         $scope.components = $rootScope.registerUserComponents($scope.component.data.tabs);
         $scope.template = $scope.components[0].templateUrl;
+        $scope.tabTitleSelected = $scope.components[0].title;
     }
     init();
 
     $scope.tabSelect = function(component){
         $scope.template= component.templateUrl;
+        $scope.tabTitleSelected = component.title;
     }
 }]);

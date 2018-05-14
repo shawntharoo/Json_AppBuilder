@@ -16,6 +16,7 @@ function Component(name) {
     this.sizeY;
     this.ajax;
     this.state;
+    this.title;
 }
 
 app.factory('componentFactory', [function () {
@@ -45,8 +46,8 @@ app.factory('componentFactory', [function () {
 
     var mainView = new Component("mainView");
     mainView.templateUrl = 'components/main-view/template.html';
-    mainView.inputs = ['tabs'];
-    mainView.styleNames = ['tabTitle'];
+    mainView.inputs = ['tabs','appTitle','appTitle2'];
+    mainView.styleNames = ['tabTitle','appTitle','appTitle2','tabTitleSelected'];
     registerComponent(mainView); 
     
     var upComing = new Component('upComing');
@@ -54,6 +55,12 @@ app.factory('componentFactory', [function () {
     upComing.inputs =[];
     upComing.styleNames = [];
     registerComponent(upComing);
+
+    var projectsList = new Component('projectsList');
+    projectsList.templateUrl='components/projectsList/template.html';
+    projectsList.inputs = [];
+    projectsList.styleNames = [];
+    registerComponent(projectsList);
 
     return {
         registerComponent: registerComponent,
@@ -109,6 +116,8 @@ app.controller('mainController', ['$scope', 'componentFactory', '$rootScope', '$
             comp.sizeY = comps[i].sizeY;
             comp.ajax = $http;
             comp.state = $state;
+            comp.title = comps[i].title;
+
 
             // set styles
             for (var s = 0; s < comp.styleNames.length; s++) {

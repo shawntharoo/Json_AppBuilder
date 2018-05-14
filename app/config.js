@@ -246,6 +246,12 @@ var components = [
                                 sizeX: 12,
                                 sizeY: 6,
                                 data: {
+                                    appTitle: function (ctx, comp) {
+                                        return "Todos"
+                                    },
+                                    appTitle2: function (ctx, comp) {
+                                        return "."
+                                    },
                                     tabs: function (ctx, comp) {
                                         return [
                                             {
@@ -276,11 +282,53 @@ var components = [
 
 
                                                 ]
+                                            }, {
+                                                name: 'projectsList',
+                                                title: 'projectsList',
+                                                url: '/projectslist',
+                                                components: [
+                                                    {
+                                                        col: 0,
+                                                        row: 0,
+                                                        name: 'projectsList',
+                                                        sizeX: 12,
+                                                        sizeY: 6,
+                                                        data: {
+
+                                                        },
+                                                        styles: {
+
+                                                        },
+                                                        emits: {
+
+                                                        },
+                                                        listens: [
+
+                                                        ]
+                                                    }
+                                                ]
                                             }
                                         ]
                                     }
                                 },
                                 styles: {
+                                    appTitle: function (ctx, comp) {
+                                        return {
+                                            'font-size': '20px',
+                                            'color': '#fff',
+                                            'font-weight': 700,
+                                            padding: '10px',
+                                            'margin-top': '20px',
+                                            display: 'flex',
+                                            'justify-content': 'left'
+
+                                        }
+                                    },
+                                    appTitle2: function (ctx, comp) {
+                                        return {
+                                            color:'#FB4372'
+                                        }
+                                    },
                                     tabTitle: function (ctx, comp) {
                                         return {
                                             'font-size': '20px',
@@ -289,6 +337,12 @@ var components = [
                                             'margin-left': '10px',
                                             'margin-top': '30px',
                                             'display': 'block'
+                                        }
+                                    },
+                                    tabTitleSelected: function(ctx,comp){
+                                        return {
+                                            'font-weight':'300',
+                                            'margin-left':'10px'
                                         }
                                     }
                                 },
