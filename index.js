@@ -8,7 +8,7 @@ var express = require('express');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressSession = require('express-session');
-var mongoStore = require('connect-mongo')({session: expressSession});
+var mongoStore = require('connect-mongo')({ session: expressSession });
 var mongoose = require('mongoose');
 
 var config = require('./server/config.js');
@@ -16,7 +16,7 @@ var config = require('./server/config.js');
 var app = express();
 var server = require('http').Server(app);
 
-if(!config.API_KEY){
+if (!config.API_KEY) {
     console.log("Please set your ACCOUNT_SECURITY_API_KEY environment variable before proceeding.");
     process.exit(1);
 }
@@ -25,7 +25,12 @@ if(!config.API_KEY){
 /**
  * Setup MongoDB connection.
  */
-mongoose.connect(process.env.MONGODB);
+
+const options = {
+    user: process.env.MONGOUSER,
+    pass: process.env.MONGOPASS
+}
+mongoose.connect(process.env.MONGODB, options);
 var db = mongoose.connection;
 
 app.use(cookieParser());
@@ -48,13 +53,13 @@ app.use(bodyParser.urlencoded({
  * Open the DB connection.
  */
 db.once('open', function (err) {
-    if(err){
+    if (err) {
         console.log("Error Opening the DB Connection: ", err);
         return;
     }
     app.use(expressSession({
         secret: config.SECRET,
-        cookie: {maxAge: 60 * 60 * 1000},
+        cookie: { maxAge: 60 * 60 * 1000 },
         store: new mongoStore({
             db: mongoose.connection.db,
             collection: 'sessions'
@@ -164,8 +169,8 @@ function requireLogin(req, res, next) {
 /**
  * Test for 200 response.  Useful when setting up Twilio callback.
  */
-router.route('/test').post(function(req, res){
-    return res.status(200).send({"connected": true});
+router.route('/test').post(function (req, res) {
+    return res.status(200).send({ "connected": true });
 });
 
 /**

@@ -1,5 +1,8 @@
 <div class="grid-container" ng-controller="mainViewController">
-    <div grister="gridOptions">
-        <h1>Main View</h1>
-    </div>
+    <li gridster-item="component" ng-repeat="component in components" ng-include="component.templateUrl">
+    </li>
 </div>
+<!-- <ul gridster="gridOptions">
+    <li gridster-item="component" ng-repeat="component in components" ng-include="component.templateUrl" ng-style="{{component.styles.outerLayout}}">
+    </li>
+</ul -->

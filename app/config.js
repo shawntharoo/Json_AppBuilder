@@ -189,12 +189,11 @@ var components = [
                                         name: 'onDetailsSubmit',
                                         execute: function (e, o, l) {
                                             var scope = e.currentScope;
-                                            var countryCode = o.data.countryCode;
-                                            if(countryCode.includes('+')){
-                                                countryCode = countryCode.split('+')[1];
+                                            if (scope.component.data.countryCode.includes('+')) {
+                                                scope.component.data.countryCode = scope.component.data.countryCode.split('+')[1];
                                             }
                                             var data = {
-                                                country_code: countryCode,
+                                                country_code: scope.component.data.countryCode,
                                                 phone_number: o.data.mobileNumber
                                             }
 
@@ -224,7 +223,7 @@ var components = [
                                             }
                                             o.ajax.post('/api/accountsecurity/verifyPhoneToken', data).then(function successCallback(response) {
                                                 console.log(response);
-                                                o.cookies.setCookieData(o.data.mobileNumber);
+                                                o.cookies.setCookieData(o.data.countryCode + o.data.mobileNumber);
                                                 o.state.go('mainView');
                                             }, function errorCallback(response) {
                                                 console.log(response);
@@ -247,12 +246,53 @@ var components = [
                                 sizeX: 12,
                                 sizeY: 6,
                                 data: {
+                                    tabs: function (ctx, comp) {
+                                        return [
+                                            {
+                                                name: 'upComing',
+                                                title: 'Upcoming',
+                                                url: '/upcoming',
+                                                components: [
 
+                                                    {
+                                                        col: 0,
+                                                        row: 0,
+                                                        name: 'upComing',
+                                                        sizeX: 12,
+                                                        sizeY: 6,
+                                                        data: {
+
+                                                        },
+                                                        styles: {
+
+                                                        },
+                                                        emits: {
+
+                                                        },
+                                                        listens: [
+
+                                                        ]
+                                                    }
+
+
+                                                ]
+                                            }
+                                        ]
+                                    }
                                 },
                                 styles: {
-
+                                    tabTitle: function (ctx, comp) {
+                                        return {
+                                            'font-size': '20px',
+                                            color: '#fff',
+                                            'font-weight': 300,
+                                            'margin-left': '10px',
+                                            'margin-top': '30px',
+                                            'display': 'block'
+                                        }
+                                    }
                                 },
-                                emits:{
+                                emits: {
 
                                 },
                                 listens: [
