@@ -1,8 +1,11 @@
 <div class="grid-container" ng-controller="mainViewController">
-    <li gridster-item="component" ng-repeat="component in components" ng-include="component.templateUrl">
+        <ul gridster="gridOptions">
+                <li gridster-item="component" ng-repeat="component in components" ng-click="tabSelect(component)">
+                    {{component.name}}
+                </li>
+                </ul>
+    <ul gridster="gridOptions">
+    <li gridster-item="component" ng-include="template">
     </li>
+    </ul>
 </div>
-<!-- <ul gridster="gridOptions">
-    <li gridster-item="component" ng-repeat="component in components" ng-include="component.templateUrl" ng-style="{{component.styles.outerLayout}}">
-    </li>
-</ul -->

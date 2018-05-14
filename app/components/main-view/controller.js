@@ -14,11 +14,12 @@ angular.module('app').controller('mainViewController', ['$scope', '$rootScope', 
             $state.go('SignUp');
         }
         $rootScope.registerEventListeners($scope, $scope.component);
-        $scope.components = $rootScope.registerUserComponents($scope.component.data);
-        $rootScope.registerEventListeners($scope, $scope.component);
-        var state = $state.$current.self;
-        $scope.components = $rootScope.registerUserComponents($scope.component.data.tabs[0].components);
-        console.log('test');
+        $scope.components = $rootScope.registerUserComponents($scope.component.data.tabs);
+        $scope.template = $scope.components[0].templateUrl;
     }
     init();
+
+    $scope.tabSelect = function(component){
+        $scope.template= component.templateUrl;
+    }
 }]);

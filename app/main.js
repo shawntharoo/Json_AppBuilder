@@ -51,7 +51,7 @@ app.factory('componentFactory', [function () {
     
     var upComing = new Component('upComing');
     upComing.templateUrl='components/upcoming/template.html';
-    upComing.inputs =['component'];
+    upComing.inputs =[];
     upComing.styleNames = [];
     registerComponent(upComing);
 
