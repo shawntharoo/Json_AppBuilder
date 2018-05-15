@@ -88,10 +88,10 @@ router.route('/auth/login').post(auth.login);
 router.route('/auth/loggedIn').post(auth.loggedIn);
 router.route('/auth/logout').get(auth.logout);
 
-
 /**
  * Task activities
  */
+router.route('/task/selectedTask').post(tasks.taskdata);
 router.route('/task/addTask').post(tasks.addtask);
 router.route('/task/allTasks').post(tasks.alltasks);
 router.route('/task/tasksOfUser').post(tasks.tasksofuser);

@@ -94,3 +94,21 @@ exports.upcommingtasks = function (req, res) {
         }
     });
 }
+
+/**
+ * @param req
+ * @param res
+ */
+exports.taskdata = function (req, res) {
+    var id = req.body._id;
+    Task.find({"_id": new ObjectId(id) }).exec(function (err, task) {
+        if (err) {
+            console.log('Tasks retrieve error', err);
+            res.status(500).json(err);
+            return;
+        }
+        if (task) {
+            res.status(200).json(task)
+        }
+    });
+}
