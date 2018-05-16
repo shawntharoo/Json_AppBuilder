@@ -15,7 +15,7 @@ exports.addtask = function (req, res) {
     var description = req.body.description;
     var status = req.body.status;
     var assigned_user = req.body.assigned_user;
-    var created_date = req.body.created_date;
+    var created_date = new Date();
     var due_date = req.body.due_date;
     var project = req.body.project;
 
