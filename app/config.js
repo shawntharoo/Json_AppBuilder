@@ -451,10 +451,18 @@ var components = [
                                 }
                             },
                             emits: {
-
+                                onTabSelect : 'onTabSelect'
                             },
                             listens: [
-
+                                {
+                                    name: 'onTabSelect',
+                                    execute: function (e, o) {
+                                        var scope = e.currentScope;
+                                        scope.template= o.templateUrl;
+                                        scope.tabTitleSelected = o.title;
+                                        scope.comp = o;
+                                    }
+                                },
                             ]
                             }
                 ]

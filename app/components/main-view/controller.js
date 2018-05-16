@@ -22,8 +22,6 @@ angular.module('app').controller('mainViewController', ['$scope', '$rootScope', 
     init();
 
     $scope.tabSelect = function(component){
-        $scope.template= component.templateUrl;
-        $scope.tabTitleSelected = component.title;
-        $scope.comp = component;
+        $rootScope.$broadcast($scope.component.emits.onTabSelect, component);
     }
 }]);
