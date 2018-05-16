@@ -1,10 +1,9 @@
-angular.module('app').controller('upComingController', ['$scope', '$rootScope', function ($scope, $rootScope) {
+angular.module('app').controller('upComingController', ['$scope', '$rootScope', 'userPersistenceService',function ($scope, $rootScope, userPersistenceService) {
     $scope.gridOptions = {
         columns: 12,
         margins: [0, 0],
         resizable: { enabled: false }, draggable: { enabled: false }
     };
-
     var init = function () {
 
         // var date1 = new Date("Fri May 12 2018 00:00:00 GMT+0530 (IST)");
@@ -25,8 +24,9 @@ angular.module('app').controller('upComingController', ['$scope', '$rootScope', 
         // }
 
         $scope.component = $scope.comp;
-        $rootScope.$broadcast($scope.component.emits.initialDataLoad, $scope.component);
+        $scope.component.cookies = userPersistenceService;
         $rootScope.registerEventListeners($scope, $scope.component);
+        $rootScope.$broadcast($scope.component.emits.initialDataLoad, $scope.component);
         $scope.components = $rootScope.registerUserComponents($scope.component);
     };
 

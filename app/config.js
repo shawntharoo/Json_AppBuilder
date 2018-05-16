@@ -306,7 +306,7 @@ var components = [
                                                             var data = {
                                                                 phone_number: o.cookies.getCookieData()
                                                             }
-                                                            o.ajax.post('api/task/upcomingTasks', data).then(
+                                                            o.ajax.post('/api/task/upcomingTasks', data).then(
                                                                 function successCallback(response) {
                                                                     console.log(response)
                                                                 },
