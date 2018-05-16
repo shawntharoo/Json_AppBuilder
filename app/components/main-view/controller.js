@@ -13,11 +13,10 @@ angular.module('app').controller('mainViewController', ['$scope', '$rootScope', 
             console.log('no cookie');
             $state.go('SignUp');
         }
+        
+        $rootScope.$broadcast($scope.component.emits.initialDataLoad, $scope.component);
         $rootScope.registerEventListeners($scope, $scope.component);
         $scope.components = $rootScope.registerUserComponents($scope.component.data.tabs);
-        $scope.comp = $scope.components[0];
-        $scope.template = $scope.components[0].templateUrl;
-        $scope.tabTitleSelected = $scope.components[0].title;
     }
     init();
 

@@ -451,7 +451,8 @@ var components = [
                                 }
                             },
                             emits: {
-                                onTabSelect : 'onTabSelect'
+                                onTabSelect : 'onTabSelect',
+                                initialDataLoad: 'initialDataLoad'
                             },
                             listens: [
                                 {
@@ -463,6 +464,15 @@ var components = [
                                         scope.comp = o;
                                     }
                                 },
+                                {
+                                    name: 'initialDataLoad',
+                                    execute: function (e, o) {
+                                        var scope = e.currentScope;
+                                        scope.comp = scope.components[0];
+                                        scope.template = scope.components[0].templateUrl;
+                                        scope.tabTitleSelected = scope.components[0].title;
+                                    }
+                                }
                             ]
                             }
                 ]
