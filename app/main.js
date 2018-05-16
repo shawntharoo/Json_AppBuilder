@@ -60,9 +60,15 @@ app.factory('componentFactory', [function () {
     var projectsList = new Component('projectsList');
     projectsList.templateUrl='components/projectsList/template.html';
     projectsList.inputs = [];
-    projectsList.styleNames = [];
+    projectsList.styleNames = ['tabItemouterLayer'];
     registerComponent(projectsList);
 
+    var allTasks = new Component('allTasks');
+    allTasks.templateUrl='components/alltasks/template.html';
+    allTasks.inputs = [];
+    allTasks.styleNames=['tabItemouterLayer'];
+    registerComponent(allTasks);
+    
     return {
         registerComponent: registerComponent,
         getComponent: getComponent

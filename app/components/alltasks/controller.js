@@ -1,4 +1,4 @@
-angular.module('app').controller('projectsListController', ['$scope', '$rootScope', function ($scope, $rootScope) {
+angular.module('app').controller('allTasksController', ['$scope', '$rootScope', function ($scope, $rootScope) {
     $scope.gridOptions = {
         columns: 12,
         margins: [0, 0],

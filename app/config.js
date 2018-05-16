@@ -323,7 +323,66 @@ var components = [
 
                                                         ]
                                                     }
+                                                ],
+                                                styles: {
+                                                    tabItemouterLayer: function (ctx, comp) {
+                                                        return {
+                                                            'background-color': '#ffffff'
+                                                        }
+
+                                                    }
+                                                },
+                                                emits: {
+
+                                                },
+                                                listens: [
+
                                                 ]
+                                            },
+                                            {
+                                                name: 'allTasks',
+                                                title: 'All Tasks',
+                                                url: '/alltasks',
+                                                icon: 'icon-favorite',
+                                                components: [
+
+                                                    {
+                                                        col: 0,
+                                                        row: 0,
+                                                        name: 'allTasks',
+                                                        sizeX: 12,
+                                                        sizeY: 6,
+                                                        data: {
+
+                                                        },
+                                                        styles: {
+                                                        },
+                                                        emits: {
+
+                                                        },
+                                                        listens: [
+
+                                                        ]
+                                                    },
+                                                    
+
+
+                                                ],
+                                                styles: {
+                                                    tabItemouterLayer: function (ctx, comp) {
+                                                        return {
+                                                            'background-color': '#ffffff'
+                                                        }
+
+                                                    }
+                                                },
+                                                emits: {
+
+                                                },
+                                                listens: [
+
+                                                ]
+                                                
                                             }
                                         ]
                                     }
@@ -375,7 +434,8 @@ var components = [
                                     },
                                     tabListLi: function (ctx, comp) {
                                         return {
-                                            //display:
+                                            'width':'33.33%',
+                                            'text-align':'center'
                                         }
                                     },
                                     tabHeaderWrap: function (ctx, comp) {

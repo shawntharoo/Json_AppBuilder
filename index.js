@@ -30,7 +30,7 @@ const options = {
     user: process.env.MONGOUSER,
     pass: process.env.MONGOPASS
 }
-mongoose.connect(process.env.MONGODB);
+mongoose.connect(process.env.MONGODB,options);
 var db = mongoose.connection;
 
 app.use(cookieParser());
