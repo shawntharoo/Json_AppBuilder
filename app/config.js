@@ -461,6 +461,7 @@ var components = [
                                         scope.template= o.templateUrl;
                                         scope.tabTitleSelected = o.title;
                                         scope.comp = o;
+                                        scope.name = o.name;
                                     }
                                 },
                             ]

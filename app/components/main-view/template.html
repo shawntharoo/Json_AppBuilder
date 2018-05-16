@@ -8,7 +8,7 @@
                     <div ng-style="component.styles.tabTitleSelected">{{tabTitleSelected}}</div>
                 </div>
                 <ul ng-style="component.styles.tabListUl">
-                    <li ng-repeat="comp in components" ng-click="tabSelect(comp)" ng-style="component.styles.tabListLi">
+                    <li ng-repeat="comp in components" ng-click="tabSelect(comp)" ng-style="component.styles.tabListLi" ng-class="{active : comp.name == name}">
                         <span class="{{comp.icon}}"></span>
                         <!-- {{component.title}} -->
                     </li>

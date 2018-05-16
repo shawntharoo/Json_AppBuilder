@@ -18,6 +18,7 @@ angular.module('app').controller('mainViewController', ['$scope', '$rootScope', 
         $scope.comp = $scope.components[0];
         $scope.template = $scope.components[0].templateUrl;
         $scope.tabTitleSelected = $scope.components[0].title;
+        $scope.name = $scope.components[0].name;
     }
     init();
 
