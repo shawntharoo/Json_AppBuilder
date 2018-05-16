@@ -10,8 +10,7 @@ angular.module('app').controller('mainViewController', ['$scope', '$rootScope', 
         var cookie = userPersistenceService.getCookieData();
 
         if(!cookie){ 
-            console.log('no cookie');
-            $state.go('SignUp');
+            $state.go($scope.component.data.initialState);
         }
         
         $rootScope.$broadcast($scope.component.emits.initialDataLoad, $scope.component);
