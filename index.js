@@ -95,11 +95,7 @@ router.route('/task/selectedTask').post(tasks.taskdata);
 router.route('/task/addTask').post(tasks.addtask);
 router.route('/task/allTasks').post(tasks.alltasks);
 router.route('/task/tasksOfUser').post(tasks.tasksofuser);
-<<<<<<< HEAD
-router.route('/task/upcomingTasks').post(tasks.upcommingtasks);
-=======
 router.route('/task/upcomingTasks').post(tasks.upcomingtasks);
->>>>>>> 8bba361fa996874d435cb11347051b195057a298
 
 /**
  * Account Security Authentication API
