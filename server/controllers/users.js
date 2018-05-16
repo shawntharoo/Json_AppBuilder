@@ -100,3 +100,20 @@ exports.verifyPhoneToken = function (req, res) {
     }
 };
 
+/**
+ * All users
+ *
+ * @param req
+ * @param res
+ */
+exports.allUsers = function (req, res) {
+    User.find().exec(function (err, users) {
+        if (err) {
+            console.log('find existing user error', err);
+            res.status(500).json(err);
+            return;
+        }
+        res.status(200).json(users);
+    });
+};
+

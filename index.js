@@ -95,7 +95,7 @@ router.route('/task/selectedTask').post(tasks.taskdata);
 router.route('/task/addTask').post(tasks.addtask);
 router.route('/task/allTasks').post(tasks.alltasks);
 router.route('/task/tasksOfUser').post(tasks.tasksofuser);
-router.route('/task/upcommingTasks').post(tasks.upcommingtasks);
+router.route('/task/upcomingTasks').post(tasks.upcomingtasks);
 
 /**
  * Account Security Authentication API
@@ -109,6 +109,7 @@ router.route('/accountsecurity/onetouch').post(auth.createonetouch);
 /**
  * User Activities
  */
+router.route('/users/allusers').post(users.allUsers);
 router.route('/accountsecurity/start').post(users.requestPhoneVerification);
 router.route('/accountsecurity/verifyPhoneToken').post(users.verifyPhoneToken);
 

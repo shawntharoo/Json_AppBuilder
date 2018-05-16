@@ -77,13 +77,13 @@ exports.alltasks = function (req, res) {
  * @param req
  * @param res
  */
-exports.upcommingtasks = function (req, res) {
+exports.upcomingtasks = function (req, res) {
     var phone_no = req.body.phone_number;
     var n = new Date().toLocaleDateString();
     var today = new Date(n);
     var tomarrow = new Date(n);
     tomarrow.setDate(tomarrow.getDate() + 1);
-    Task.find({ "created_on": { "$gte": today, "$lt": tomarrow }, "assigned_user": phone_no }).exec(function (err, tasks) {
+    Task.find({ "due_date": { "$gte": today, "$lt": tomarrow }, "assigned_user": phone_no }).exec(function (err, tasks) {
         if (err) {
             console.log('Tasks retrieve error', err);
             res.status(500).json(err);
