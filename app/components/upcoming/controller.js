@@ -23,9 +23,9 @@ angular.module('app').controller('upComingController', ['$scope', '$rootScope', 
         // } else {
         //     var flag = 2
         // }
-
-        $rootScope.registerEventListeners($scope, $scope.comp);
-        $scope.components = $rootScope.registerUserComponents($scope.comp);
+$scope.component = $scope.comp;
+        $rootScope.registerEventListeners($scope, $scope.component);
+        $scope.components = $rootScope.registerUserComponents($scope.component);
     };
 
     init();
