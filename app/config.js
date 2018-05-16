@@ -304,7 +304,8 @@ var components = [
                                                         execute: function (e, o) {
                                                             scope = e.currentScope;
                                                             var data = {
-                                                                phone_number: o.cookies.getCookieData()
+                                                                phone_number: o.cookies.getCookieData(),
+                                                                status: 'pending'
                                                             }
                                                             o.ajax.post('/api/task/upcomingTasks', data).then(
                                                                 function successCallback(response) {
