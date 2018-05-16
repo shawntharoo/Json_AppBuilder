@@ -49,7 +49,6 @@ app.factory('componentFactory', [function () {
     mainView.templateUrl = 'components/main-view/template.html';
     mainView.inputs = ['tabs','appTitle','appTitle2'];
     mainView.styleNames = ['tabTitle','appTitle','appTitle2','tabTitleSelected','tabListUl','tabListLi','tabHeaderWrap','mainOuterLayout'];
-    main
     registerComponent(mainView); 
     
     var upComing = new Component('upComing');
