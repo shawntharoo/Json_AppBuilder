@@ -308,8 +308,8 @@ var components = [
                                                             }
                                                             o.ajax.post('/api/task/upcomingTasks', data).then(
                                                                 function successCallback(response) {
-                                                                    scope.tasks = response;
-                                                                    console.log(response)
+                                                                    scope.component.data.tasks = response.data;
+                                                                    console.log(response.data)
                                                                 },
                                                                 function errorCallback(response) {
                                                                     console.log(response)
