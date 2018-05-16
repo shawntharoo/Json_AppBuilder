@@ -308,7 +308,7 @@ var components = [
                                                             }
                                                             o.ajax.post('/api/task/upcomingTasks', data).then(
                                                                 function successCallback(response) {
-                                                                    scope.tasks = response;
+                                                                    scope.tasks = ["sdasd","sdaafadf"];
                                                                     console.log(response)
                                                                 },
                                                                 function errorCallback(response) {

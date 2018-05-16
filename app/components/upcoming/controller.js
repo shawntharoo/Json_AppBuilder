@@ -4,6 +4,7 @@ angular.module('app').controller('upComingController', ['$scope', '$rootScope', 
         margins: [0, 0],
         resizable: { enabled: false }, draggable: { enabled: false }
     };
+    $scope.tasks = [];
     var init = function () {
 
         // var date1 = new Date("Fri May 12 2018 00:00:00 GMT+0530 (IST)");
