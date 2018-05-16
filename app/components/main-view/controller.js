@@ -15,6 +15,7 @@ angular.module('app').controller('mainViewController', ['$scope', '$rootScope', 
         }
         $rootScope.registerEventListeners($scope, $scope.component);
         $scope.components = $rootScope.registerUserComponents($scope.component.data.tabs);
+        $scope.comp = $scope.components[0];
         $scope.template = $scope.components[0].templateUrl;
         $scope.tabTitleSelected = $scope.components[0].title;
     }
@@ -23,5 +24,6 @@ angular.module('app').controller('mainViewController', ['$scope', '$rootScope', 
     $scope.tabSelect = function(component){
         $scope.template= component.templateUrl;
         $scope.tabTitleSelected = component.title;
+        $scope.comp = component;
     }
 }]);

@@ -24,8 +24,8 @@ angular.module('app').controller('upComingController', ['$scope', '$rootScope', 
         //     var flag = 2
         // }
 
-        $rootScope.registerEventListeners($scope, $scope.component);
-        $scope.components = $rootScope.registerUserComponents($scope.component);
+        $rootScope.registerEventListeners($scope, $scope.comp);
+        $scope.components = $rootScope.registerUserComponents($scope.comp);
     };
 
     init();
