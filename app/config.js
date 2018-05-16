@@ -252,7 +252,7 @@ var components = [
                                     appTitle2: function (ctx, comp) {
                                         return "."
                                     },
-                                    initialState: function(ctx,comp){
+                                    initialState: function (ctx, comp) {
                                         return "SignUp"
                                     },
                                     tabs: function (ctx, comp) {
@@ -289,10 +289,103 @@ var components = [
                                                 styles: {
                                                     tabItemouterLayer: function (ctx, comp) {
                                                         return {
-                                                            'background-color': '#ffffff',
+                                                            'background-color': '#f7f7f7',
                                                             'overflow-y': 'scroll'
                                                         }
 
+                                                    },
+                                                    dateHeadToday: function (ctx, comp) {
+                                                        return {
+                                                            color: "#23B584",
+                                                            'font-weight': '700'
+                                                        }
+                                                    },
+                                                    dateWrapper: function (ctx, comp) {
+                                                        return {
+                                                            width: '100%',
+                                                            'margin-top': '10px',
+                                                            'padding-left': '10px',
+                                                            'margin-bottom': '40px'
+                                                        }
+                                                    },
+                                                    dateHeadDate: function (ctx, comp) {
+                                                        return {
+                                                            color: '#7B7979',
+                                                            'margin-left': '5px'
+                                                        }
+                                                    },
+                                                    upcomingItem: function (ctx, comp) {
+                                                        return {
+
+                                                            height: '50px',
+                                                            'background-color': '#fff',
+                                                            'border-top': '0.25px solid #ccc',
+                                                            'background-color': 'rgb(255, 255, 255)',
+                                                            'border-top': '0.25px solid rgb(204, 204, 204)',
+                                                            'padding': '15px 10px',
+                                                            'display': 'flex',
+                                                            'justify-content': 'space-between',
+                                                            color: '#202632',
+                                                            'font-weight': 300,
+                                                            'font-size': '16px'
+                                                        }
+                                                    },
+                                                    itemLeft: function (ctx, comp) {
+                                                        return {
+                                                            "order": "1",
+                                                            "display": "flex",
+                                                            "flexDirection": "column"
+                                                        }
+                                                    },
+                                                    itemTime: function (ctx, comp) {
+                                                        return {
+                                                            'margin-top': 'auto'
+                                                        }
+                                                    },
+                                                    itemRight: function (ctx, comp) {
+                                                        return {
+                                                            order: 2,
+                                                            display: 'flex'
+                                                        }
+                                                    },
+                                                    itemProject: function (ctx, comp) {
+                                                        return {
+                                                            'margin-top': 'auto',
+                                                            "marginTop": "auto",
+                                                            "background-color": "rgb(35, 181, 132)",
+                                                            "color": "rgb(255, 255, 255)",
+                                                            "fontSize": "10px",
+                                                            "letter-spacing": "0.5px",
+                                                            "width": "80px",
+                                                            "text-align": "center",
+                                                            "font-weight": "700",
+                                                            "text-transform": "uppercase",
+                                                            "padding": "6px 0"
+                                                        }
+                                                    },
+                                                    addTaskButtonWrap: function (ctx, comp) {
+                                                        return {
+                                                            width: '64px',
+                                                            height: '64px',
+                                                            position: 'fixed',
+                                                            bottom: '30px'
+                                                        }
+                                                    },
+                                                    addTaskButton: function (ctx, comp) {
+                                                        return {
+                                                            'background-color': '#FB4372',
+                                                            'width': '100%',
+                                                            height: '100%',
+                                                            'color': '#fff',
+                                                            'text-align': 'center',
+                                                            position: 'relative',
+                                                            display: 'inline-block',
+                                                            width: '100%',
+                                                            height: 0,
+                                                            padding: '50% 0',
+                                                            'border-radius': '50%',
+                                                            'font-size': '32px'
+                                                        }
                                                     }
                                                 },
                                                 emits: {
@@ -309,14 +402,29 @@ var components = [
                                                             }
                                                             o.ajax.post('/api/task/upcomingTasks', data).then(
                                                                 function successCallback(response) {
-                                                                    scope.component.data.tasks = response.data;
+                                                                    //scope.component.data.tasks = response.data;
+                                                                    scope.component.data.tasks = new Array();
+                                                                    for (var i = 0; i < response.data.length; i++) {
+                                                                        var dt = new Date(response.data[i].due_date);
+                                                                        var dtM = dt.getMinutes();
+                                                                        if (dt.getMinutes() < 10) {
+                                                                            dtM = '0' + dt.getMinutes()
+                                                                        }
+                                                                        var taskTemp = {
+                                                                            description: response.data[i].description,
+                                                                            project: response.data[i].project,
+                                                                            time: dt.getHours() + ':' + dtM
+                                                                        }
+                                                                        scope.component.data.tasks.push(taskTemp);
+                                                                    }
                                                                     console.log(response.data)
                                                                 },
                                                                 function errorCallback(response) {
                                                                     console.log(response)
                                                                 }
-                                                            
-                                                            )}
+
+                                                            )
+                                                        }
                                                     }
                                                 ]
 
