@@ -302,12 +302,13 @@ var components = [
                                                     {
                                                         name: 'initialDataLoad',
                                                         execute: function (e, o) {
-                                                            console.log('api aawada');
+                                                            scope = e.currentScope;
                                                             var data = {
                                                                 phone_number: o.cookies.getCookieData()
                                                             }
                                                             o.ajax.post('/api/task/upcomingTasks', data).then(
                                                                 function successCallback(response) {
+                                                                    scope.tasks = response;
                                                                     console.log(response)
                                                                 },
                                                                 function errorCallback(response) {
