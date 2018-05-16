@@ -48,13 +48,13 @@ app.factory('componentFactory', [function () {
     var mainView = new Component("mainView");
     mainView.templateUrl = 'components/main-view/template.html';
     mainView.inputs = ['tabs','appTitle','appTitle2'];
-    mainView.styleNames = ['tabTitle','appTitle','appTitle2','tabTitleSelected','tabListUl','tabListLi'];
+    mainView.styleNames = ['tabTitle','appTitle','appTitle2','tabTitleSelected','tabListUl','tabListLi','tabHeaderWrap'];
     registerComponent(mainView); 
     
     var upComing = new Component('upComing');
     upComing.templateUrl='components/upcoming/template.html';
     upComing.inputs =[];
-    upComing.styleNames = [];
+    upComing.styleNames = ['tabItemouterLayer'];
     registerComponent(upComing);
 
     var projectsList = new Component('projectsList');

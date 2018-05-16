@@ -258,7 +258,7 @@ var components = [
                                                 name: 'upComing',
                                                 title: 'Upcoming',
                                                 url: '/upcoming',
-                                                icon:'icon-notifications',
+                                                icon: 'icon-notifications',
                                                 components: [
 
                                                     {
@@ -271,7 +271,6 @@ var components = [
 
                                                         },
                                                         styles: {
-
                                                         },
                                                         emits: {
 
@@ -279,15 +278,31 @@ var components = [
                                                         listens: [
 
                                                         ]
-                                                    }
+                                                    },
+                                                    
 
+
+                                                ],
+                                                styles: {
+                                                    tabItemouterLayer: function (ctx, comp) {
+                                                        return {
+                                                            'background-color': '#ffffff'
+                                                        }
+
+                                                    }
+                                                },
+                                                emits: {
+
+                                                },
+                                                listens: [
 
                                                 ]
+                                                
                                             }, {
                                                 name: 'projectsList',
                                                 title: 'Projects',
                                                 url: '/projectslist',
-                                                icon:'icon-work',
+                                                icon: 'icon-work',
                                                 components: [
                                                     {
                                                         col: 0,
@@ -320,7 +335,6 @@ var components = [
                                             'color': '#fff',
                                             'font-weight': 700,
                                             padding: '10px',
-                                            'margin-top': '20px',
                                             display: 'flex',
                                             'justify-content': 'left'
 
@@ -328,7 +342,7 @@ var components = [
                                     },
                                     appTitle2: function (ctx, comp) {
                                         return {
-                                            color:'#FB4372'
+                                            color: '#FB4372'
                                         }
                                     },
                                     tabTitle: function (ctx, comp) {
@@ -341,39 +355,50 @@ var components = [
                                             'display': 'block'
                                         }
                                     },
-                                    tabTitleSelected: function(ctx,comp){
+                                    tabTitleSelected: function (ctx, comp) {
                                         return {
-                                            'font-weight':'300',
-                                            'margin-left':'10px',
-                                            'color':'#C8C8C8'
+                                            'font-weight': '300',
+                                            'margin-left': '10px',
+                                            'color': '#C8C8C8'
                                         }
                                     },
-                                    tabListUl: function(ctx,comp){
+                                    tabListUl: function (ctx, comp) {
                                         return {
-                                            'list-style':'none',
-                                            'display':'flex',
-                                            'justify-content':'space-evenly',
-                                            'color':'#C8C8C8',
-                                            'font-size':'32px',
-                                            'margin':'0px',
-                                            'padding':'0px'
+                                            'list-style': 'none',
+                                            'display': 'flex',
+                                            'justify-content': 'space-evenly',
+                                            'color': '#C8C8C8',
+                                            'font-size': '32px',
+                                            'margin': '0px',
+                                            'padding': '0px'
                                         }
                                     },
-                                    tabListLi: function(ctx,comp){
+                                    tabListLi: function (ctx, comp) {
                                         return {
                                             //display:
                                         }
+                                    },
+                                    tabHeaderWrap: function (ctx, comp) {
+                                        return {
+                                        'padding-top': '20px',
+                                        position: 'relative',
+                                        display: 'block',
+                                        'z-index': 1000,
+                                        '-webkit -box-shadow': '1px 1px 3px 0px rgba(0, 0, 0, 0.5)',
+                                        '-moz -box-shadow': '1px 1px 3px 0px rgba(0, 0, 0, 0.5)',
+                                        'box-shadow': '1px 1px 3px 0px rgba(0, 0, 0, 0.5)'
                                     }
-                                },
-                                emits: {
+                                }
+                            },
+                            emits: {
 
-                                },
-                                listens: [
+                            },
+                            listens: [
 
-                                ]
+                            ]
                             }
-                        ]
-                    }
+                ]
+            }
                 ]
             }
         }
