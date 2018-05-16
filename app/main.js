@@ -33,7 +33,7 @@ app.factory('componentFactory', [function () {
     var nav = new Component("Nav");
     nav.templateUrl = 'components/nav/template.html';
     nav.inputs = ['views'];
-    nav.styleNames = [];
+    nav.styleNames = ['outerLayout'];
     registerComponent(nav);
 
     
@@ -48,7 +48,8 @@ app.factory('componentFactory', [function () {
     var mainView = new Component("mainView");
     mainView.templateUrl = 'components/main-view/template.html';
     mainView.inputs = ['tabs','appTitle','appTitle2'];
-    mainView.styleNames = ['tabTitle','appTitle','appTitle2','tabTitleSelected','tabListUl','tabListLi','tabHeaderWrap'];
+    mainView.styleNames = ['tabTitle','appTitle','appTitle2','tabTitleSelected','tabListUl','tabListLi','tabHeaderWrap','mainOuterLayout'];
+    main
     registerComponent(mainView); 
     
     var upComing = new Component('upComing');

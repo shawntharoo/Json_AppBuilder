@@ -90,7 +90,7 @@
 </head>
 
 <body ng-app="app">
-    <div class="main-view" ng-controller="mainController" s>
+    <div class="main-view" ng-controller="mainController">
         <ul gridster="gridOptions">
             <li gridster-item="component" ng-repeat="component in components" ng-include="component.templateUrl" ng-style="{{component.styles.outerLayout}}">
             </li>

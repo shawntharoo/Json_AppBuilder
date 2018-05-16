@@ -279,25 +279,41 @@ var components = [
 
                                                         ]
                                                     },
-                                                    
+
 
 
                                                 ],
                                                 styles: {
                                                     tabItemouterLayer: function (ctx, comp) {
                                                         return {
-                                                            'background-color': '#ffffff'
+                                                            'background-color': '#ffffff',
+                                                            'overflow-y': 'scroll'
                                                         }
 
                                                     }
                                                 },
                                                 emits: {
-
+                                                    initialDataLoad: 'initalDataLoad'
                                                 },
                                                 listens: [
+                                                    {
+                                                        name: 'initialDataLoad',
+                                                        execute: function (e, o) {
+                                                            var data = {
+                                                                phone_number: o.cookies.getCookieData()
+                                                            }
+                                                            o.ajax.post('api/task/upcomingTasks', data).then(
+                                                                function successCallback(response) {
 
+                                                                },
+                                                                function errorCallback(response) {
+
+                                                                })
+                                                            
+                                                        }
+                                                    }
                                                 ]
-                                                
+
                                             }, {
                                                 name: 'projectsList',
                                                 title: 'Projects',
@@ -327,7 +343,8 @@ var components = [
                                                 styles: {
                                                     tabItemouterLayer: function (ctx, comp) {
                                                         return {
-                                                            'background-color': '#ffffff'
+                                                            'background-color': '#ffffff',
+                                                            'overflow-y': 'scroll'
                                                         }
 
                                                     }
@@ -364,14 +381,15 @@ var components = [
 
                                                         ]
                                                     },
-                                                    
+
 
 
                                                 ],
                                                 styles: {
                                                     tabItemouterLayer: function (ctx, comp) {
                                                         return {
-                                                            'background-color': '#ffffff'
+                                                            'background-color': '#ffffff',
+                                                            'overflow-y': 'scroll'
                                                         }
 
                                                     }
@@ -382,7 +400,7 @@ var components = [
                                                 listens: [
 
                                                 ]
-                                                
+
                                             }
                                         ]
                                     }
@@ -434,52 +452,65 @@ var components = [
                                     },
                                     tabListLi: function (ctx, comp) {
                                         return {
-                                            'width':'33.33%',
-                                            'text-align':'center'
+                                            'width': '33.33%',
+                                            'text-align': 'center'
                                         }
                                     },
                                     tabHeaderWrap: function (ctx, comp) {
                                         return {
-                                        'padding-top': '20px',
-                                        position: 'relative',
-                                        display: 'block',
-                                        'z-index': 1000,
-                                        '-webkit -box-shadow': '1px 1px 3px 0px rgba(0, 0, 0, 0.5)',
-                                        '-moz -box-shadow': '1px 1px 3px 0px rgba(0, 0, 0, 0.5)',
-                                        'box-shadow': '1px 1px 3px 0px rgba(0, 0, 0, 0.5)'
+                                            'padding-top': '20px',
+                                            position: 'relative',
+                                            display: 'block',
+                                            'z-index': 1000,
+                                            '-webkit -box-shadow': '1px 1px 3px 0px rgba(0, 0, 0, 0.5)',
+                                            '-moz -box-shadow': '1px 1px 3px 0px rgba(0, 0, 0, 0.5)',
+                                            'box-shadow': '1px 1px 3px 0px rgba(0, 0, 0, 0.5)'
+                                        }
+                                    },
+                                    mainOuterLayout: function (ctx, comp) {
+                                        return {
+                                            overflow: 'hidden'
+                                        }
                                     }
-                                }
-                            },
-                            emits: {
-                                onTabSelect : 'onTabSelect',
-                                initialDataLoad: 'initialDataLoad'
-                            },
-                            listens: [
-                                {
-                                    name: 'onTabSelect',
-                                    execute: function (e, o) {
-                                        var scope = e.currentScope;
-                                        scope.template= o.templateUrl;
-                                        scope.tabTitleSelected = o.title;
-                                        scope.comp = o;
-                                        scope.name = o.name;
-                                    }
+
                                 },
-                                {
-                                    name: 'initialDataLoad',
-                                    execute: function (e, o) {
-                                        var scope = e.currentScope;
-                                        scope.comp = scope.components[0];
-                                        scope.template = scope.components[0].templateUrl;
-                                        scope.tabTitleSelected = scope.components[0].title;
-                                        scope.name = scope.components[0].name;
+                                emits: {
+                                    onTabSelect: 'onTabSelect',
+                                    initialDataLoad: 'initialDataLoad'
+                                },
+                                listens: [
+                                    {
+                                        name: 'onTabSelect',
+                                        execute: function (e, o) {
+                                            var scope = e.currentScope;
+                                            scope.template = o.templateUrl;
+                                            scope.tabTitleSelected = o.title;
+                                            scope.comp = o;
+                                            scope.name = o.name;
+                                        }
+                                    },
+                                    {
+                                        name: 'initialDataLoad',
+                                        execute: function (e, o) {
+                                            var scope = e.currentScope;
+                                            scope.comp = scope.components[0];
+                                            scope.template = scope.components[0].templateUrl;
+                                            scope.tabTitleSelected = scope.components[0].title;
+                                            scope.name = scope.components[0].name;
+                                        }
                                     }
-                                }
-                            ]
+                                ]
                             }
+                        ]
+                    }
                 ]
             }
-                ]
+        },
+        styles: {
+            outerLayout: function (ctx, comp) {
+                return {
+                    'overflow-y': 'hidden'
+                }
             }
         }
     }
