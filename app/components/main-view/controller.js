@@ -17,6 +17,13 @@ angular.module('app').controller('mainViewController', ['$scope', '$rootScope', 
         $rootScope.$broadcast($scope.component.emits.initialDataLoad, $scope.component);
         $rootScope.registerEventListeners($scope, $scope.component);
         $scope.components = $rootScope.registerUserComponents($scope.component.data.tabs);
+<<<<<<< HEAD
+=======
+        $scope.comp = $scope.components[0];
+        $scope.template = $scope.components[0].templateUrl;
+        $scope.tabTitleSelected = $scope.components[0].title;
+        $scope.name = $scope.components[0].name;
+>>>>>>> 7a1f4558ce8b2a4d2fd715a221e4f95bb169e0af
     }
     init();
 
