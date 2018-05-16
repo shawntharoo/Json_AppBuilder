@@ -252,6 +252,9 @@ var components = [
                                     appTitle2: function (ctx, comp) {
                                         return "."
                                     },
+                                    initialState: function (ctx, comp) {
+                                        return "SignUp"
+                                    },
                                     tabs: function (ctx, comp) {
                                         return [
                                             {
