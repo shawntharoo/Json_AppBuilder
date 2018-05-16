@@ -17,6 +17,7 @@ function Component(name) {
     this.ajax;
     this.state;
     this.title;
+    this.icon;
 }
 
 app.factory('componentFactory', [function () {
@@ -47,7 +48,7 @@ app.factory('componentFactory', [function () {
     var mainView = new Component("mainView");
     mainView.templateUrl = 'components/main-view/template.html';
     mainView.inputs = ['tabs','appTitle','appTitle2'];
-    mainView.styleNames = ['tabTitle','appTitle','appTitle2','tabTitleSelected'];
+    mainView.styleNames = ['tabTitle','appTitle','appTitle2','tabTitleSelected','tabListUl','tabListLi'];
     registerComponent(mainView); 
     
     var upComing = new Component('upComing');
@@ -117,6 +118,7 @@ app.controller('mainController', ['$scope', 'componentFactory', '$rootScope', '$
             comp.ajax = $http;
             comp.state = $state;
             comp.title = comps[i].title;
+            comp.icon = comps[i].icon;
 
 
             // set styles

@@ -258,6 +258,7 @@ var components = [
                                                 name: 'upComing',
                                                 title: 'Upcoming',
                                                 url: '/upcoming',
+                                                icon:'icon-notifications',
                                                 components: [
 
                                                     {
@@ -284,8 +285,9 @@ var components = [
                                                 ]
                                             }, {
                                                 name: 'projectsList',
-                                                title: 'projectsList',
+                                                title: 'Projects',
                                                 url: '/projectslist',
+                                                icon:'icon-work',
                                                 components: [
                                                     {
                                                         col: 0,
@@ -342,7 +344,24 @@ var components = [
                                     tabTitleSelected: function(ctx,comp){
                                         return {
                                             'font-weight':'300',
-                                            'margin-left':'10px'
+                                            'margin-left':'10px',
+                                            'color':'#C8C8C8'
+                                        }
+                                    },
+                                    tabListUl: function(ctx,comp){
+                                        return {
+                                            'list-style':'none',
+                                            'display':'flex',
+                                            'justify-content':'space-evenly',
+                                            'color':'#C8C8C8',
+                                            'font-size':'32px',
+                                            'margin':'0px',
+                                            'padding':'0px'
+                                        }
+                                    },
+                                    tabListLi: function(ctx,comp){
+                                        return {
+                                            //display:
                                         }
                                     }
                                 },
