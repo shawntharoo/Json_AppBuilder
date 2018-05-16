@@ -15,7 +15,7 @@ exports.addtask = function (req, res) {
     var description = req.body.description;
     var status = req.body.status;
     var assigned_user = req.body.assigned_user;
-    var creted_date = req.body.creted_date;
+    var created_date = req.body.created_date;
     var due_date = req.body.due_date;
     var project = req.body.project;
 
@@ -24,7 +24,7 @@ exports.addtask = function (req, res) {
     task.set('description',description);
     task.set('status',status);
     task.set('assigned_user',assigned_user);
-    task.set('creted_date',creted_date);
+    task.set('created_date',created_date);
     task.set('due_date',due_date);
     task.set('project',project);
     task.save(function (err, doc) {
@@ -81,9 +81,9 @@ exports.upcomingtasks = function (req, res) {
     var phone_no = req.body.phone_number;
     var n = new Date().toLocaleDateString();
     var today = new Date(n);
-    var tomarrow = new Date(n);
-    tomarrow.setDate(tomarrow.getDate() + 1);
-    Task.find({ "due_date": { "$gte": today, "$lt": tomarrow }, "assigned_user": phone_no }).exec(function (err, tasks) {
+    var tomorrow = new Date(n);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    Task.find({ "due_date": { "$gte": today, "$lt": tomorrow }, "assigned_user": phone_no }).exec(function (err, tasks) {
         if (err) {
             console.log('Tasks retrieve error', err);
             res.status(500).json(err);
