@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('icomoon/icomoon.eot?r5rsfd');
-  src:  url('icomoon/icomoon.eot?r5rsfd#iefix') format('embedded-opentype'),
-    url('icomoon/icomoon.ttf?r5rsfd') format('truetype'),
-    url('icomoon/icomoon.woff?r5rsfd') format('woff'),
-    url('icomoon/icomoon.svg?r5rsfd#icomoon') format('svg');
+  src:  url('icomoon/icomoon.eot?2haz7i');
+  src:  url('icomoon/icomoon.eot?2haz7i#iefix') format('embedded-opentype'),
+    url('icomoon/icomoon.ttf?2haz7i') format('truetype'),
+    url('icomoon/icomoon.woff?2haz7i') format('woff'),
+    url('icomoon/icomoon.svg?2haz7i#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,6 +24,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-add:before {
+  content: "\e145";
+}
 .icon-dialpad:before {
   content: "\e0bc";
 }

@@ -54,7 +54,7 @@ app.factory('componentFactory', [function () {
     var upComing = new Component('upComing');
     upComing.templateUrl='components/upcoming/template.html';
     upComing.inputs =[];
-    upComing.styleNames = ['tabItemouterLayer'];
+    upComing.styleNames = ['tabItemouterLayer','dateHeadToday','dateWrapper','dateHeadDate','upcomingItem','itemTime','itemLeft','itemRight','itemProject','addTaskButton','addTaskButtonWrap'];
     registerComponent(upComing);
 
     var projectsList = new Component('projectsList');
@@ -170,22 +170,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                     templateUrl: 'components/nav/view-template.html',
                     viewIndex: v
                 });
-            // for(var c2=0;c2<views[v].components.length;c2++){
-            //     var viewData = views[v].components[c2].data;
-            //     if(typeof viewData.tabs ==undefined){
-            //         tabs = viewData.tabs();
-            //         var name = views[v].name+"."+views[v].name.tabs[c2].name
-            //         console.log(name)
-            //         $stateProvider.state({
-            //             name:name,
-            //             url:views[v].name.tabs[c2].name,
-            //             controller: 'mainViewController',
-            //             templateUrl:'components/main-view/view-template.htm',
-            //             viewIndex:c2
-            //         })
-            //         console.log(tabs);
-            //     }
-            // }
             }
             if (views.length > 0) {
                 $urlRouterProvider.otherwise(views[0].url);
