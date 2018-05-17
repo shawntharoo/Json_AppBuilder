@@ -54,7 +54,7 @@ app.factory('componentFactory', [function () {
     var upComing = new Component('upComing');
     upComing.templateUrl='components/upcoming/template.html';
     upComing.inputs =[];
-    upComing.styleNames = ['tabItemouterLayer','dateHeadToday','dateWrapper','dateHeadDate','upcomingItem','itemTime','itemLeft','itemRight','itemProject','addTaskButton','addTaskButtonWrap'];
+    upComing.styleNames = ['tabItemouterLayer','dateHeadToday','dateWrapper','dateHeadDate','upcomingItem','itemTime','itemLeft','itemRight','itemProject','addTaskButton','addTaskButtonWrap','itemStatus','addTaskBtn'];
     registerComponent(upComing);
 
     var projectsList = new Component('projectsList');

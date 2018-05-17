@@ -1,13 +1,23 @@
 <div class="grid-container" ng-controller="upComingController">
     <div gridster="gridOptions" ng-style="component.styles.tabItemouterLayer">
         <div ng-style="component.styles.dateWrapper">
-            <span ng-style="component.styles.dateHeadToday">Today</span>
-            <span ng-style='component.styles.dateHeadDate'>Mon May 7</span>
+            <div>
+                <span ng-style="component.styles.dateHeadToday">Today</span>
+                <span ng-style='component.styles.dateHeadDate'>{{todayDate | date:'MMM d EEE' }}</span>
+            </div>
+            <div>
+                <span ng-style="component.styles.addTaskBtn">Add Task +</span>
+            </div>
+
+
         </div>
         <div ng-style="component.styles.upcomingItem" ng-repeat="task in component.data.tasks" class="upcoming-item">
             <div ng-style="component.styles.itemLeft">
                 <span>{{task.description}}</span>
-                <span ng-style="component.styles.itemTime">{{task.time}}</span>
+                <div class="container">
+                    <span ng-style="component.styles.itemTime">{{task.due_date | date:'HH:mm'}}</span>
+                    <span ng-style="component.styles.itemStatus" ng-class="{showOverdue: task.status=='overdue'}">overdue</span>
+                </div>
 
             </div>
             <div ng-style="component.styles.itemRight">
