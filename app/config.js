@@ -303,9 +303,10 @@ var components = [
                                                     dateWrapper: function (ctx, comp) {
                                                         return {
                                                             width: '100%',
-                                                            'margin-top': '10px',
-                                                            'padding-left': '10px',
-                                                            'margin-bottom': '40px'
+                                                            width: '95%',
+                                                            margin: '26px auto',
+                                                            display: 'flex',
+                                                            'justify-content': 'space-between'
                                                         }
                                                     },
                                                     dateHeadDate: function (ctx, comp) {
@@ -327,7 +328,7 @@ var components = [
                                                             'justify-content': 'space-between',
                                                             color: '#202632',
                                                             'font-weight': 300,
-                                                            'font-size': '16px'
+                                                            'font-size': '14px'
                                                         }
                                                     },
                                                     itemLeft: function (ctx, comp) {
@@ -354,7 +355,7 @@ var components = [
                                                             "marginTop": "auto",
                                                             "background-color": "rgb(35, 181, 132)",
                                                             "color": "rgb(255, 255, 255)",
-                                                            "fontSize": "10px",
+                                                            "font-size": "10px",
                                                             "letter-spacing": "0.5px",
                                                             "width": "80px",
                                                             "text-align": "center",
@@ -371,20 +372,21 @@ var components = [
                                                             bottom: '30px'
                                                         }
                                                     },
-                                                    addTaskButton: function (ctx, comp) {
+                                                    itemStatus: function (ctx, comp) {
                                                         return {
-                                                            'background-color': '#FB4372',
-                                                            'width': '100%',
-                                                            height: '100%',
-                                                            'color': '#fff',
-                                                            'text-align': 'center',
-                                                            position: 'relative',
-                                                            display: 'inline-block',
-                                                            width: '100%',
-                                                            height: 0,
-                                                            padding: '50% 0',
-                                                            'border-radius': '50%',
-                                                            'font-size': '32px'
+                                                            color: '#FB4372',
+                                                            'font-weight': 'bold',
+                                                            'font-size': '11px',
+                                                            'letter-spacing': '0.5px',
+                                                            'text-transform': 'uppercase',
+                                                            'display': 'none'
+                                                        }
+                                                    },
+                                                    addTaskBtn: function (ctx, comp) {
+                                                        return {
+                                                            'font-weight':'bold',
+                                                            color:'#FB4372'
+
                                                         }
                                                     }
                                                 },
@@ -396,27 +398,25 @@ var components = [
                                                         name: 'initialDataLoad',
                                                         execute: function (e, o) {
                                                             scope = e.currentScope;
+                                                            scope.todayDate = new Date();
+                                                            //scope.component.data.tasks = new Array();
+
                                                             var data = {
                                                                 phone_number: o.cookies.getCookieData(),
                                                                 status: 'pending'
                                                             }
                                                             o.ajax.post('/api/task/upcomingTasks', data).then(
                                                                 function successCallback(response) {
-                                                                    //scope.component.data.tasks = response.data;
-                                                                    scope.component.data.tasks = new Array();
+
                                                                     for (var i = 0; i < response.data.length; i++) {
-                                                                        var dt = new Date(response.data[i].due_date);
-                                                                        var dtM = dt.getMinutes();
-                                                                        if (dt.getMinutes() < 10) {
-                                                                            dtM = '0' + dt.getMinutes()
+                                                                        if (scope.todayDate < new Date(response.data[i].due_date)) {
+                                                                            response.data[i].status = 'upcoming'
+                                                                        } else {
+                                                                            response.data[i].status = 'overdue'
                                                                         }
-                                                                        var taskTemp = {
-                                                                            description: response.data[i].description,
-                                                                            project: response.data[i].project,
-                                                                            time: dt.getHours() + ':' + dtM
-                                                                        }
-                                                                        scope.component.data.tasks.push(taskTemp);
+
                                                                     }
+                                                                    scope.component.data.tasks = response.data;
                                                                     console.log(response.data)
                                                                 },
                                                                 function errorCallback(response) {
