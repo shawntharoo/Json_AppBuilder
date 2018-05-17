@@ -1,4 +1,4 @@
-angular.module('app').controller('upComingController', ['$scope', '$rootScope', 'userPersistenceService',function ($scope, $rootScope, userPersistenceService) {
+angular.module('app').controller('upComingController', ['$scope', '$rootScope', 'userPersistenceService','$uibModal',function ($scope, $rootScope, userPersistenceService, $modal) {
     $scope.gridOptions = {
         columns: 12,
         margins: [0, 0],
@@ -23,6 +23,27 @@ angular.module('app').controller('upComingController', ['$scope', '$rootScope', 
         // } else {
         //     var flag = 2
         // }
+
+
+            $scope.openModal = function() {
+                var modalInstance = $modal.open({
+                    templateUrl: 'components/modal/template.html',
+                    controller: 'ModalInstanceCtrl',
+
+                    resolve: {
+                        data: function() {
+                            return '';
+                        }
+                    }
+                });
+                
+                modalInstance.result.then(function (returnData) {
+                }, function () {
+                    console.log('Modal dismissed at: ' + new Date());
+                });
+            };
+
+            
 
         $scope.component = $scope.comp;
         $scope.component.cookies = userPersistenceService;

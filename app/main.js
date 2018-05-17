@@ -1,4 +1,4 @@
-var app = angular.module('app', ['gridster', 'ui.router','ngCookies']);
+var app = angular.module('app', ['gridster', 'ui.router','ngCookies', 'ui.bootstrap']);
 
 function Component(name) {
     this.name = name;
@@ -68,6 +68,12 @@ app.factory('componentFactory', [function () {
     allTasks.inputs = [];
     allTasks.styleNames=['tabItemouterLayer'];
     registerComponent(allTasks);
+
+    // var modal = new Component("modal");
+    // modal.templateUrl = 'components/modal/template.html';
+    // modal.inputs = [];
+    // modal.styleNames = [];
+    // registerComponent(modal); 
     
     return {
         registerComponent: registerComponent,
