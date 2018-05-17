@@ -6,7 +6,7 @@
                 <span ng-style='component.styles.dateHeadDate'>{{todayDate | date:'MMM d EEE' }}</span>
             </div>
             <div>
-                <span ng-style="component.styles.addTaskBtn">Add Task +</span>
+                <span ng-style="component.styles.addTaskBtn" ng-click="openModal()">Add Task +</span>
             </div>
 
 
@@ -24,9 +24,9 @@
                 <span ng-style="component.styles.itemProject">{{task.project}}</span>
             </div>
         </div>
-        <div ng-style="component.styles.addTaskButtonWrap" ng-click="openModal()">
+        <!-- <div ng-style="component.styles.addTaskButtonWrap" ng-click="openModal()">
             <div ng-style="component.styles.addTaskButton"><span>+</span></div>
-        </div>
+        </div> -->
         
     </div>
 </div>
