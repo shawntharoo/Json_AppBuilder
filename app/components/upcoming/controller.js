@@ -20,7 +20,6 @@ angular.module('app').controller('upComingController', ['$scope', '$rootScope', 
 
             modalInstance.result.then(function (returnData) {
             }, function () {
-                console.log('Modal dismissed at: ' + new Date());
             });
         };
 

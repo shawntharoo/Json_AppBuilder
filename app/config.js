@@ -226,6 +226,7 @@ var components = [
                                                 o.cookies.setCookieData(o.data.countryCode + o.data.mobileNumber);
                                                 o.state.go('mainView');
                                             }, function errorCallback(response) {
+                                                scope.component.data.errorMsg = response.data.message;
                                                 console.log(response);
                                             });
                                         }
