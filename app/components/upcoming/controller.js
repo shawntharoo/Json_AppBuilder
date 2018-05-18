@@ -31,11 +31,7 @@ angular.module('app').controller('upComingController', ['$scope', '$rootScope', 
         $rootScope.registerEventListeners($scope, $scope.component);
         $rootScope.$broadcast($scope.component.emits.initialDataLoad, $scope.component);
         $scope.components = $rootScope.registerUserComponents($scope.component);
-        $scope.swipe = ''
     };
 
     init();
-    $scope.checkSwipe = function () {
-        console.log('Swipe left works')
-    }
 }]);
