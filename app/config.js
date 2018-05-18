@@ -335,7 +335,8 @@ var components = [
                                                         return {
                                                             "order": "1",
                                                             "display": "flex",
-                                                            "flexDirection": "column"
+                                                            "flexDirection": "column",
+                                                            width:'70%'
                                                         }
                                                     },
                                                     itemTime: function (ctx, comp) {
@@ -379,7 +380,8 @@ var components = [
                                                             'font-size': '11px',
                                                             'letter-spacing': '0.5px',
                                                             'text-transform': 'uppercase',
-                                                            'display': 'none'
+                                                            'display': 'none',
+                                                            'margin-left':'10px'
                                                         }
                                                     },
                                                     addTaskBtn: function (ctx, comp) {
@@ -387,6 +389,11 @@ var components = [
                                                             'font-weight':'bold',
                                                             color:'#FB4372'
 
+                                                        }
+                                                    },
+                                                    modalBack: function(ctx,comp){
+                                                        return{
+                                                            'font-size':'32px'
                                                         }
                                                     }
                                                 },

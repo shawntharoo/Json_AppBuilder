@@ -3,18 +3,18 @@
         <div ng-style="component.styles.dateWrapper">
             <div>
                 <span ng-style="component.styles.dateHeadToday">Today</span>
-                <span ng-style='component.styles.dateHeadDate'>{{todayDate | date:'MMM d EEE' }}</span>
+                <span ng-style='component.styles.dateHeadDate'>{{todayDate | date:'EEE d MMM' }}</span>
             </div>
             <div>
                 <span ng-style="component.styles.addTaskBtn" ng-click="openModal()">Add Task +</span>
             </div>
-
+            {{swipe}}
 
         </div>
         <div ng-style="component.styles.upcomingItem" ng-repeat="task in component.data.tasks" class="upcoming-item">
             <div ng-style="component.styles.itemLeft">
                 <span>{{task.description}}</span>
-                <div class="container">
+                <div class="task-container">
                     <span ng-style="component.styles.itemTime">{{task.due_date | date:'HH:mm'}}</span>
                     <span ng-style="component.styles.itemStatus" ng-class="{showOverdue: task.status=='overdue'}">overdue</span>
                 </div>
