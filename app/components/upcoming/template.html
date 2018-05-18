@@ -1,5 +1,5 @@
 <div class="grid-container" ng-controller="upComingController">
-    <div gridster="gridOptions" ng-style="component.styles.tabItemouterLayer">
+    <div gridster="gridOptions" ng-style="component.styles.tabItemouterLayer" ng-swipe-right="tabSelect(compsforTabs[1])">
         <div ng-style="component.styles.dateWrapper">
             <div>
                 <span ng-style="component.styles.dateHeadToday">Today</span>

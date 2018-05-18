@@ -1,5 +1,5 @@
 <div class="grid-container" ng-controller="projectsListController">
-    <div gridster="gridOptions" ng-style="component.styles.tabItemouterLayer">
+    <div gridster="gridOptions" ng-style="component.styles.tabItemouterLayer" ng-swipe-right="tabSelect(compsforTabs[2])" ng-swipe-left="tabSelect(compsforTabs[0])">
         <p>Project List</p>
 
     </div>

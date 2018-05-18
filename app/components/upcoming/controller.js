@@ -34,4 +34,8 @@ angular.module('app').controller('upComingController', ['$scope', '$rootScope', 
     };
 
     init();
+    //$scope.components = $rootScope.registerUserComponents($scope.component.data.tabs);
+    $scope.swipeRes = function(){
+        console.log('Swipe Action')
+    }
 }]);

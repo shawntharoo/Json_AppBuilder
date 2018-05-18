@@ -16,6 +16,7 @@ angular.module('app').controller('mainViewController', ['$scope', '$rootScope', 
         $rootScope.$broadcast($scope.component.emits.initialDataLoad, $scope.component);
         $rootScope.registerEventListeners($scope, $scope.component);
         $scope.components = $rootScope.registerUserComponents($scope.component.data.tabs);
+        $scope.compsforTabs = $rootScope.registerUserComponents($scope.component.data.tabs);
     }
     init();
 
