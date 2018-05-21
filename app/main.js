@@ -1,4 +1,4 @@
-var app = angular.module('app', ['gridster', 'ui.router','ngCookies', 'ui.bootstrap','ngTouch']);
+var app = angular.module('app', ['gridster', 'ui.router', 'ngCookies', 'ui.bootstrap', 'ngTouch']);
 
 function Component(name) {
     this.name = name;
@@ -36,45 +36,45 @@ app.factory('componentFactory', [function () {
     nav.styleNames = ['outerLayout'];
     registerComponent(nav);
 
-    
+
 
     var signUp = new Component("SignUp");
     signUp.templateUrl = 'components/sign-up/template.html';
-    signUp.inputs = ['appTitle', 'appTitleLogo', 'appTagLine', 'appButtonTitle', 'appTagLine2', 'appButton2Title','errorMsg','xc','showVeriForm','appEntry','verifcationCode','verificationBtnTitle'];
-    signUp.styleNames = ['appTitleStyle', 'appTitleLogo1', 'appTitleLogo', 'appTagLine', 'appTitleButton', 'inputField', 'appTagLine2', 'appTitleButton2','inputFieldCC','inputFieldMN','wrapperMobile','errorMsg'];
-    signUp.emits=['onAppEnter','onDetailsSubmit']
+    signUp.inputs = ['appTitle', 'appTitleLogo', 'appTagLine', 'appButtonTitle', 'appTagLine2', 'appButton2Title', 'errorMsg', 'xc', 'showVeriForm', 'appEntry', 'verifcationCode', 'verificationBtnTitle'];
+    signUp.styleNames = ['appTitleStyle', 'appTitleLogo1', 'appTitleLogo', 'appTagLine', 'appTitleButton', 'inputField', 'appTagLine2', 'appTitleButton2', 'inputFieldCC', 'inputFieldMN', 'wrapperMobile', 'errorMsg'];
+    signUp.emits = ['onAppEnter', 'onDetailsSubmit']
     registerComponent(signUp);
 
     var mainView = new Component("mainView");
     mainView.templateUrl = 'components/main-view/template.html';
-    mainView.inputs = ['tabs','appTitle','appTitle2'];
-    mainView.styleNames = ['tabTitle','appTitle','appTitle2','tabTitleSelected','tabListUl','tabListLi','tabHeaderWrap','mainOuterLayout'];
-    registerComponent(mainView); 
-    
+    mainView.inputs = ['tabs', 'appTitle', 'appTitle2'];
+    mainView.styleNames = ['tabTitle', 'appTitle', 'appTitle2', 'tabTitleSelected', 'tabListUl', 'tabListLi', 'tabHeaderWrap', 'mainOuterLayout'];
+    registerComponent(mainView);
+
     var upComing = new Component('upComing');
-    upComing.templateUrl='components/upcoming/template.html';
-    upComing.inputs =[];
-    upComing.styleNames = ['tabItemouterLayer','dateHeadToday','dateWrapper','dateHeadDate','upcomingItem','itemTime','itemLeft','itemRight','itemProject','addTaskButton','addTaskButtonWrap','itemStatus','addTaskBtn','modalBack'];
+    upComing.templateUrl = 'components/upcoming/template.html';
+    upComing.inputs = [];
+    upComing.styleNames = ['tabItemouterLayer', 'dateHeadToday', 'dateWrapper', 'dateHeadDate', 'upcomingItem', 'itemTime', 'itemLeft', 'itemRight', 'itemProject', 'addTaskButton', 'addTaskButtonWrap', 'itemStatus', 'addTaskBtn', 'modalBack'];
     registerComponent(upComing);
 
     var projectsList = new Component('projectsList');
-    projectsList.templateUrl='components/projectsList/template.html';
+    projectsList.templateUrl = 'components/projectsList/template.html';
     projectsList.inputs = [];
     projectsList.styleNames = ['tabItemouterLayer'];
     registerComponent(projectsList);
 
     var allTasks = new Component('allTasks');
-    allTasks.templateUrl='components/alltasks/template.html';
+    allTasks.templateUrl = 'components/alltasks/template.html';
     allTasks.inputs = [];
-    allTasks.styleNames=['tabItemouterLayer'];
+    allTasks.styleNames = ['tabItemouterLayer'];
     registerComponent(allTasks);
 
-    // var modal = new Component("modal");
-    // modal.templateUrl = 'components/modal/template.html';
-    // modal.inputs = [];
-    // modal.styleNames = [];
-    // registerComponent(modal); 
-    
+    var modal = new Component("modalpopup");
+    modal.templateUrl = 'components/modal/template.html';
+    modal.inputs = [];
+    modal.styleNames = [];
+    registerComponent(modal);
+
     return {
         registerComponent: registerComponent,
         getComponent: getComponent
@@ -82,26 +82,26 @@ app.factory('componentFactory', [function () {
 }]);
 
 app.factory("userPersistenceService", [
-	"$cookies", function($cookies) {
-		var mobileNumber = undefined;
+    "$cookies", function ($cookies) {
+        var mobileNumber = undefined;
 
-		return {
-			setCookieData: function(mobile) {
-				$cookies.put("mobileNumber", mobile);
-			},
-			getCookieData: function() {
-				mobile = $cookies.get("mobileNumber");
-				return mobile;
-			},
-			clearCookieData: function() {
-				mobileNumber = undefined;
-				$cookies.remove("mobileNumber");
-			}
-		}
-	}
+        return {
+            setCookieData: function (mobile) {
+                $cookies.put("mobileNumber", mobile);
+            },
+            getCookieData: function () {
+                mobile = $cookies.get("mobileNumber");
+                return mobile;
+            },
+            clearCookieData: function () {
+                mobileNumber = undefined;
+                $cookies.remove("mobileNumber");
+            }
+        }
+    }
 ]);
 
-app.controller('mainController', ['$scope', 'componentFactory', '$rootScope', '$http','$state', function ($scope, componentFactory, $rootScope, $http,$state) {
+app.controller('mainController', ['$scope', 'componentFactory', '$rootScope', '$http', '$state', '$uibModal',function ($scope, componentFactory, $rootScope, $http, $state, $modal) {
 
     $scope.gridOptions = {
         columns: 12,
@@ -155,6 +155,25 @@ app.controller('mainController', ['$scope', 'componentFactory', '$rootScope', '$
             compnts.push(comp);
         }
         return compnts;
+    };
+
+    $rootScope.openModal = function (data) {
+        var modalInstance = $modal.open({
+            templateUrl: 'components/modal/template.html',
+            controller: 'ModalInstanceCtrl',
+            resolve: {
+                modalInstance: function () {
+                    return modalInstance;
+                },
+                data: function () {
+                    return 'result';
+                }
+            }
+        });
+        modalInstance.result.then(function (returnData) {
+            return modalInstance;
+        }, function () {
+        });
     };
 
     var init = function () {

@@ -5,26 +5,13 @@ angular.module('app').controller('upComingController', ['$scope', '$rootScope', 
         resizable: { enabled: false }, draggable: { enabled: false }
     };
     $scope.tasks = [];
+    $scope.result;
+    $scope.openModal = function () {
+        var x = $rootScope.openModal('');
+    };
+
     var init = function () {
-        $scope.openModal = function () {
-            var modalInstance = $modal.open({
-                templateUrl: 'components/modal/template.html',
-                controller: 'ModalInstanceCtrl',
-
-                resolve: {
-                    data: function () {
-                        return '';
-                    }
-                }
-            });
-
-            modalInstance.result.then(function (returnData) {
-            }, function () {
-            });
-        };
-
-
-
+        $scope.component;
         $scope.component = $scope.comp;
         $scope.component.cookies = userPersistenceService;
         $rootScope.registerEventListeners($scope, $scope.component);
@@ -33,7 +20,7 @@ angular.module('app').controller('upComingController', ['$scope', '$rootScope', 
     };
 
     init();
-    //$scope.components = $rootScope.registerUserComponents($scope.component.data.tabs);
+
     $scope.swipeRes = function(){
         console.log('Swipe Action')
     }

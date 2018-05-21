@@ -635,5 +635,46 @@ var components = [
                 }
             }
         }
+    },
+    {
+        name: 'modalpopup',
+        title: 'Modal',
+        url: '/modalpopup',
+        icon: '',
+        components: [
+            {
+                col: 0,
+                row: 0,
+                name: 'projectsList',
+                sizeX: 12,
+                sizeY: 6,
+                data: {
+
+                },
+                styles: {
+
+                },
+                emits: {
+
+                },
+                listens: [
+
+                ]
+            }
+        ],
+        styles: {
+            
+        },
+        emits: {
+            openModal : 'openModal'
+        },
+        listens: [
+            {
+                name: 'openModal',
+                execute: function (e, o) {
+                    
+                }
+            }
+        ]
     }
 ]
