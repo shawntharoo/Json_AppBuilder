@@ -59,9 +59,27 @@ app.factory('componentFactory', [function () {
 
     var tabView = new Component('tabView');
     tabView.templateUrl = 'components/tabs/template.html';
-    tabView.inputs = [];
+    tabView.inputs = ['tabs'];
     tabView.styleNames = [];
     registerComponent(tabView);
+
+    var upComing = new Component('upComing');
+    upComing.templateUrl = 'components/upcoming/template.html';
+    upComing.inputs = [];
+    upComing.styleNames = ['tabItemouterLayer', 'dateHeadToday', 'dateWrapper', 'dateHeadDate', 'upcomingItem', 'itemTime', 'itemLeft', 'itemRight', 'itemProject', 'addTaskButton', 'addTaskButtonWrap', 'itemStatus', 'addTaskBtn', 'modalBack'];
+    registerComponent(upComing);
+
+    var projectsList = new Component('projectsList');
+    projectsList.templateUrl = 'components/projectsList/template.html';
+    projectsList.inputs = [];
+    projectsList.styleNames = ['tabItemouterLayer'];
+    registerComponent(projectsList);
+
+    var allTasks = new Component('allTasks');
+    allTasks.templateUrl = 'components/alltasks/template.html';
+    allTasks.inputs = [];
+    allTasks.styleNames = ['tabItemouterLayer'];
+    registerComponent(allTasks);
 
     // var projectsList = new Component('projectsList');
     // projectsList.templateUrl = 'components/projectsList/template.html';
