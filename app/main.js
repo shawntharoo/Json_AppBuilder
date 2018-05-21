@@ -48,7 +48,7 @@ app.factory('componentFactory', [function () {
     var gridView = new Component("gridView");
     gridView.templateUrl = 'components/grid/template.html';
     gridView.inputs = ['components'];
-    gridView.styleNames = ['tabTitle', 'appTitle', 'appTitle2', 'tabTitleSelected', 'tabListUl', 'tabListLi', 'tabHeaderWrap', 'mainOuterLayout'];
+    gridView.styleNames = [];
     registerComponent(gridView);
 
     var appheader = new Component('appheader');
@@ -60,7 +60,7 @@ app.factory('componentFactory', [function () {
     var tabView = new Component('tabView');
     tabView.templateUrl = 'components/tabs/template.html';
     tabView.inputs = ['tabs'];
-    tabView.styleNames = [];
+    tabView.styleNames = ['tabTitle', 'appTitle', 'appTitle2', 'tabTitleSelected', 'tabListUl', 'tabListLi', 'tabHeaderWrap', 'mainOuterLayout'];
     registerComponent(tabView);
 
     var upComing = new Component('upComing');

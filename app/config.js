@@ -574,13 +574,82 @@ var components = [
                                     }
                                 },
                                 styles: {
-
+                                    tabTitle: function (ctx, comp) {
+                                        return {
+                                            'font-size': '20px',
+                                            color: '#fff',
+                                            'font-weight': 300,
+                                            'margin-left': '10px',
+                                            'margin-top': '30px',
+                                            'display': 'block'
+                                        }
+                                    },
+                                    tabTitleSelected: function (ctx, comp) {
+                                        return {
+                                            'font-weight': '300',
+                                            'margin-left': '10px',
+                                            'color': '#C8C8C8'
+                                        }
+                                    },
+                                    tabListUl: function (ctx, comp) {
+                                        return {
+                                            'list-style': 'none',
+                                            'display': 'flex',
+                                            'justify-content': 'space-evenly',
+                                            'color': '#C8C8C8',
+                                            'font-size': '32px',
+                                            'margin': '0px',
+                                            'padding': '0px'
+                                        }
+                                    },
+                                    tabListLi: function (ctx, comp) {
+                                        return {
+                                            'width': '33.33%',
+                                            'text-align': 'center'
+                                        }
+                                    },
+                                    tabHeaderWrap: function (ctx, comp) {
+                                        return {
+                                            'padding-top': '20px',
+                                            position: 'relative',
+                                            display: 'block',
+                                            'z-index': 1000,
+                                            '-webkit -box-shadow': '1px 1px 3px 0px rgba(0, 0, 0, 0.5)',
+                                            '-moz -box-shadow': '1px 1px 3px 0px rgba(0, 0, 0, 0.5)',
+                                            'box-shadow': '1px 1px 3px 0px rgba(0, 0, 0, 0.5)'
+                                        }
+                                    },
+                                    mainOuterLayout: function (ctx, comp) {
+                                        return {
+                                            overflow: 'hidden'
+                                        }
+                                    }
                                 },
                                 emits: {
-
+                                    onTabSelect: 'onTabSelect',
+                                    initialDataLoad: 'initialDataLoad'
                                 },
                                 listens: [
-
+                                    {
+                                        name: 'onTabSelect',
+                                        execute: function (e, o) {
+                                            var scope = e.currentScope;
+                                            scope.template = o.templateUrl;
+                                            scope.tabTitleSelected = o.title;
+                                            scope.comp = o;
+                                            scope.name = o.name;
+                                        }
+                                    },
+                                    {
+                                        name: 'initialDataLoad',
+                                        execute: function (e, o) {
+                                            var scope = e.currentScope;
+                                            scope.comp = scope.components[0];
+                                            scope.template = scope.components[0].templateUrl;
+                                            scope.tabTitleSelected = scope.components[0].title;
+                                            scope.name = scope.components[0].name;
+                                        }
+                                    }
                                 ]
                             }
                         ]
