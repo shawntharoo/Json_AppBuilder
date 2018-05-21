@@ -11,10 +11,9 @@ angular.module('app').controller('signUpController', ['$scope', '$rootScope', '$
         var coo = userPersistenceService.getCookieData();
         if (coo) {
             console.log("cookie data found");
-            $state.go('mainView');
+            $state.go('gridView');
         }
         $rootScope.registerEventListeners($scope, $scope.component);
-        $scope.components = $rootScope.registerUserComponents($scope.component.data);
     };
     $scope.onAppEnter = function () {
         $rootScope.$broadcast($scope.component.emits.onAppEnter, angular.copy($scope.component));

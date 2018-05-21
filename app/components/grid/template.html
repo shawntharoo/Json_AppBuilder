@@ -1,24 +1,6 @@
-<div class="grid-container" ng-controller="gridViewController" ng-style="component.styles.mainOuterLayout">
-    <div ng-style="component.styles.tabHeaderWrap">
-            <div ng-style="component.styles.appTitle">
-                    <div>
-                        <span>{{component.data.appTitle}}</span>
-                        <span ng-style="component.styles.appTitle2">{{component.data.appTitle2}}</span>
-                    </div>
-                    <div ng-style="component.styles.tabTitleSelected">{{tabTitleSelected}}</div>
-                </div>
-                <ul ng-style="component.styles.tabListUl">
-                    <li ng-repeat="comp in components" ng-click="tabSelect(comp)" ng-style="component.styles.tabListLi" ng-class="{active : comp.name == name}">
-                        <span class="{{comp.icon}}"></span>
-                        <!-- {{component.title}} -->
-                    </li>
-                </ul>
-    </div>    
-    
-        <div>
-            <li  ng-if="components.langth != 0" gridster-item="comp" ng-include="template"></li>
-        </div>
-
-        </li>
-        </ul>
+<div ng-controller="gridViewController">
 </div>
+    <ul gridster="gridOptions">
+        <li gridster-item="component" ng-repeat="component in components" ng-include="component.templateUrl" ng-style="{{component.styles.outerLayout}}">
+        </li>
+    </ul>

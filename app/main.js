@@ -45,29 +45,35 @@ app.factory('componentFactory', [function () {
     signUp.emits = ['onAppEnter', 'onDetailsSubmit']
     registerComponent(signUp);
 
-    var mainView = new Component("mainView");
-    mainView.templateUrl = 'components/main-view/template.html';
-    mainView.inputs = ['tabs', 'appTitle', 'appTitle2'];
-    mainView.styleNames = ['tabTitle', 'appTitle', 'appTitle2', 'tabTitleSelected', 'tabListUl', 'tabListLi', 'tabHeaderWrap', 'mainOuterLayout'];
-    registerComponent(mainView);
+    var gridView = new Component("gridView");
+    gridView.templateUrl = 'components/grid/template.html';
+    gridView.inputs = ['components'];
+    gridView.styleNames = ['tabTitle', 'appTitle', 'appTitle2', 'tabTitleSelected', 'tabListUl', 'tabListLi', 'tabHeaderWrap', 'mainOuterLayout'];
+    registerComponent(gridView);
 
-    var upComing = new Component('upComing');
-    upComing.templateUrl = 'components/upcoming/template.html';
-    upComing.inputs = [];
-    upComing.styleNames = ['tabItemouterLayer', 'dateHeadToday', 'dateWrapper', 'dateHeadDate', 'upcomingItem', 'itemTime', 'itemLeft', 'itemRight', 'itemProject', 'addTaskButton', 'addTaskButtonWrap', 'itemStatus', 'addTaskBtn', 'modalBack'];
-    registerComponent(upComing);
+    var appheader = new Component('appheader');
+    appheader.templateUrl = 'components/header/template.html';
+    appheader.inputs = ['appTitle', 'appTitle2'];
+    appheader.styleNames = ['appTitle', 'appTitle2','tabHeaderWrap'];
+    registerComponent(appheader);
 
-    var projectsList = new Component('projectsList');
-    projectsList.templateUrl = 'components/projectsList/template.html';
-    projectsList.inputs = [];
-    projectsList.styleNames = ['tabItemouterLayer'];
-    registerComponent(projectsList);
+    var tabView = new Component('tabView');
+    tabView.templateUrl = 'components/tabs/template.html';
+    tabView.inputs = [];
+    tabView.styleNames = [];
+    registerComponent(tabView);
 
-    var allTasks = new Component('allTasks');
-    allTasks.templateUrl = 'components/alltasks/template.html';
-    allTasks.inputs = [];
-    allTasks.styleNames = ['tabItemouterLayer'];
-    registerComponent(allTasks);
+    // var projectsList = new Component('projectsList');
+    // projectsList.templateUrl = 'components/projectsList/template.html';
+    // projectsList.inputs = [];
+    // projectsList.styleNames = ['tabItemouterLayer'];
+    // registerComponent(projectsList);
+
+    // var allTasks = new Component('allTasks');
+    // allTasks.templateUrl = 'components/alltasks/template.html';
+    // allTasks.inputs = [];
+    // allTasks.styleNames = ['tabItemouterLayer'];
+    // registerComponent(allTasks);
 
     var modal = new Component("modalpopup");
     modal.templateUrl = 'components/modal/template.html';
