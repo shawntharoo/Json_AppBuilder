@@ -81,18 +81,6 @@ app.factory('componentFactory', [function () {
     allTasks.styleNames = ['tabItemouterLayer'];
     registerComponent(allTasks);
 
-    // var projectsList = new Component('projectsList');
-    // projectsList.templateUrl = 'components/projectsList/template.html';
-    // projectsList.inputs = [];
-    // projectsList.styleNames = ['tabItemouterLayer'];
-    // registerComponent(projectsList);
-
-    // var allTasks = new Component('allTasks');
-    // allTasks.templateUrl = 'components/alltasks/template.html';
-    // allTasks.inputs = [];
-    // allTasks.styleNames = ['tabItemouterLayer'];
-    // registerComponent(allTasks);
-
     var modal = new Component("modalpopup");
     modal.templateUrl = 'components/modal/template.html';
     modal.inputs = [];

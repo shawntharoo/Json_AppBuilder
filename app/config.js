@@ -644,10 +644,10 @@ var components = [
                                         name: 'initialDataLoad',
                                         execute: function (e, o) {
                                             var scope = e.currentScope;
-                                            scope.comp = scope.components[0];
-                                            scope.template = scope.components[0].templateUrl;
-                                            scope.tabTitleSelected = scope.components[0].title;
-                                            scope.name = scope.components[0].name;
+                                            scope.comp = scope.componentList[0];
+                                            scope.template = scope.componentList[0].templateUrl;
+                                            scope.tabTitleSelected = scope.componentList[0].title;
+                                            scope.name = scope.componentList[0].name;
                                         }
                                     }
                                 ]
