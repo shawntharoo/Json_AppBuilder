@@ -310,28 +310,6 @@ var components = [
                                                 url: '/upcoming',
                                                 icon: 'icon-notifications',
                                                 components: [
-
-                                                    {
-                                                        col: 0,
-                                                        row: 2,
-                                                        name: 'upComing',
-                                                        sizeX: 12,
-                                                        sizeY: 6,
-                                                        data: {
-
-                                                        },
-                                                        styles: {
-                                                        },
-                                                        emits: {
-
-                                                        },
-                                                        listens: [
-
-                                                        ]
-                                                    },
-
-
-
                                                 ],
                                                 styles: {
                                                     tabItemouterLayer: function (ctx, comp) {
@@ -482,31 +460,13 @@ var components = [
                                                     }
                                                 ]
 
-                                            }, {
+                                            }, 
+                                            {
                                                 name: 'projectsList',
                                                 title: 'Projects',
                                                 url: '/projectslist',
                                                 icon: 'icon-work',
                                                 components: [
-                                                    {
-                                                        col: 0,
-                                                        row: 0,
-                                                        name: 'projectsList',
-                                                        sizeX: 12,
-                                                        sizeY: 6,
-                                                        data: {
-
-                                                        },
-                                                        styles: {
-
-                                                        },
-                                                        emits: {
-
-                                                        },
-                                                        listens: [
-
-                                                        ]
-                                                    }
                                                 ],
                                                 styles: {
                                                     tabItemouterLayer: function (ctx, comp) {
@@ -530,28 +490,6 @@ var components = [
                                                 url: '/alltasks',
                                                 icon: 'icon-favorite',
                                                 components: [
-
-                                                    {
-                                                        col: 0,
-                                                        row: 0,
-                                                        name: 'allTasks',
-                                                        sizeX: 12,
-                                                        sizeY: 6,
-                                                        data: {
-
-                                                        },
-                                                        styles: {
-                                                        },
-                                                        emits: {
-
-                                                        },
-                                                        listens: [
-
-                                                        ]
-                                                    },
-
-
-
                                                 ],
                                                 styles: {
                                                     tabItemouterLayer: function (ctx, comp) {
