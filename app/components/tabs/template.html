@@ -1,14 +1,16 @@
 <div class="grid-container" ng-controller="tabViewController" ng-style="component.styles.mainOuterLayout">
 <div ng-style="component.styles.tabHeaderWrap">
         <ul ng-style="component.styles.tabListUl">
-            <li ng-repeat="comp in componentList" ng-click="tabSelect(comp)" ng-style="component.styles.tabListLi" ng-class="{active : comp.name == name}">
-                <span class="{{comp.icon}}"></span>
+            <li ng-repeat="tab in tabs" ng-click="tabSelect(tab)" ng-style="component.styles.tabListLi" ng-class="{active : tab.name == name}">
+                <span class="{{tab.icon}}"></span>
             </li>
         </ul>
 </div>    
 
-<div>
-    <li gridster-item="comp" ng-include="template"></li>
-</div>
+
+<ul gridster="gridOptions">
+    <li gridster-item="component" ng-repeat="component in components" ng-include="component.templateUrl" ng-style="{{component.styles.outerLayout}}">
+    </li>
+</ul> 
 
 </div>

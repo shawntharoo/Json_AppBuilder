@@ -11,13 +11,17 @@ angular.module('app').controller('tabViewController', ['$scope', '$rootScope', '
         if(!cookie){ 
             $state.go($scope.component.data.initialState);
         }
-        $scope.componentList = $rootScope.registerUserComponents($scope.component.data.tabs);
+       //  $scope.components = [];
+        $scope.tabs = $scope.component.data.tabs;
+        $scope.selectedTab = $scope.component.data.selectedTab;
+        $scope.tabSelect(  $scope.selectedTab);
         $rootScope.registerEventListeners($scope, $scope.component);
         $rootScope.$broadcast($scope.component.emits.initialDataLoad, $scope.component);
-    }
-    init();
+    };
 
-    $scope.tabSelect = function(component){
-        $rootScope.$broadcast($scope.component.emits.onTabSelect, component);
-    }
+    $scope.tabSelect = function(selectedTab){
+        $scope.components = $rootScope.registerUserComponents(selectedTab.components);
+    };
+
+    init();
 }]);
