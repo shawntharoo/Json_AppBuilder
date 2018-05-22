@@ -1,11 +1,11 @@
 <div class="grid-container" ng-controller="viewHeaderController" ng-style="component.styles.mainOuterLayout">
 <div ng-style="component.styles.dateWrapper">
     <div>
-        <span ng-style="component.styles.dateHeadToday">Today</span>
-        <span ng-style='component.styles.dateHeadDate'>{{todayDate | date:'EEE d MMM' }}</span>
+        <span ng-style="component.styles.dateHeadToday">{{component.data.title}}</span>
+        <span ng-style='component.styles.dateHeadDate'>{{component.data.value | date:'EEE d MMM' }}</span>
     </div>
     <div>
-        <span ng-style="component.styles.addTaskBtn" ng-click="openModal()">Add Task +</span>
+        <span ng-style="component.styles.addTaskBtn" ng-click="openModal()">{{component.data.buttonName}}</span>
     </div>
     {{swipe}}
 

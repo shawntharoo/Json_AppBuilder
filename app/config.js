@@ -315,9 +315,19 @@ var components = [
                                                         row: 2,
                                                         sizeX: 12,
                                                         sizeY: 6,
-                                                        data: {},
+                                                        data: {
+                                                            title : function (ctx, comp) {
+                                                                return "Today"
+                                                            },
+                                                            value : function (ctx, comp) {
+                                                                return new Date();
+                                                            },
+                                                            buttonName : function (ctx, comp) {
+                                                                return "Add Task +"
+                                                            }
+
+                                                        },
                                                         styles: {
-                                                            
                                                             dateHeadToday: function (ctx, comp) {
                                                                 return {
                                                                     color: "#23B584",
