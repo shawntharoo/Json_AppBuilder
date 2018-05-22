@@ -31,7 +31,7 @@ app.factory('componentFactory', [function () {
         return angular.copy(components[name]);
     };
     var nav = new Component("Nav");
-    nav.templateUrl = 'components/nav/template.html';
+    nav.templateUrl = 'components/navigation/template.html';
     nav.inputs = ['views'];
     nav.styleNames = ['outerLayout'];
     registerComponent(nav);
@@ -44,21 +44,27 @@ app.factory('componentFactory', [function () {
     registerComponent(signUp);
 
     var appheader = new Component('appheader');
-    appheader.templateUrl = 'components/header/template.html';
+    appheader.templateUrl = 'components/app-header/template.html';
     appheader.inputs = ['appTitle', 'appTitle2'];
     appheader.styleNames = ['appTitle', 'appTitle2','tabHeaderWrap'];
     registerComponent(appheader);
 
+    var viewheader = new Component('viewheader');
+    viewheader.templateUrl = 'components/view-header/template.html';
+    viewheader.inputs = [];
+    viewheader.styleNames = ['dateHeadToday', 'dateWrapper', 'dateHeadDate','addTaskBtn'];
+    registerComponent(viewheader);
+
     var tabView = new Component('tabView');
-    tabView.templateUrl = 'components/tabs/template.html';
+    tabView.templateUrl = 'components/tab-view/template.html';
     tabView.inputs = ['tabs','selectedTab'];
-    tabView.styleNames = ['tabTitle', 'appTitle', 'appTitle2', 'tabTitleSelected', 'tabListUl', 'tabListLi', 'tabHeaderWrap', 'mainOuterLayout'];
+    tabView.styleNames = ['tabTitle', 'tabTitleSelected', 'tabListUl', 'tabListLi', 'tabHeaderWrap', 'mainOuterLayout'];
     registerComponent(tabView);
 
     var list = new Component('list');
-    list.templateUrl = 'components/list/template.html';
+    list.templateUrl = 'components/list-view/template.html';
     list.inputs = [];
-    list.styleNames = ['tabItemouterLayer', 'dateHeadToday', 'dateWrapper', 'dateHeadDate', 'upcomingItem', 'itemTime', 'itemLeft', 'itemRight', 'itemProject', 'addTaskButton', 'addTaskButtonWrap', 'itemStatus', 'addTaskBtn', 'modalBack'];
+    list.styleNames = [ 'upcomingItem', 'itemTime', 'itemLeft', 'itemRight', 'itemProject', 'itemStatus'];
     registerComponent(list);
 
     var modal = new Component("modalpopup");
@@ -184,7 +190,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                     name: views[v].name,
                     url: views[v].url,
                     controller: 'navController',
-                    templateUrl: 'components/nav/view-template.html',
+                    templateUrl: 'components/navigation/view-template.html',
                     viewIndex: v
                 });
             }

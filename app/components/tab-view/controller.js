@@ -21,6 +21,7 @@ angular.module('app').controller('tabViewController', ['$scope', '$rootScope', '
 
     $scope.tabSelect = function(selectedTab){
         $scope.components = $rootScope.registerUserComponents(selectedTab.components);
+        $scope.tabname = selectedTab.name;
     };
 
     init();

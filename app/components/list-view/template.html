@@ -1,6 +1,6 @@
 <div class="grid-container" ng-controller="listController">
     <div gridster="gridOptions" ng-style="component.styles.tabItemouterLayer" ng-swipe-left="tabSelect(compsforTabs[1])">
-        <div ng-style="component.styles.dateWrapper">
+        <!-- <div ng-style="component.styles.dateWrapper">
             <div>
                 <span ng-style="component.styles.dateHeadToday">Today</span>
                 <span ng-style='component.styles.dateHeadDate'>{{todayDate | date:'EEE d MMM' }}</span>
@@ -10,7 +10,7 @@
             </div>
             {{swipe}}
 
-        </div>
+        </div> -->
         <div ng-style="component.styles.upcomingItem" ng-repeat="task in component.data.tasks" class="upcoming-item">
             <div ng-style="component.styles.itemLeft">
                 <span>{{task.description}}</span>
@@ -24,9 +24,5 @@
                 <span ng-style="component.styles.itemProject">{{task.project}}</span>
             </div>
         </div>
-        <!-- <div ng-style="component.styles.addTaskButtonWrap" ng-click="openModal()">
-            <div ng-style="component.styles.addTaskButton"><span>+</span></div>
-        </div> -->
-        
     </div>
 </div>

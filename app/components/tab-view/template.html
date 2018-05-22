@@ -1,7 +1,7 @@
 <div class="grid-container" ng-controller="tabViewController" ng-style="component.styles.mainOuterLayout">
 <div ng-style="component.styles.tabHeaderWrap">
         <ul ng-style="component.styles.tabListUl">
-            <li ng-repeat="tab in tabs" ng-click="tabSelect(tab)" ng-style="component.styles.tabListLi" ng-class="{active : tab.name == name}">
+            <li ng-repeat="tab in tabs" ng-click="tabSelect(tab)" ng-style="component.styles.tabListLi" ng-class="{active : tab.name == tabname}">
                 <span class="{{tab.icon}}"></span>
             </li>
         </ul>
