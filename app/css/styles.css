@@ -7,7 +7,6 @@ body {
     font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
-    color:white
 }
 
 .gridster {
@@ -17,7 +16,7 @@ body {
 }
 
 .gridster {
-    /* height: 100% !important; */
+    height: 100% !important;
 }
 
 .main-view {
