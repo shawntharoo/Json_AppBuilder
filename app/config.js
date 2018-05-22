@@ -346,6 +346,14 @@ var components = [
 
                                                                 }
                                                             },
+                                                            tabItemouterLayer: function (ctx, comp) {
+                                                                return {
+                                                                    'background-color': '#f7f7f7',
+                                                                    'overflow-y': 'scroll'
+                                                                }
+
+                                                            },
+                                                            
                                                         },
                                                         emits: {
                                                             initialDataLoad: 'initialDataLoad'

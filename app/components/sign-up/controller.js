@@ -1,11 +1,11 @@
 angular.module('app').controller('signUpController', ['$scope', '$rootScope', '$http', 'userPersistenceService', '$state', function ($scope, $rootScope, $http, userPersistenceService, $state) {
     $scope.components = $rootScope.registerUserComponents($scope.component.data);
     $scope.component.cookies = userPersistenceService;
-    $scope.gridOptions = {
-        columns: 12,
-        margins: [0, 0],
-        resizable: { enabled: false }, draggable: { enabled: false }
-    };
+    // $scope.gridOptions = {
+    //     columns: 12,
+    //     margins: [0, 0],
+    //     resizable: { enabled: false }, draggable: { enabled: false }
+    // };
 
     var init = function () {
         var coo = userPersistenceService.getCookieData();

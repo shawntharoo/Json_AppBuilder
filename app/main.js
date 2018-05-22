@@ -52,7 +52,7 @@ app.factory('componentFactory', [function () {
     var viewheader = new Component('viewheader');
     viewheader.templateUrl = 'components/view-header/template.html';
     viewheader.inputs = [];
-    viewheader.styleNames = ['dateHeadToday', 'dateWrapper', 'dateHeadDate','addTaskBtn'];
+    viewheader.styleNames = ['dateHeadToday', 'dateWrapper', 'dateHeadDate','addTaskBtn','tabItemouterLayer'];
     registerComponent(viewheader);
 
     var tabView = new Component('tabView');
@@ -64,7 +64,7 @@ app.factory('componentFactory', [function () {
     var list = new Component('list');
     list.templateUrl = 'components/list-view/template.html';
     list.inputs = [];
-    list.styleNames = [ 'upcomingItem', 'itemTime', 'itemLeft', 'itemRight', 'itemProject', 'itemStatus'];
+    list.styleNames = [ 'upcomingItem', 'itemTime', 'itemLeft', 'itemRight', 'itemProject', 'itemStatus','tabItemouterLayer'];
     registerComponent(list);
 
     var modal = new Component("modalpopup");
