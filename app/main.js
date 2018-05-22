@@ -52,6 +52,7 @@ app.factory('componentFactory', [function () {
     var viewheader = new Component('viewheader');
     viewheader.templateUrl = 'components/view-header/template.html';
     viewheader.inputs = [];
+    viewheader.inputs = ['title', 'value', 'buttonName'];
     viewheader.styleNames = ['dateHeadToday', 'dateWrapper', 'dateHeadDate','addTaskBtn','tabItemouterLayer'];
     registerComponent(viewheader);
 
