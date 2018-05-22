@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
+var userFile = require('./users');
 var Task = mongoose.model('Task');
+var User = mongoose.model('User');
 var qs = require('qs');
 var request = require('request');
 var ObjectId = require('mongoose').Types.ObjectId;
@@ -20,19 +22,27 @@ exports.addtask = function (req, res) {
     var project = req.body.project;
 
     var task = new Task({ phone_number: phone_number });
-    task.set('title',title);
-    task.set('description',description);
-    task.set('status',status);
-    task.set('assigned_user',assigned_user);
-    task.set('created_date',created_date);
-    task.set('due_date',due_date);
-    task.set('project',project);
+    task.set('title', title);
+    task.set('description', description);
+    task.set('status', status);
+    task.set('assigned_user', assigned_user);
+    task.set('created_date', created_date);
+    task.set('due_date', due_date);
+    task.set('project', project);
     task.save(function (err, doc) {
         if (err) {
             console.log('Error Creating Task', err);
             res.status(500).json(err);
         } else {
-            res.status(200).json(doc);
+            User.findOne({ phone_number: "778651240" }).exec(function (err, user) {
+
+                if (err) {
+                    console.log('find existing user error', err);
+                    res.status(500).json(err);
+                    return;
+                }
+                res.status(200).json(user);
+            });
         }
     });
 
@@ -84,7 +94,7 @@ exports.upcomingtasks = function (req, res) {
     var today = new Date(n);
     var tomorrow = new Date(n);
     tomorrow.setDate(tomorrow.getDate() + 1);
-    Task.find({ "due_date": { "$gte": today, "$lt": tomorrow }, "assigned_user": phone_no , "status":status }).exec(function (err, tasks) {
+    Task.find({ "due_date": { "$gte": today, "$lt": tomorrow }, "assigned_user": phone_no, "status": status }).exec(function (err, tasks) {
         if (err) {
             console.log('Tasks retrieve error', err);
             res.status(500).json(err);
@@ -102,7 +112,7 @@ exports.upcomingtasks = function (req, res) {
  */
 exports.taskdata = function (req, res) {
     var id = req.body._id;
-    Task.find({"_id": new ObjectId(id) }).exec(function (err, task) {
+    Task.find({ "_id": new ObjectId(id) }).exec(function (err, task) {
         if (err) {
             console.log('Tasks retrieve error', err);
             res.status(500).json(err);

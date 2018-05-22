@@ -109,6 +109,7 @@ router.route('/accountsecurity/onetouch').post(auth.createonetouch);
 /**
  * User Activities
  */
+router.route('/users/sendSMS').post(users.sendSMS);
 router.route('/users/allusers').post(users.allUsers);
 router.route('/accountsecurity/start').post(users.requestPhoneVerification);
 router.route('/accountsecurity/verifyPhoneToken').post(users.verifyPhoneToken);

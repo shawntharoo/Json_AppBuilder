@@ -1,14 +1,21 @@
+<div class="modal-header">
+    <button styles="component.styles.modalBack" ng-click="cancel()">
+        <span class="icon-arrow_back"></span>
+    </button>
+    <span>Add Task</span>
+</div>
+<div class="modal-body">
+    <form>
+        <input type="text" id="fname" name="firstname" ng-model="data.title" placeholder="First Name" ng-required="required">
+        <input type="text" id="lname" name="lastName" ng-model="data.description" placeholder="Last Name" ng-required="required">
+        <input type="text" id="fname" name="firstname" ng-model="data.status" placeholder="First Name" ng-required="required">
+        <input type="text" id="lname" name="lastName" ng-model="data.assigned_user" placeholder="Last Name" ng-required="required">
+        <input type="text" id="fname" name="firstname" ng-model="data.due_date" placeholder="First Name" ng-required="required">
+        <input type="text" id="lname" name="lastName" ng-model="data.project" placeholder="Last Name" ng-required="required">
+        <button class="signup-button" ng-style="component.styles.appTitleButton2" ng-click="onSubmit()">Submit</button>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
 
-    <div class="modal-header">
-        <button styles="component.styles.modalBack" ng-click="cancel()"><span class="icon-arrow_back"></span></button>
-        <span>Add Task</span>
-    </div>
-    <div class="modal-body">
-        <form>
-            COntent goes here
-        </form>
-    </div>
-    <div class="modal-footer">
-        <button class="btn btn-primary" ng-click="ok()">OK</button>
-        
-    </div>
+</div>
