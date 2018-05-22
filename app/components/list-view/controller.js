@@ -1,9 +1,10 @@
 angular.module('app').controller('listController', ['$scope', '$rootScope', 'userPersistenceService', '$uibModal', function ($scope, $rootScope, userPersistenceService, $modal) {
-    // $scope.gridOptions = {
-    //     columns: 12,
-    //     margins: [0, 0],
-    //     resizable: { enabled: false }, draggable: { enabled: false }
-    // };
+    $scope.gridOptions = {
+        columns: 12,
+        margins: [0, 0],
+        mobileBreakPoint: 930,
+        resizable: { enabled: false }, draggable: { enabled: false }
+    };
 
     $scope.openModal = function () {
         var x = $rootScope.openModal('');

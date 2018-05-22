@@ -7,6 +7,7 @@ angular.module('app').controller('navController', ['$scope', '$rootScope', '$sta
     $scope.gridOptions = {
         columns: 12,
         margins: [0, 0],
+        mobileBreakPoint: 930,
         resizable: { enabled: false }, draggable: { enabled: false }
     };
 
