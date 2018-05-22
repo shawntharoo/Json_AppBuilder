@@ -12,8 +12,8 @@ angular.module('app').controller('tabViewController', ['$scope', '$rootScope', '
             $state.go($scope.component.data.initialState);
         }
         $scope.componentList = $rootScope.registerUserComponents($scope.component.data.tabs);
-        $rootScope.$broadcast($scope.component.emits.initialDataLoad, $scope.component);
         $rootScope.registerEventListeners($scope, $scope.component);
+        $rootScope.$broadcast($scope.component.emits.initialDataLoad, $scope.component);
     }
     init();
 
