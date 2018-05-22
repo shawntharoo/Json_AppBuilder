@@ -310,6 +310,58 @@ var components = [
                                                 icon: 'icon-notifications',
                                                 components: [
                                                     {
+                                                        name: 'viewheader',
+                                                        col: 0,
+                                                        row: 2,
+                                                        sizeX: 12,
+                                                        sizeY: 6,
+                                                        data: {},
+                                                        styles: {
+                                                            
+                                                            dateHeadToday: function (ctx, comp) {
+                                                                return {
+                                                                    color: "#23B584",
+                                                                    'font-weight': '700'
+                                                                }
+                                                            },
+                                                            dateWrapper: function (ctx, comp) {
+                                                                return {
+                                                                    width: '100%',
+                                                                    width: '95%',
+                                                                    margin: '26px auto',
+                                                                    display: 'flex',
+                                                                    'justify-content': 'space-between'
+                                                                }
+                                                            },
+                                                            dateHeadDate: function (ctx, comp) {
+                                                                return {
+                                                                    color: '#7B7979',
+                                                                    'margin-left': '5px'
+                                                                }
+                                                            },
+                                                            addTaskBtn: function (ctx, comp) {
+                                                                return {
+                                                                    'font-weight': 'bold',
+                                                                    color: '#FB4372'
+
+                                                                }
+                                                            },
+                                                        },
+                                                        emits: {
+                                                            initialDataLoad: 'initialDataLoad'
+                                                        },
+                                                        listens: [
+                                                            {
+                                                                name: 'initialDataLoad',
+                                                                execute: function (e, o) {
+                                                                    scope = e.currentScope;
+                                                                    scope.todayDate = new Date();
+                                                                }
+                                                            }
+                                                        ]
+
+                                                    },
+                                                    {
                                                         name: 'list',
                                                         col: 0,
                                                         row: 1,
@@ -465,7 +517,7 @@ var components = [
                                                             }
                                                         ]
 
-                                                    }
+                                                    },
                                                 ],
                                                 styles: {
 

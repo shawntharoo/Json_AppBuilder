@@ -4,8 +4,7 @@ angular.module('app').controller('listController', ['$scope', '$rootScope', 'use
         margins: [0, 0],
         resizable: { enabled: false }, draggable: { enabled: false }
     };
-    $scope.tasks = [];
-    $scope.result;
+
     $scope.openModal = function () {
         var x = $rootScope.openModal('');
     };
