@@ -112,3 +112,24 @@ ul .active {
     -o-webkit: box shadow 0;
     box-shadow: 0;
 }
+
+.modal-inputFields {
+    background-color: #ece9e9;
+    height: 35px;
+    width: 300px;
+    font-size: 16px;
+    font-weight: 300;
+    padding: 10px;
+    border: none;
+    margin-top: 10px;
+    outline-color: #23B584;
+}
+
+.modal-button {
+    width: 93%;
+    font-size: 16px;
+    border: 2px solid #23B584;
+    padding: 12px 0px;
+    margin-top: 8%;
+    outline: none;
+}
