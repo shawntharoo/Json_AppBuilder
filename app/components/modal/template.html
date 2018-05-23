@@ -1,20 +1,14 @@
 <div class="modal-header">
-    <button styles="component.styles.modalBack" ng-click="cancel()">
+    <button styles="component.data.modalBack" ng-click="cancel()">
         <span class="icon-arrow_back"></span>
     </button>
-    <span>Add Task</span>
+    <span>{{component.data.modalTitle}}</span>
 </div>
 <div class="modal-body">
-    <form>
-        <input type="text" id="title" name="title" ng-model="data.title" placeholder="Title" ng-required="required" 
-        class="modal-inputFields">
-        <input type="text" id="description" name="description" ng-model="data.description" placeholder="Description" ng-required="required" class="modal-inputFields">
-        <input type="text" id="status" name="status" ng-model="data.status" placeholder="Status" ng-required="required" class="modal-inputFields">
-        <input type="text" id="assigned_user" name="assigned_user" ng-model="data.assigned_user" placeholder="Assigned User" ng-required="required" class="modal-inputFields">
-        <input type="text" id="due_date" name="due_date" ng-model="data.due_date" placeholder="Due Date" ng-required="required" class="modal-inputFields">
-        <input type="text" id="project" name="project" ng-model="data.project" placeholder="Project" ng-required="required" class="modal-inputFields">
-        <button ng-click="onSubmit()" class="modal-button">Submit</button>
-    </form>
+    <ul gridster="gridOptions">
+        <li gridster-item="component" ng-repeat="component in components" ng-include="component.templateUrl">
+        </li>
+    </ul>
 </div>
 <div class="modal-footer">
     <button class="btn btn-primary" ng-click="ok()">OK</button>

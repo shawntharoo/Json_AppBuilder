@@ -51,9 +51,8 @@ app.factory('componentFactory', [function () {
 
     var viewheader = new Component('viewheader');
     viewheader.templateUrl = 'components/view-header/template.html';
-    viewheader.inputs = [];
-    viewheader.inputs = ['title', 'value', 'buttonName'];
-    viewheader.styleNames = ['dateHeadToday', 'dateWrapper', 'dateHeadDate','addTaskBtn','tabItemouterLayer'];
+    viewheader.inputs = ['title', 'value', 'buttonName', 'fieldNames', 'modalTitle', 'modal_components'];
+    viewheader.styleNames = ['dateHeadToday', 'dateWrapper', 'dateHeadDate','addTaskBtn','tabItemouterLayer','modal_inputFields','modal_button'];
     registerComponent(viewheader);
 
     var tabView = new Component('tabView');
@@ -73,6 +72,12 @@ app.factory('componentFactory', [function () {
     modal.inputs = [];
     modal.styleNames = [];
     registerComponent(modal);
+
+    var form = new Component("formView");
+    form.templateUrl = 'components/form-view/template.html';
+    form.inputs = ['title', 'fieldNames','buttonName'];
+    form.styleNames = ['inputFields', 'button'];
+    registerComponent(form);
 
     return {
         registerComponent: registerComponent,

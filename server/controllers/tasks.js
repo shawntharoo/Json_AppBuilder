@@ -12,14 +12,14 @@ var ObjectId = require('mongoose').Types.ObjectId;
  */
 exports.addtask = function (req, res) {
 
-    var phone_number = req.body.phone_number;
-    var title = req.body.title;
-    var description = req.body.description;
-    var status = req.body.status;
-    var assigned_user = req.body.assigned_user;
+    var phone_number = req.body.mobilePhone;
+    var title = req.body.data[0].model;
+    var description = req.body.data[1].model;
+    var status = req.body.data[2].model;
+    var assigned_user = req.body.data[3].model;
     var created_date = new Date();
-    var due_date = req.body.due_date;
-    var project = req.body.project;
+    var due_date = req.body.data[4].model;
+    var project = req.body.data[5].model;
 
     var task = new Task({ phone_number: phone_number });
     task.set('title', title);

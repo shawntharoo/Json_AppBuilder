@@ -316,13 +316,131 @@ var components = [
                                                         sizeX: 12,
                                                         sizeY: 6,
                                                         data: {
-                                                            title : function (ctx, comp) {
+                                                            modal_components: function (ctx, comp) {
+                                                                return [
+                                                                    {
+                                                                        col: 0,
+                                                                        row: 0,
+                                                                        name: 'formView',
+                                                                        sizeX: 12,
+                                                                        sizeY: 6,
+                                                                        data: {
+                                                                            title: function (ctx, comp) {
+                                                                                return "Add Task"
+                                                                            },
+                                                                            buttonName: function (ctx, comp) {
+                                                                                return "Submit"
+                                                                            },
+                                                                            fieldNames: function (ctx, comp) {
+                                                                                return [
+                                                                                    {
+                                                                                        "model": "title",
+                                                                                        "placeholder": "Title"
+                                                                                    },
+                                                                                    {
+                                                                                        "model": "description",
+                                                                                        "placeholder": "Description"
+                                                                                    },
+                                                                                    {
+                                                                                        "model": "status",
+                                                                                        "placeholder": "Status"
+                                                                                    },
+                                                                                    {
+                                                                                        "model": "assigned_user",
+                                                                                        "placeholder": "Assigned User"
+                                                                                    },
+                                                                                    {
+                                                                                        "model": "due_date",
+                                                                                        "placeholder": "Due Date"
+                                                                                    },
+                                                                                    {
+                                                                                        "model": "project",
+                                                                                        "placeholder": "Project"
+                                                                                    }
+                                                                                ]
+                                                                            }
+                                                                        },
+                                                                        styles: {
+                                                                            inputFields: function (ctx, comp) {
+                                                                                return {
+                                                                                    'background-color': '#ece9e9',
+                                                                                    height: '35px',
+                                                                                    width: '300px',
+                                                                                    'font-size': '16px',
+                                                                                    'font-weight': '300',
+                                                                                    padding: '10px',
+                                                                                    border: 'none',
+                                                                                    'margin-top': '10px',
+                                                                                    'outline-color': '#23B584'
+                                                                                }
+                                                                            },
+                                                                            button: function (ctx, comp) {
+                                                                                return {
+                                                                                    width: '93%',
+                                                                                    'font-size': '16px',
+                                                                                    border: '2px solid #23B584',
+                                                                                    padding: '12px 0px',
+                                                                                    'margin-top': '8%',
+                                                                                    outline: 'none'
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        emits: {
+                                                                            formSubmit: 'formSubmit'
+                                                                        },
+                                                                        listens: [
+                                                                            {
+                                                                                name: 'formSubmit',
+                                                                                execute: function (e, o) {
+                                                                                    scope = e.currentScope;
+                                                                                    o.ajax.post('/api/task/addTask', o.formData).then(
+                                                                                        function successCallback(response) {
+                                                                                            if (response.data) {
+                                                                                                var smsData = {
+                                                                                                    phoneNumber: '94778651240',
+                                                                                                    message: 'a task assigned to you'
+                                                                                                }
+                                                                                                o.ajax.post('/api/users/sendSMS', smsData).then(
+                                                                                                    function successCallback(response) {
+                                                                                                        console.log(response)
+                                                                                                    },
+                                                                                                    function errorCallback(err) {
+                                                                                                        console.log(err)
+                                                                                                    }
+                                                                                                )
+                                                                                            } else {
+                                                                                                var smsData = {
+                                                                                                    phoneNumber: '94778651240',
+                                                                                                    message: 'download the todo app'
+                                                                                                }
+                                                                                                o.ajax.post('/api/users/sendSMS', smsData).then(
+                                                                                                    function successCallback(response) {
+                                                                                                        console.log(response)
+                                                                                                    },
+                                                                                                    function errorCallback(err) {
+                                                                                                        console.log(err)
+                                                                                                    }
+                                                                                                )
+                                                                                            }
+                                                                                        },
+                                                                                        function errorCallback(err) {
+                                                                                            console.log(err)
+                                                                                        }
+                
+                                                                                    )
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            },
+                                                            title: function (ctx, comp) {
                                                                 return "Today"
                                                             },
-                                                            value : function (ctx, comp) {
+                                                            value: function (ctx, comp) {
                                                                 return new Date();
                                                             },
-                                                            buttonName : function (ctx, comp) {
+                                                            buttonName: function (ctx, comp) {
                                                                 return "Add Task +"
                                                             }
 
@@ -362,11 +480,12 @@ var components = [
                                                                     'overflow-y': 'scroll'
                                                                 }
 
-                                                            },
-                                                            
+                                                            }
+
                                                         },
                                                         emits: {
-                                                            initialDataLoad: 'initialDataLoad'
+                                                            initialDataLoad: 'initialDataLoad',
+                                                            modalsubmit: 'modalsubmit'
                                                         },
                                                         listens: [
                                                             {
@@ -377,7 +496,6 @@ var components = [
                                                                 }
                                                             }
                                                         ]
-
                                                     },
                                                     {
                                                         name: 'list',
