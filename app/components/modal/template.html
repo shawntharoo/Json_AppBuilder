@@ -6,13 +6,22 @@
 </div>
 <div class="modal-body">
     <form>
-        <input type="text" id="fname" name="firstname" ng-model="data.title" placeholder="First Name" ng-required="required">
-        <input type="text" id="lname" name="lastName" ng-model="data.description" placeholder="Last Name" ng-required="required">
-        <input type="text" id="fname" name="firstname" ng-model="data.status" placeholder="First Name" ng-required="required">
-        <input type="text" id="lname" name="lastName" ng-model="data.assigned_user" placeholder="Last Name" ng-required="required">
-        <input type="text" id="fname" name="firstname" ng-model="data.due_date" placeholder="First Name" ng-required="required">
-        <input type="text" id="lname" name="lastName" ng-model="data.project" placeholder="Last Name" ng-required="required">
-        <button class="signup-button" ng-style="component.styles.appTitleButton2" ng-click="onSubmit()">Submit</button>
+        <input type="text" id="title" name="title" ng-model="data.title" placeholder="Title" ng-required="required" 
+        style="background-color: #C8C8C8;
+        height: 45px;
+        width: 60px;
+        font-size: 16px;
+        font-weight: 300;
+        padding: 10px;
+        border: none;
+        margin-top: 10px;
+        outline-color: #23B584;">
+        <input type="text" id="description" name="description" ng-model="data.description" placeholder="Description" ng-required="required">
+        <input type="text" id="status" name="status" ng-model="data.status" placeholder="Status" ng-required="required">
+        <input type="text" id="assigned_user" name="assigned_user" ng-model="data.assigned_user" placeholder="Assigned User" ng-required="required">
+        <input type="text" id="due_date" name="due_date" ng-model="data.due_date" placeholder="Due Date" ng-required="required">
+        <input type="text" id="project" name="project" ng-model="data.project" placeholder="Project" ng-required="required">
+        <button class="signup-button" ng-click="onSubmit()">Submit</button>
     </form>
 </div>
 <div class="modal-footer">

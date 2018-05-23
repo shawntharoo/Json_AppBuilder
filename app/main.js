@@ -165,7 +165,7 @@ app.controller('mainController', ['$scope', 'componentFactory', '$rootScope', '$
                     return modalInstance;
                 },
                 data: function () {
-                    return 'result';
+                    return data;
                 }
             }
         });

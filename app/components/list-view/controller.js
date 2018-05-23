@@ -7,7 +7,7 @@ angular.module('app').controller('listController', ['$scope', '$rootScope', 'use
     };
 
     $scope.openModal = function () {
-        var x = $rootScope.openModal('');
+        var x = $rootScope.openModal(data);
     };
 
     var init = function () {
