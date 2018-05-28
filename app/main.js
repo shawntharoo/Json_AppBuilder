@@ -51,7 +51,7 @@ app.factory('componentFactory', [function () {
 
     var viewheader = new Component('viewheader');
     viewheader.templateUrl = 'components/view-header/template.html';
-    viewheader.inputs = ['title', 'value', 'buttonName', 'fieldNames', 'modalTitle', 'modal_components'];
+    viewheader.inputs = ['title', 'value', 'buttonName', 'fieldNames', 'modalTitle', 'modal_components', 'modal_title'];
     viewheader.styleNames = ['dateHeadToday', 'dateWrapper', 'dateHeadDate','addTaskBtn','tabItemouterLayer','modal_inputFields','modal_button'];
     registerComponent(viewheader);
 
