@@ -443,11 +443,7 @@ var components = [
                                                             buttonName: function (ctx, comp) {
                                                                 return "Add Task +"
                                                             },
-<<<<<<< HEAD
-                                                            modalTitle: function(ctx,comp){
-=======
                                                             modal_title: function (ctx, comp) {
->>>>>>> 429321daf71b376e0fe45797d18149addfd41dcf
                                                                 return "Add Task"
                                                             }
 
