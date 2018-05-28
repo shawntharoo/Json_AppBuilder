@@ -5,7 +5,6 @@ angular.module('app').controller('FormViewCtrl', function ($rootScope, $scope, u
         $scope.phone_number = coo;
     }
     $rootScope.registerEventListeners($scope, $scope.component);
-
     $scope.onSubmit = function (event) {
         console.log(this);
         $scope.component.formData = {

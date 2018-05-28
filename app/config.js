@@ -334,27 +334,27 @@ var components = [
                                                                             fieldNames: function (ctx, comp) {
                                                                                 return [
                                                                                     {
-                                                                                        "model": "title",
+                                                                                        "model": "",
                                                                                         "placeholder": "Title"
                                                                                     },
                                                                                     {
-                                                                                        "model": "description",
+                                                                                        "model": "",
                                                                                         "placeholder": "Description"
                                                                                     },
                                                                                     {
-                                                                                        "model": "status",
+                                                                                        "model": "",
                                                                                         "placeholder": "Status"
                                                                                     },
                                                                                     {
-                                                                                        "model": "assigned_user",
+                                                                                        "model": "",
                                                                                         "placeholder": "Assigned User"
                                                                                     },
                                                                                     {
-                                                                                        "model": "due_date",
+                                                                                        "model": "",
                                                                                         "placeholder": "Due Date"
                                                                                     },
                                                                                     {
-                                                                                        "model": "project",
+                                                                                        "model": "",
                                                                                         "placeholder": "Project"
                                                                                     }
                                                                                 ]
