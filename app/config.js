@@ -341,10 +341,10 @@ var components = [
                                                                                         "model": "",
                                                                                         "placeholder": "Description"
                                                                                     },
-                                                                                    {
-                                                                                        "model": "",
-                                                                                        "placeholder": "Status"
-                                                                                    },
+                                                                                    // {
+                                                                                    //     "model": "",
+                                                                                    //     "placeholder": "Status"
+                                                                                    // },
                                                                                     {
                                                                                         "model": "",
                                                                                         "placeholder": "Assigned User"
@@ -365,7 +365,7 @@ var components = [
                                                                                 return {
                                                                                     'background-color': '#ece9e9',
                                                                                     height: '35px',
-                                                                                    width: '300px',
+                                                                                    width: '100%',
                                                                                     'font-size': '16px',
                                                                                     'font-weight': '300',
                                                                                     padding: '10px',
@@ -442,6 +442,9 @@ var components = [
                                                             },
                                                             buttonName: function (ctx, comp) {
                                                                 return "Add Task +"
+                                                            },
+                                                            modalTitle: function(ctx,comp){
+                                                                return "Add Task"
                                                             }
 
                                                         },

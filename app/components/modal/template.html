@@ -2,11 +2,11 @@
     <button styles="component.data.modalBack" ng-click="cancel()">
         <span class="icon-arrow_back"></span>
     </button>
-    <span>{{component.data.modalTitle}}</span>
+    <span>Add Task</span>
 </div>
 <div class="modal-body">
-    <ul gridster="gridOptions">
-        <li gridster-item="component" ng-repeat="component in components" ng-include="component.templateUrl">
+    <ul gridster="gridOptions"  id="modalComponent">
+        <li gridster-item="component" ng-repeat="component in components" ng-include="component.templateUrl" class="modal--component">
         </li>
     </ul>
 </div>

@@ -50,7 +50,6 @@ body {
     background: #23B584;
     transition: all cubic-bezier(0.0, 0.0, 0.2, 1) 0.3s;
     ;
-
 }
 
 .signup-button span {
@@ -97,13 +96,13 @@ ul .active {
     overflow: hidden;
 }
 
-.model-dialog {
+.modal-dialog {
     margin: 0;
     width: 100%;
     height: 100%;
 }
 
-.model-content {
+.modal-content {
     border: none;
     border-radius: 0;
     -webkit-webkit: box shadow 0;
@@ -111,4 +110,30 @@ ul .active {
     -ms-webkit: box shadow 0;
     -o-webkit: box shadow 0;
     box-shadow: 0;
+    background-color: #F7F7F7;
+}
+
+.modal-header {
+    font-size: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    position:relative;
+    z-index: 1000;
+    background-color: #ffffff;
+}
+
+.modal-body {
+    padding: 0;
+}
+
+#modalComponent {
+    background-color: #F7F7F7;
+}
+.modal--component{
+    margin: 10px !important;
+    padding: 10px;
+    text-align: center;
+    background-color: #fff;
+    display:block !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
 }
