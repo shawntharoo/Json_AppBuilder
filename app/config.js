@@ -400,14 +400,14 @@ var components = [
                                                                                                     phoneNumber: '94778651240',
                                                                                                     message: 'a task assigned to you'
                                                                                                 }
-                                                                                                o.ajax.post('/api/users/sendSMS', smsData).then(
-                                                                                                    function successCallback(response) {
-                                                                                                        console.log(response)
-                                                                                                    },
-                                                                                                    function errorCallback(err) {
-                                                                                                        console.log(err)
-                                                                                                    }
-                                                                                                )
+                                                                                                // o.ajax.post('/api/users/sendSMS', smsData).then(
+                                                                                                //     function successCallback(response) {
+                                                                                                //         console.log(response)
+                                                                                                //     },
+                                                                                                //     function errorCallback(err) {
+                                                                                                //         console.log(err)
+                                                                                                //     }
+                                                                                                // )
                                                                                             } else {
                                                                                                 var smsData = {
                                                                                                     phoneNumber: '94778651240',
@@ -442,6 +442,9 @@ var components = [
                                                             },
                                                             buttonName: function (ctx, comp) {
                                                                 return "Add Task +"
+                                                            },
+                                                            modal_title: function (ctx, comp) {
+                                                                return "Add Task"
                                                             }
 
                                                         },
