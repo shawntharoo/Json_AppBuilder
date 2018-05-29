@@ -38,7 +38,7 @@ app.factory('componentFactory', [function () {
 
     var signUp = new Component("SignUp");
     signUp.templateUrl = 'components/sign-up/template.html';
-    signUp.inputs = ['appTitle', 'appTitleLogo', 'appTagLine', 'appButtonTitle', 'appTagLine2', 'appButton2Title', 'errorMsg', 'xc', 'showVeriForm', 'appEntry', 'verifcationCode', 'verificationBtnTitle'];
+    signUp.inputs = ['appTitle', 'appTitleLogo', 'appTagLine', 'appButtonTitle', 'appTagLine2', 'appButton2Title', 'errorMsg', 'xc', 'showVeriForm', 'appEntry', 'verifcationCode', 'verificationBtnTitle','countryCode'];
     signUp.styleNames = ['appTitleStyle', 'appTitleLogo1', 'appTitleLogo', 'appTagLine', 'appTitleButton', 'inputField', 'appTagLine2', 'appTitleButton2', 'inputFieldCC', 'inputFieldMN', 'wrapperMobile', 'errorMsg'];
     signUp.emits = ['onAppEnter', 'onDetailsSubmit']
     registerComponent(signUp);
@@ -69,7 +69,7 @@ app.factory('componentFactory', [function () {
 
     var modal = new Component("modalpopup");
     modal.templateUrl = 'components/modal/template.html';
-    modal.inputs = [];
+    modal.inputs = ['ok'];
     modal.styleNames = [];
     registerComponent(modal);
 
@@ -178,7 +178,9 @@ app.controller('mainController', ['$scope', 'componentFactory', '$rootScope', '$
             return modalInstance;
         }, function () {
         });
+        
     };
+    
 
     var init = function () {
         $scope.components = $rootScope.registerUserComponents(components);

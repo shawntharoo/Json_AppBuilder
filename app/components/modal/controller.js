@@ -1,4 +1,4 @@
-angular.module('app').controller('ModalInstanceCtrl',function ($rootScope, $scope, $http, $uibModalInstance, modalInstance, userPersistenceService, data, $parse) {
+angular.module('app').controller('ModalInstanceCtrl',function ($rootScope, $scope, $http, $uibModalInstance, modalInstance, userPersistenceService, data, $parse,$state) {
     $scope.components = $rootScope.registerUserComponents(data.modal_components);
     $scope.gridOptions = {
         columns: 12,
@@ -7,8 +7,9 @@ angular.module('app').controller('ModalInstanceCtrl',function ($rootScope, $scop
         resizable: { enabled: false }, draggable: { enabled: false }
     };
 
-    $scope.ok = function () {
+    $scope.components.ok = function () {
         $uibModalInstance.close();
+        $state.go('gridView');
     };
 
     $scope.cancel = function () {
