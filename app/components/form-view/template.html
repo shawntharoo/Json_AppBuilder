@@ -4,7 +4,7 @@
             placeholder="{{field.placeholder}}" ng-required="required" ng-style="component.styles.inputFields" value="field.model">
         
 
-            <select ng-model="select.model" ng-repeat="select in component.data.fields.optionFields" ng-options="opt for opt in select.options">
+            <select ng-model="select.model" ng-repeat="select in component.data.fields.optionFields" ng-options="opt for opt in select.options" ng-style="component.styles.optionFields">
             </select>
 
         <button ng-click="onSubmit(this)" ng-style="component.styles.button">{{component.data.buttonName}}</button>

@@ -34,7 +34,7 @@ exports.addtask = function (req, res) {
             console.log('Error Creating Task', err);
             res.status(500).json(err);
         } else {
-            User.findOne({ phone_number: phone_number }).exec(function (err, user) {
+            User.findOne({ phone_number: assigned_user }).exec(function (err, user) {
 
                 if (err) {
                     console.log('find existing user error', err);

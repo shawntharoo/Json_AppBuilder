@@ -360,9 +360,9 @@ var components = [
                                                                                     ],
                                                                                     "optionFields": [
                                                                                         {
-                                                                                            "model": "open",
+                                                                                            "model": "pending",
                                                                                             "options": [
-                                                                                                "open",
+            
                                                                                                 "pending",
                                                                                                 "close"
                                                                                             ]
@@ -405,6 +405,19 @@ var components = [
                                                                                     border: 'none',
                                                                                     'box-shadow': '0px 2px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)'
                                                                                 }
+                                                                            },
+                                                                            optionFields: function(ctx,comp){
+                                                                                return {
+                                                                                    'background-color': '#ece9e9',
+                            
+                                                                                    width: '100%',
+                                                                                    'font-size': '16px',
+                                                                                    'font-weight': '300',
+                                                                                    padding: '10px',
+                                                                                    border: 'none',
+                                                                                    'margin-top': '10px',
+                                                                                    'outline-color': '#23B584'
+                                                                                }
                                                                             }
                                                                         },
                                                                         emits: {
@@ -423,7 +436,7 @@ var components = [
                                                                                             console.log(response.data);
                                                                                             if (response.data) {
                                                                                                 var smsData = {
-                                                                                                    phoneNumber: '94778651240',
+                                                                                                    phoneNumber: o.formData.data.inputFields[2].model,
                                                                                                     message: 'a task assigned to you'
                                                                                                 }
                                                                                                 // o.ajax.post('/api/users/sendSMS', smsData).then(
@@ -436,8 +449,8 @@ var components = [
                                                                                                 // )
                                                                                             } else {
                                                                                                 var smsData = {
-                                                                                                    phoneNumber: '94778651240',
-                                                                                                    message: 'download the todo app'
+                                                                                                    phoneNumber: o.formData.data.inputFields[2].model,
+                                                                                                    message: 'A task has been assigned to you on Todos. Download the Todos app to see your tasks. http://todos.com'
                                                                                                 }
                                                                                                 o.ajax.post('/api/users/sendSMS', smsData).then(
                                                                                                     function successCallback(response) {
