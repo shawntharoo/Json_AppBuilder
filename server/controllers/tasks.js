@@ -12,27 +12,18 @@ var ObjectId = require('mongoose').Types.ObjectId;
  */
 exports.addtask = function (req, res) {
     //console.log(req.body);
-    // var phone_number = req.body.mobilePhone;
-    // var title = req.body.data.inputFields[0].model;
-    // var description = req.body.data.inputFields[1].model;
-    // //var status = req.body.data.optionFields[0].model;
-    // var assigned_user = req.body.data.inputFields[2].model;
-    // var created_date = new Date();
-    // var due_date = req.body.data.inputFields[3].model;
-    // var project = req.body.data.inputFields[4].model;
-
     var phone_number = req.body.mobilePhone;
-    var title = req.body.data[0].model;
-    var description = req.body.data[1].model;
-    //var status = req.body.data.optionFields[0].model;
-    var assigned_user = req.body.data[2].model;
+    var title = req.body.data.inputFields[0].model;
+    var description = req.body.data.inputFields[1].model;
+    var status = req.body.data.optionFields[0].model;
+    var assigned_user = req.body.data.inputFields[2].model;
     var created_date = new Date();
-    var due_date = req.body.data[3].model;
-    var project = req.body.data[4].model;
+    var due_date = req.body.data.inputFields[3].model;
+    var project = req.body.data.inputFields[4].model;
     var task = new Task({ phone_number: phone_number });
     task.set('title', title);
     task.set('description', description);
-    task.set('status', 'pending');
+    task.set('status', status);
     task.set('assigned_user', assigned_user);
     task.set('created_date', created_date);
     task.set('due_date', due_date);
