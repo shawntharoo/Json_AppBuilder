@@ -49,6 +49,9 @@ var components = [
                                     },
                                     verificationBtnTitle: function (ctx, comp) {
                                         return "Verify"
+                                    },
+                                    countryCode: function (ctx,comp){
+                                        return "+94"
                                     }
                                 },
                                 styles: {
@@ -277,9 +280,9 @@ var components = [
                                             position: 'relative',
                                             display: 'block',
                                             'z-index': 1000,
-                                            '-webkit -box-shadow': '1px 1px 3px 0px rgba(0, 0, 0, 0.5)',
-                                            '-moz -box-shadow': '1px 1px 3px 0px rgba(0, 0, 0, 0.5)',
-                                            'box-shadow': '1px 1px 3px 0px rgba(0, 0, 0, 0.5)'
+                                            // '-webkit -box-shadow': '1px 1px 3px 0px rgba(0, 0, 0, 0.5)',
+                                            // '-moz -box-shadow': '1px 1px 3px 0px rgba(0, 0, 0, 0.5)',
+                                            // 'box-shadow': '1px 1px 3px 0px rgba(0, 0, 0, 0.5)'
                                         }
                                     },
                                     mainOuterLayout: function (ctx, comp) {
@@ -394,23 +397,30 @@ var components = [
                                                                                 return {
                                                                                     width: '93%',
                                                                                     'font-size': '16px',
-                                                                                    border: '2px solid #23B584',
                                                                                     padding: '12px 0px',
                                                                                     'margin-top': '8%',
-                                                                                    outline: 'none'
+                                                                                    outline: 'none',
+                                                                                    'background-color': 'rgb(35, 181, 132)',
+                                                                                    color: '#fff',
+                                                                                    border: 'none',
+                                                                                    'box-shadow': '0px 2px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)'
                                                                                 }
                                                                             }
                                                                         },
                                                                         emits: {
                                                                             formSubmit: 'formSubmit'
+                                                                            
                                                                         },
                                                                         listens: [
                                                                             {
                                                                                 name: 'formSubmit',
                                                                                 execute: function (e, o) {
                                                                                     scope = e.currentScope;
+                                                                                    
                                                                                     o.ajax.post('/api/task/addTask', o.formData).then(
                                                                                         function successCallback(response) {
+                                                                                            // o.state.go('GridView');
+                                                                                            console.log(response.data);
                                                                                             if (response.data) {
                                                                                                 var smsData = {
                                                                                                     phoneNumber: '94778651240',
