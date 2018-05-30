@@ -1,7 +1,12 @@
 <div ng-controller="FormViewCtrl">
     <form>
-        <input ng-repeat="field in component.data.fieldNames track by $index" type="text" id="field.model" name="field.model" ng-model="field.model"
+        <input ng-repeat="field in component.data.fields.inputFields track by $index" type="text" id="field.model" name="field.model" ng-model="field.model"
             placeholder="{{field.placeholder}}" ng-required="required" ng-style="component.styles.inputFields">
+        
+
+            <select ng-model="select.model" ng-repeat="select in component.data.fields.optionFields" ng-options="opt for opt in select.options">
+            </select>
+
         <button ng-click="onSubmit(this)" ng-style="component.styles.button">{{component.data.buttonName}}</button>
     </form>
 </div>

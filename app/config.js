@@ -331,34 +331,50 @@ var components = [
                                                                             buttonName: function (ctx, comp) {
                                                                                 return "Submit"
                                                                             },
-                                                                            fieldNames: function (ctx, comp) {
-                                                                                return [
-                                                                                    {
-                                                                                        "model": "",
-                                                                                        "placeholder": "Title"
-                                                                                    },
-                                                                                    {
-                                                                                        "model": "",
-                                                                                        "placeholder": "Description"
-                                                                                    },
-                                                                                    // {
-                                                                                    //     "model": "",
-                                                                                    //     "placeholder": "Status"
-                                                                                    // },
-                                                                                    {
-                                                                                        "model": "",
-                                                                                        "placeholder": "Assigned User"
-                                                                                    },
-                                                                                    {
-                                                                                        "model": "",
-                                                                                        "placeholder": "Due Date"
-                                                                                    },
-                                                                                    {
-                                                                                        "model": "",
-                                                                                        "placeholder": "Project"
-                                                                                    }
-                                                                                ]
-                                                                            }
+                                                                            fields: function (ctx, comp) {
+                                                                                return {
+                                                                                    "inputFields": [
+                                                                                        {
+                                                                                            "model": "",
+                                                                                            "placeholder": "Title"
+                                                                                        },
+                                                                                        {
+                                                                                            "model": "",
+                                                                                            "placeholder": "Description"
+                                                                                        },
+                                                                                        {
+                                                                                            "model": "",
+                                                                                            "placeholder": "Assigned User"
+                                                                                        },
+                                                                                        {
+                                                                                            "model": "",
+                                                                                            "placeholder": "Due Date"
+                                                                                        },
+                                                                                        {
+                                                                                            "model": "",
+                                                                                            "placeholder": "Project"
+                                                                                        }
+                                                                                    ],
+                                                                                    "optionFields": [
+                                                                                        {
+                                                                                            "model": "open",
+                                                                                            "options": [
+                                                                                                "open",
+                                                                                                "pending",
+                                                                                                "close"
+                                                                                            ]
+                                                                                        },
+                                                                                        // {
+                                                                                        //     "model": "",
+                                                                                        //     "options": [
+                                                                                        //         "open",
+                                                                                        //         "pending",
+                                                                                        //         "close"
+                                                                                        //     ]
+                                                                                        // }
+                                                                                    ]
+                                                                                }
+                                                                            },
                                                                         },
                                                                         styles: {
                                                                             inputFields: function (ctx, comp) {
@@ -426,7 +442,7 @@ var components = [
                                                                                         function errorCallback(err) {
                                                                                             console.log(err)
                                                                                         }
-                
+
                                                                                     )
                                                                                 }
                                                                             }

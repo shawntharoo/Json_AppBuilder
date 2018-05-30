@@ -8,7 +8,7 @@ angular.module('app').controller('FormViewCtrl', function ($rootScope, $scope, u
     $scope.onSubmit = function (event) {
         console.log(this);
         $scope.component.formData = {
-            "data": $scope.component.data.fieldNames,
+            "data": $scope.component.data.fields,
             "mobilePhone": $scope.phone_number
         }
         $rootScope.$broadcast($scope.component.emits.formSubmit, angular.copy($scope.component));

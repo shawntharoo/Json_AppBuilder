@@ -91,6 +91,7 @@ router.route('/auth/logout').get(auth.logout);
 /**
  * Task activities
  */
+router.route('/task/changeTaskStatus').post(tasks.changetaskstatus);
 router.route('/task/selectedTask').post(tasks.taskdata);
 router.route('/task/addTask').post(tasks.addtask);
 router.route('/task/allTasks').post(tasks.alltasks);

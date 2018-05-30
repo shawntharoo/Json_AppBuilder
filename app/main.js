@@ -75,7 +75,7 @@ app.factory('componentFactory', [function () {
 
     var form = new Component("formView");
     form.templateUrl = 'components/form-view/template.html';
-    form.inputs = ['title', 'fieldNames','buttonName'];
+    form.inputs = ['title', 'fields','buttonName'];
     form.styleNames = ['inputFields', 'button'];
     registerComponent(form);
 
