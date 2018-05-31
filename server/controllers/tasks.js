@@ -18,7 +18,8 @@ exports.addtask = function (req, res) {
     var status = req.body.data.optionFields[0].model;
     var assigned_user = req.body.data.inputFields[2].model;
     var created_date = new Date();
-    var due_date = req.body.data.inputFields[3].model;
+    var due_UnformattedDate = req.body.data.dateFields[0].model;
+    var due_date = new Date(due_UnformattedDate);
     var project = req.body.data.inputFields[4].model;
     var task = new Task({ phone_number: phone_number });
     task.set('title', title);

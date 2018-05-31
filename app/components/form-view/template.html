@@ -7,6 +7,9 @@
             <select ng-model="select.model" ng-repeat="select in component.data.fields.optionFields" ng-options="opt for opt in select.options" ng-style="component.styles.optionFields">
             </select>
 
+            <adm-dtp ng-model='date.model' ng-repeat="date in component.data.fields.dateFields"></adm-dtp>
+            <!-- <input datetime-picker ng-model='date.model' ng-repeat="date in component.data.fields.dateFields" /> -->
+
         <button ng-click="onSubmit(this)" ng-style="component.styles.button">{{component.data.buttonName}}</button>
     </form>
 </div>

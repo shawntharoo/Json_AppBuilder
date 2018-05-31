@@ -9,6 +9,7 @@
   "author": "Virtusa",
   "license": "ISC",
   "dependencies": {
+    "adm-dtp": "^1.2.0",
     "angular": "^1.6.9",
     "angular-animate": "^1.6.10",
     "angular-cookies": "^1.6.9",
@@ -16,6 +17,7 @@
     "angular-touch": "^1.6.10",
     "angular-ui-bootstrap": "^2.5.6",
     "angular-ui-router": "^1.0.3",
+    "angularjs-datetime-picker": "^0.1.16",
     "http-server": "^0.11.1",
     "jquery": "^3.3.1"
   }

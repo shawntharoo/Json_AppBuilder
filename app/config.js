@@ -358,6 +358,19 @@ var components = [
                                                                                             "placeholder": "Project"
                                                                                         }
                                                                                     ],
+                                                                                    "dateFields": [
+                                                                                        {
+                                                                                            "model": "",
+                                                                                        },
+                                                                                        // {
+                                                                                        //     "model": "",
+                                                                                        //     "options": [
+                                                                                        //         "open",
+                                                                                        //         "pending",
+                                                                                        //         "close"
+                                                                                        //     ]
+                                                                                        // }
+                                                                                    ],
                                                                                     "optionFields": [
                                                                                         {
                                                                                             "model": "pending",

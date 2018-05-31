@@ -1,4 +1,4 @@
-var app = angular.module('app', ['gridster', 'ui.router', 'ngCookies', 'ui.bootstrap', 'ngTouch']);
+var app = angular.module('app', ['gridster', 'ui.router', 'ngCookies', 'ui.bootstrap', 'ngTouch', 'ADM-dateTimePicker']);
 
 function Component(name) {
     this.name = name;
@@ -207,4 +207,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             }
         }
     }
+
+    // ADMdtp.setOptions({
+    //     callType : 'gregorian',
+    //     format : 'YYYY/MM/DD hh:mm',
+    //     default : 'today',
+    // })
+
 });
