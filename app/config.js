@@ -434,7 +434,9 @@ var components = [
                                                                             },
                                                                             dateFields: function(ctx,comp){
                                                                                 return {
-                                                                                    'margin-top': '10px'
+                                                                                    'margin-top': '10px',
+                                                                                    'outline-color': '#23B584',
+                                                                                    'background-color': '#ece9e9'
                                                                                 }
                                                                             },
                                                                         },
@@ -545,7 +547,7 @@ var components = [
                                                         },
                                                         emits: {
                                                             initialDataLoad: 'initialDataLoad',
-                                                            modalsubmit: 'modalsubmit'
+                                                            modalonclose: 'modalonclose',
                                                         },
                                                         listens: [
                                                             {
@@ -553,6 +555,12 @@ var components = [
                                                                 execute: function (e, o) {
                                                                     scope = e.currentScope;
                                                                     scope.todayDate = new Date();
+                                                                }
+                                                            },
+                                                            {
+                                                                name: 'modalonclose',
+                                                                execute: function (e, o) {
+                                                                    scope = e.currentScope;
                                                                 }
                                                             }
                                                         ]
