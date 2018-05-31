@@ -431,7 +431,12 @@ var components = [
                                                                                     'margin-top': '10px',
                                                                                     'outline-color': '#23B584'
                                                                                 }
-                                                                            }
+                                                                            },
+                                                                            dateFields: function(ctx,comp){
+                                                                                return {
+                                                                                    'margin-top': '10px'
+                                                                                }
+                                                                            },
                                                                         },
                                                                         emits: {
                                                                             formSubmit: 'formSubmit'
