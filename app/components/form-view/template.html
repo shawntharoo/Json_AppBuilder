@@ -1,15 +1,19 @@
 <div ng-controller="FormViewCtrl">
     <form>
-        <input ng-repeat="field in component.data.fields.inputFields track by $index" type="text" id="field.model" name="field.model" ng-model="field.model"
-            placeholder="{{field.placeholder}}" ng-required="required" ng-style="component.styles.inputFields" value="field.model">
-        
+        <input ng-repeat="field in component.data.fields.inputFields track by $index" type="text" id="field.model" name="field.model"
+            ng-model="field.model" placeholder="{{field.placeholder}}" ng-required="required" ng-style="component.styles.inputFields"
+            value="field.model">
 
-            <select ng-model="select.model" ng-repeat="select in component.data.fields.optionFields" ng-options="opt for opt in select.options" ng-style="component.styles.optionFields">
-            </select>
 
-            <adm-dtp ng-model='date.model' ng-repeat="date in component.data.fields.dateFields" ng-style="component.styles.dateFields"></adm-dtp>
+        <select ng-model="select.model" ng-repeat="select in component.data.fields.optionFields" ng-options="opt for opt in select.options"
+            ng-style="component.styles.optionFields">
+        </select>
+
+        <div ng-repeat="date in component.data.fields.dateFields">
+            <p ng-style="component.styles.dateFieldLabel">{{date.fieldname}}</p>
+            <adm-dtp ng-model='date.model' ng-style="component.styles.dateFields" placeholder="due date"></adm-dtp>
             <!-- <input datetime-picker ng-model='date.model' ng-repeat="date in component.data.fields.dateFields" /> -->
-
+        </div>
         <button ng-click="onSubmit(this)" ng-style="component.styles.button">{{component.data.buttonName}}</button>
     </form>
 </div>

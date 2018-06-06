@@ -1,5 +1,5 @@
 angular.module('app').controller('ModalInstanceCtrl',function ($rootScope, $scope, $http, $uibModalInstance, modalInstance, userPersistenceService, data, $parse,$state) {
-    $scope.components = $rootScope.registerUserComponents(data.modal_components);
+    $scope.components = $rootScope.registerUserComponents(data.data.modal_components);
     $scope.gridOptions = {
         columns: 12,
         margins: [0, 0],
@@ -13,6 +13,7 @@ angular.module('app').controller('ModalInstanceCtrl',function ($rootScope, $scop
     };
 
     $scope.cancel = function () {
+        $rootScope.$broadcast(data.emits.modalonclose, data);
         $uibModalInstance.dismiss('cancel');
     };
 

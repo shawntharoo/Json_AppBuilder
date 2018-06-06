@@ -4,7 +4,9 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "copy": "copyfiles -u 1 app/**/**/* app/**/* app/* build",
+    "build": "npm run copy && workbox injectManifest workbox-config.js"
   },
   "author": "Virtusa",
   "license": "ISC",
@@ -19,6 +21,7 @@
     "angular-ui-router": "^1.0.3",
     "angularjs-datetime-picker": "^0.1.16",
     "http-server": "^0.11.1",
+    "copyfiles": "1.2.0",
     "jquery": "^3.3.1"
   }
 }

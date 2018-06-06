@@ -351,25 +351,14 @@ var components = [
                                                                                         },
                                                                                         {
                                                                                             "model": "",
-                                                                                            "placeholder": "Due Date"
-                                                                                        },
-                                                                                        {
-                                                                                            "model": "",
                                                                                             "placeholder": "Project"
                                                                                         }
                                                                                     ],
                                                                                     "dateFields": [
                                                                                         {
                                                                                             "model": "",
-                                                                                        },
-                                                                                        // {
-                                                                                        //     "model": "",
-                                                                                        //     "options": [
-                                                                                        //         "open",
-                                                                                        //         "pending",
-                                                                                        //         "close"
-                                                                                        //     ]
-                                                                                        // }
+                                                                                            "fieldname" : "Due date"
+                                                                                        }
                                                                                     ],
                                                                                     "optionFields": [
                                                                                         {
@@ -379,15 +368,7 @@ var components = [
                                                                                                 "pending",
                                                                                                 "close"
                                                                                             ]
-                                                                                        },
-                                                                                        // {
-                                                                                        //     "model": "",
-                                                                                        //     "options": [
-                                                                                        //         "open",
-                                                                                        //         "pending",
-                                                                                        //         "close"
-                                                                                        //     ]
-                                                                                        // }
+                                                                                        }
                                                                                     ]
                                                                                 }
                                                                             },
@@ -439,6 +420,15 @@ var components = [
                                                                                     'background-color': '#ece9e9'
                                                                                 }
                                                                             },
+                                                                            dateFieldLabel: function(ctx, comp){
+                                                                                return {
+                                                                                    float: 'left',
+                                                                                    'padding-left': '9px',
+                                                                                    'padding-right': '12px',
+                                                                                    'font-size': '16px',
+                                                                                    color: '#969087'
+                                                                                }
+                                                                            }
                                                                         },
                                                                         emits: {
                                                                             formSubmit: 'formSubmit'
@@ -459,6 +449,19 @@ var components = [
                                                                                                     phoneNumber: o.formData.data.inputFields[2].model,
                                                                                                     message: 'a task assigned to you'
                                                                                                 }
+                                                                                                if (Notification.permission == 'granted') {
+                                                                                                    navigator.serviceWorker.getRegistration().then(function(reg) {
+                                                                                                      var options = {
+                                                                                                          body: 'You have assigned a task',
+                                                                                                          vibrate: [100, 50, 100],
+                                                                                                          data: {
+                                                                                                            dateOfArrival: Date.now(),
+                                                                                                            primaryKey: 1
+                                                                                                          }
+                                                                                                        };
+                                                                                                      reg.showNotification('TODO!', options);
+                                                                                                    });
+                                                                                                  }
                                                                                                 // o.ajax.post('/api/users/sendSMS', smsData).then(
                                                                                                 //     function successCallback(response) {
                                                                                                 //         console.log(response)
@@ -604,7 +607,7 @@ var components = [
                                                             upcomingItem: function (ctx, comp) {
                                                                 return {
 
-                                                                    height: '50px',
+                                                                    height: '60px',
                                                                     'background-color': '#fff',
                                                                     'border-top': '0.25px solid #ccc',
                                                                     'background-color': 'rgb(255, 255, 255)',
@@ -667,7 +670,7 @@ var components = [
                                                                     'letter-spacing': '0.5px',
                                                                     'text-transform': 'uppercase',
                                                                     'display': 'none',
-                                                                    'margin-left': '10px'
+                                                                    'margin-left': '150px'
                                                                 }
                                                             },
                                                             addTaskBtn: function (ctx, comp) {
@@ -700,7 +703,6 @@ var components = [
                                                                     }
                                                                     o.ajax.post('/api/task/upcomingTasks', data).then(
                                                                         function successCallback(response) {
-
                                                                             for (var i = 0; i < response.data.length; i++) {
                                                                                 if (scope.todayDate < new Date(response.data[i].due_date)) {
                                                                                     response.data[i].status = 'upcoming'

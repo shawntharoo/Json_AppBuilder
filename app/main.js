@@ -76,7 +76,7 @@ app.factory('componentFactory', [function () {
     var form = new Component("formView");
     form.templateUrl = 'components/form-view/template.html';
     form.inputs = ['title', 'fields','buttonName'];
-    form.styleNames = ['inputFields', 'button','optionFields','dateFields'];
+    form.styleNames = ['inputFields', 'button','optionFields','dateFields','dateFieldLabel'];
     registerComponent(form);
 
     return {
@@ -106,6 +106,23 @@ app.factory("userPersistenceService", [
 ]);
 
 app.controller('mainController', ['$scope', 'componentFactory', '$rootScope', '$http', '$state', '$uibModal',function ($scope, componentFactory, $rootScope, $http, $state, $modal) {
+
+    function displayNotification() {
+        if (Notification.permission == 'granted') {
+          navigator.serviceWorker.getRegistration().then(function(reg) {
+            var options = {
+                body: 'Here is a notification body!',
+                vibrate: [100, 50, 100],
+                data: {
+                  dateOfArrival: Date.now(),
+                  primaryKey: 1
+                }
+              };
+            reg.showNotification('Hello world!', options);
+          });
+        }
+      }
+      //displayNotification();
 
     $scope.gridOptions = {
         columns: 12,
@@ -215,3 +232,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     // })
 
 });
+
+Notification.requestPermission(function(status) {
+    console.log('Notification permission status:', status);
+});
+
