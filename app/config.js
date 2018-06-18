@@ -734,76 +734,261 @@ var components = [
                                                 ]
 
                                             },
-                                            {
-                                                name: 'projectsList',
-                                                title: 'Projects',
-                                                icon: 'icon-work',
-                                                components: [
-                                                    {
-                                                        name: 'list',
-                                                        col: 0,
-                                                        row: 1,
-                                                        sizeX: 12,
-                                                        sizeY: 6,
-                                                        components: [
-                                                        ],
-                                                        styles: {
-                                                            tabItemouterLayer: function (ctx, comp) {
-                                                                return {
-                                                                    'background-color': '#ffffff',
-                                                                    'overflow-y': 'scroll'
-                                                                }
+                                            // {
+                                            //     name: 'projectsList',
+                                            //     title: 'Projects',
+                                            //     icon: 'icon-work',
+                                            //     components: [
+                                            //         {
+                                            //             name: 'list',
+                                            //             col: 0,
+                                            //             row: 1,
+                                            //             sizeX: 12,
+                                            //             sizeY: 6,
+                                            //             components: [
+                                            //             ],
+                                            //             styles: {
+                                            //                 tabItemouterLayer: function (ctx, comp) {
+                                            //                     return {
+                                            //                         'background-color': '#ffffff',
+                                            //                         'overflow-y': 'scroll'
+                                            //                     }
 
-                                                            }
-                                                        },
-                                                        emits: {
+                                            //                 }
+                                            //             },
+                                            //             emits: {
 
-                                                        },
-                                                        listens: [
+                                            //             },
+                                            //             listens: [
 
-                                                        ]
-                                                    }
-                                                ],
-                                                styles: {
+                                            //             ]
+                                            //         }
+                                            //     ],
+                                            //     styles: {
 
-                                                },
-                                                emits: {
+                                            //     },
+                                            //     emits: {
 
-                                                },
-                                                listens: [
+                                            //     },
+                                            //     listens: [
 
-                                                ]
-                                            },
+                                            //     ]
+                                            // },
                                             {
                                                 name: 'allTasks',
                                                 title: 'All Tasks',
                                                 icon: 'icon-favorite',
                                                 components: [
                                                     {
+                                                        name: 'viewheader',
+                                                        col: 0,
+                                                        row: 2,
+                                                        sizeX: 12,
+                                                        sizeY: 6,
+                                                        data: {
+                                                            modal_components: function (ctx, comp) {
+                                                                return [
+                                                                ]
+                                                            },
+                                                            title: function (ctx, comp) {
+                                                                return "Today"
+                                                            },
+                                                            value: function (ctx, comp) {
+                                                                return new Date();
+                                                            }
+
+                                                        },
+                                                        styles: {
+                                                            dateHeadToday: function (ctx, comp) {
+                                                                return {
+                                                                    color: "#23B584",
+                                                                    'font-weight': '700'
+                                                                }
+                                                            },
+                                                            dateWrapper: function (ctx, comp) {
+                                                                return {
+                                                                    width: '100%',
+                                                                    width: '95%',
+                                                                    margin: '26px auto',
+                                                                    display: 'flex',
+                                                                    'justify-content': 'space-between'
+                                                                }
+                                                            },
+                                                            dateHeadDate: function (ctx, comp) {
+                                                                return {
+                                                                    color: '#7B7979',
+                                                                    'margin-left': '5px'
+                                                                }
+                                                            },
+                                                            tabItemouterLayer: function (ctx, comp) {
+                                                                return {
+                                                                    'background-color': '#f7f7f7',
+                                                                    'overflow-y': 'scroll'
+                                                                }
+
+                                                            }
+
+                                                        },
+                                                        emits: {
+                                                            initialDataLoad: 'initialDataLoad',
+                                                        },
+                                                        listens: [
+                                                            {
+                                                                name: 'initialDataLoad',
+                                                                execute: function (e, o) {
+                                                                    scope = e.currentScope;
+                                                                    scope.todayDate = new Date();
+                                                                }
+                                                            },
+                                                        ]
+                                                    },
+                                                    {
                                                         name: 'list',
                                                         col: 0,
                                                         row: 1,
                                                         sizeX: 12,
                                                         sizeY: 6,
-                                                        components: [
-                                                        ],
+                                                        data: {},
                                                         styles: {
                                                             tabItemouterLayer: function (ctx, comp) {
                                                                 return {
-                                                                    'background-color': '#ffffff',
+                                                                    'background-color': '#f7f7f7',
                                                                     'overflow-y': 'scroll'
                                                                 }
 
+                                                            },
+                                                            dateHeadToday: function (ctx, comp) {
+                                                                return {
+                                                                    color: "#23B584",
+                                                                    'font-weight': '700'
+                                                                }
+                                                            },
+                                                            dateWrapper: function (ctx, comp) {
+                                                                return {
+                                                                    width: '100%',
+                                                                    width: '95%',
+                                                                    margin: '26px auto',
+                                                                    display: 'flex',
+                                                                    'justify-content': 'space-between'
+                                                                }
+                                                            },
+                                                            dateHeadDate: function (ctx, comp) {
+                                                                return {
+                                                                    color: '#7B7979',
+                                                                    'margin-left': '5px'
+                                                                }
+                                                            },
+                                                            upcomingItem: function (ctx, comp) {
+                                                                return {
+
+                                                                    height: '60px',
+                                                                    'background-color': '#fff',
+                                                                    'border-top': '0.25px solid #ccc',
+                                                                    'background-color': 'rgb(255, 255, 255)',
+                                                                    'border-top': '0.25px solid rgb(204, 204, 204)',
+                                                                    'padding': '15px 10px',
+                                                                    'display': 'flex',
+                                                                    'justify-content': 'space-between',
+                                                                    color: '#202632',
+                                                                    'font-weight': 300,
+                                                                    'font-size': '14px'
+                                                                }
+                                                            },
+                                                            itemLeft: function (ctx, comp) {
+                                                                return {
+                                                                    "order": "1",
+                                                                    "display": "flex",
+                                                                    "flexDirection": "column",
+                                                                    width: '70%'
+                                                                }
+                                                            },
+                                                            itemTime: function (ctx, comp) {
+                                                                return {
+                                                                    'margin-top': 'auto'
+                                                                }
+                                                            },
+                                                            itemRight: function (ctx, comp) {
+                                                                return {
+                                                                    order: 2,
+                                                                    display: 'flex'
+                                                                }
+                                                            },
+                                                            itemProject: function (ctx, comp) {
+                                                                return {
+                                                                    'margin-top': 'auto',
+                                                                    "marginTop": "auto",
+                                                                    "background-color": "rgb(35, 181, 132)",
+                                                                    "color": "rgb(255, 255, 255)",
+                                                                    "font-size": "10px",
+                                                                    "letter-spacing": "0.5px",
+                                                                    "width": "80px",
+                                                                    "text-align": "center",
+                                                                    "font-weight": "700",
+                                                                    "text-transform": "uppercase",
+                                                                    "padding": "6px 0"
+                                                                }
+                                                            },
+                                                            addTaskButtonWrap: function (ctx, comp) {
+                                                                return {
+                                                                    width: '64px',
+                                                                    height: '64px',
+                                                                    position: 'fixed',
+                                                                    bottom: '30px'
+                                                                }
+                                                            },
+                                                            itemStatus: function (ctx, comp) {
+                                                                return {
+                                                                    color: '#FB4372',
+                                                                    'font-weight': 'bold',
+                                                                    'font-size': '11px',
+                                                                    'letter-spacing': '0.5px',
+                                                                    'text-transform': 'uppercase',
+                                                                    'display': 'none',
+                                                                    'margin-left': '150px'
+                                                                }
+                                                            },
+                                                            addTaskBtn: function (ctx, comp) {
+                                                                return {
+                                                                    'font-weight': 'bold',
+                                                                    color: '#FB4372'
+
+                                                                }
+                                                            },
+                                                            modalBack: function (ctx, comp) {
+                                                                return {
+                                                                    'font-size': '32px'
+                                                                }
                                                             }
                                                         },
                                                         emits: {
-
+                                                            initialDataLoad: 'initialDataLoad'
                                                         },
                                                         listens: [
+                                                            {
+                                                                name: 'initialDataLoad',
+                                                                execute: function (e, o) {
+                                                                    scope = e.currentScope;
+                                                                    scope.todayDate = new Date();
+                                                                    //scope.component.data.tasks = new Array();
 
+                                                                    var data = {
+                                                                        phone_number: o.cookies.getCookieData()
+                                                                    }
+                                                                    o.ajax.post('/api/task/tasksOfUser', data).then(
+                                                                        function successCallback(response) {
+                                                                            scope.component.data.tasks = response.data;
+                                                                            console.log(response.data)
+                                                                        },
+                                                                        function errorCallback(response) {
+                                                                            console.log(response)
+                                                                        }
+
+                                                                    )
+                                                                }
+                                                            }
                                                         ]
 
-                                                    }
+                                                    },
                                                 ],
                                                 styles: {
 
